@@ -329,6 +329,348 @@
     width:100%;
     height:100%;
     display:block;
+    transition: opacity .6s ease;
+  }
+  .globe-image{
+    position:absolute;
+    top:50%; left:50%;
+    width: 68vmin;
+    height: 68vmin;
+    transform: translate(-50%, -50%);
+    border-radius:50%;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:3;
+  }
+  .globe-image canvas{
+    display:block;
+    width:100%;
+    height:100%;
+  }
+  .globe-image-text{
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%, -50%) scale(.96);
+    width: clamp(240px, 36vmin, 420px);
+    padding: 22px 26px;
+    text-align:center;
+    color:#ffffff;
+    font-family:'Fraunces', serif;
+    font-variation-settings:"opsz" 144, "SOFT" 70;
+    font-weight:400;
+    font-size: clamp(14px, 1.05vw, 17px);
+    line-height: 1.55;
+    letter-spacing: 0.005em;
+    z-index: 4;
+    opacity: 0;
+    pointer-events: none;
+    /* SwiftUI .thinMaterial — frosted glass over darker tint for contrast */
+    background: rgba(14, 18, 22, 0.38);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    box-shadow:
+      0 14px 44px rgba(0,0,0,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.14);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+    transition: opacity .55s ease, transform .55s cubic-bezier(.2,.7,.3,1);
+  }
+  .globe-image-text em{
+    font-style: italic;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .globe-image-text.show{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition-delay: .55s;
+  }
+  .missing.hovering .globe-canvas{ opacity:.18 }
+
+  /* ============ ORIGINS DEEP-DIVE (whatismissing-style) ============ */
+  .origins-overlay{
+    position:absolute;
+    inset: 0;
+    z-index: 6;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .7s ease;
+  }
+  .origins-overlay.show{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .origins-back{
+    position:absolute;
+    top: 50%;
+    left: 36px;
+    transform: translateY(-50%);
+    width: 52px; height: 52px;
+    border-radius:50%;
+    background: transparent;
+    border: 1px solid rgba(236,230,214,0.5);
+    color:#ece6d6;
+    cursor: pointer;
+    display:flex; align-items:center; justify-content:center;
+    opacity: 0;
+    transition: all .4s ease;
+  }
+  .origins-overlay.show .origins-back{
+    opacity: 1;
+    transition: opacity .5s ease .25s, background .3s, border-color .3s, color .3s;
+  }
+  .origins-back:hover{
+    border-color: #d8a86a;
+    background: rgba(216,168,106,0.1);
+    color: #d8a86a;
+  }
+
+  .origins-crumb{
+    position:absolute;
+    top: 102px;
+    left: 40px;
+    z-index: 7;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #888;
+    opacity: 0;
+    transition: opacity .5s ease .35s;
+  }
+  .origins-overlay.show .origins-crumb{ opacity: 1; }
+  .origins-crumb b{ color: #ece6d6; font-weight: 500; }
+
+  .origins-intro{
+    position:absolute;
+    bottom: 11%;
+    left: 7%;
+    width: clamp(260px, 26vw, 400px);
+    color: #ece6d6;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .65s ease .45s, transform .65s cubic-bezier(.2,.7,.3,1) .45s;
+  }
+  .origins-overlay.show .origins-intro{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .origins-intro .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #d8a86a;
+    margin-bottom: 16px;
+  }
+  .origins-intro h2{
+    font-family:'Fraunces', serif;
+    font-variation-settings:"opsz" 144, "SOFT" 50;
+    font-weight: 300;
+    font-size: clamp(48px, 5.5vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+  }
+  .origins-intro .sub{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #c0b89c;
+    margin-bottom: 24px;
+  }
+  .origins-intro p{
+    font-size: 14px;
+    line-height: 1.65;
+    color: #b8b3a2;
+    max-width: 380px;
+  }
+  .origins-intro p em{
+    color: #ece6d6;
+    font-style: italic;
+    font-family:'Fraunces', serif;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .origins-cta{
+    display:inline-flex;
+    align-items:center;
+    gap: 12px;
+    margin-top: 26px;
+    padding: 6px 2px 10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #ece6d6;
+    border-bottom: 1px solid #ece6d6;
+    transition: gap .35s, color .3s, border-color .3s;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .origins-cta:hover{
+    color: #d8a86a;
+    border-color: #d8a86a;
+    gap: 22px;
+  }
+  .origins-cta .arrow{
+    display:inline-block;
+    transition: transform .3s;
+  }
+  .origins-cta:hover .arrow{ transform: translateX(4px); }
+
+  /* Circular MAP that replaces the globe */
+  .origins-map{
+    position:absolute;
+    top:50%; left:50%;
+    width: 56vmin;
+    height: 56vmin;
+    transform: translate(-50%, -50%) scale(.92);
+    border-radius:50%;
+    overflow:hidden;
+    z-index: 5;
+    opacity: 0;
+    pointer-events:none;
+    transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.3,1);
+    box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  }
+  .origins-overlay.show .origins-map{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    transition-delay: .15s;
+  }
+  .origins-map svg, .origins-map canvas{ display:block; width:100%; height:100%; position:absolute; inset:0; }
+  .origins-image-canvas{
+    z-index: 2;
+    pointer-events: none;
+  }
+  .origins-reveal-mask{
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .omap-label{
+    position:absolute;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #7a8a8c;
+    pointer-events: none;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  .omap-label.gold{ color:#c89456; font-size: 7px; }
+  .omap-label.small{ font-size: 7px; color:#5a6a6c; letter-spacing:0.18em; }
+  .omap-coords{
+    position:absolute;
+    top: 16px; left: 24px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: #5d8095;
+    opacity: 0.6;
+    letter-spacing: 0.12em;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .omap-compass{
+    position:absolute;
+    top: 7%; right: 9%;
+    width: 38px; height: 38px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Thumbnail markers on the map (whatismissing style) */
+  .omarker{
+    position:absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    background: transparent;
+    z-index: 3;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity .6s ease, transform .35s cubic-bezier(.2,.7,.3,1);
+  }
+  .origins-overlay.show .omarker{ opacity: 1; }
+  .origins-overlay.show .omarker-1{ transition-delay: .55s; }
+  .origins-overlay.show .omarker-2{ transition-delay: .65s; }
+  .origins-overlay.show .omarker-3{ transition-delay: .75s; }
+  .origins-overlay.show .omarker-4{ transition-delay: .85s; }
+  .origins-overlay.show .omarker-5{ transition-delay: .95s; }
+
+  .omarker-thumb{
+    position:relative;
+    width: clamp(48px, 5.2vmin, 74px);
+    height: clamp(48px, 5.2vmin, 74px);
+    border-radius:50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #0d1418;
+    border: 1px solid rgba(255,255,255,0.55);
+    transition: border-color .35s, transform .4s cubic-bezier(.2,.7,.3,1);
+  }
+  .omarker-pulse{
+    position:absolute;
+    inset: -6px;
+    border-radius:50%;
+    background: rgba(216,168,106,0.4);
+    z-index:-1;
+    animation: omarker-pulse 2.6s ease-out infinite;
+    pointer-events:none;
+  }
+  @keyframes omarker-pulse{
+    0%{ transform: scale(.92); opacity:.55; }
+    100%{ transform: scale(1.45); opacity:0; }
+  }
+  .omarker-name{
+    font-family:'Fraunces', serif;
+    font-variation-settings:"opsz" 144, "SOFT" 50;
+    font-weight: 400;
+    font-size: clamp(11px, 1vw, 14px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ece6d6;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.85), 0 0 18px rgba(0,0,0,0.6);
+    white-space: nowrap;
+    transition: color .35s;
+  }
+  .omarker:hover .omarker-thumb,
+  .omarker.active .omarker-thumb{
+    border-color: #d8a86a;
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px rgba(216,168,106,0.18);
+  }
+  .omarker:hover .omarker-name,
+  .omarker.active .omarker-name{ color: #d8a86a; }
+  .omarker.active .omarker-pulse{ animation-duration: 1.6s; }
+
+  /* Per-marker geographic positions (percent within the full-circle map) */
+  .omarker-1 { top: 37%; left: 42%; }  /* Welcome Figure — Ambleside Park */
+  .omarker-2 { top: 36%; left: 66%; }  /* Xwemélch'stn — Capilano mouth */
+  .omarker-3 { top: 73%; left: 18%; }  /* Slhx̱í7lsh — Siwash Rock */
+  .omarker-4 { top: 78%; left: 48%; }  /* Xwáyxway — Lumberman's Arch */
+  .omarker-5 { top: 84%; left: 72%; }  /* Sen̓áḵw */
+
+  /* When origins is open: hide the globe + standard nav + hover machinery */
+  .missing.origins-open .globe-nav{
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+  }
+  /* globe stays visible during origins; the JS scatter dissolves it into circle-pixels */
+  .missing.origins-open .globe-image,
+  .missing.origins-open .globe-image-text,
+  .missing.origins-open .missing-mark{
+    opacity: 0;
+    transition: opacity .35s ease;
   }
   .globe-nav{
     position:absolute;
@@ -343,9 +685,9 @@
     gap:18px;
     pointer-events:auto;
     color:#e6e3da;
-    transition: color .4s, gap .4s;
+    transition: color .4s, gap .45s;
   }
-  .gn:hover{color:#fff;gap:22px}
+  .gn:hover{color:#fff; gap:22px}
   .gn-label{
     font-family:'Fraunces', serif;
     font-variation-settings:"opsz" 144, "SOFT" 40;
@@ -356,16 +698,17 @@
     white-space:nowrap;
   }
   .gn-circle{
-    width:18px;height:18px;
+    width:20px;height:20px;
     border-radius:50%;
     border:1px solid rgba(230,227,218,.85);
     flex-shrink:0;
-    transition: background .4s, border-color .4s, transform .4s;
+    background:transparent;
+    transition: background .35s, border-color .35s, transform .35s;
   }
   .gn:hover .gn-circle{
     background:rgba(230,227,218,.18);
     border-color:#fff;
-    transform:scale(1.1);
+    transform: scale(1.15);
   }
   /* per-node positions — circle is the part nearest the globe */
   .gn-top   { top: 6%;     left: 50%;  transform: translateX(-30%); flex-direction:column; gap:14px;}
@@ -373,54 +716,6 @@
   .gn-left  { top: 42%;    left: 13%;  flex-direction:column; gap:14px;}
   .gn-bl    { bottom: 16%; left: 18%;  flex-direction:column-reverse; gap:14px;}
   .gn-br    { bottom: 10%; right: 16%; flex-direction:column-reverse; gap:14px;}
-
-  /* ============ HOVER IMAGE (cursor-follow) ============ */
-  .hover-img{
-    position:fixed;
-    top:0;left:0;
-    width: 320px;
-    height: 420px;
-    margin:-210px 0 0 40px; /* offset so cursor stays visible */
-    pointer-events:none;
-    z-index:50;
-    opacity:0;
-    transform: scale(.92);
-    transition: opacity .55s ease, transform .8s cubic-bezier(.2,.7,.3,1);
-    background-size:cover;
-    background-position:center;
-    box-shadow: 0 30px 80px rgba(0,0,0,.7);
-    overflow:hidden;
-    will-change: transform, opacity, left, top;
-  }
-  .hover-img.show{opacity:1;transform:scale(1)}
-  .hover-img::after{
-    content:'';
-    position:absolute;inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.78) 100%);
-  }
-  .hover-img .cap{
-    position:absolute;
-    left:18px;right:18px;bottom:16px;
-    z-index:2;
-    color:#ece6d6;
-  }
-  .hover-img .cap .ti{
-    font-family:'Fraunces', serif;
-    font-variation-settings:"opsz" 144, "SOFT" 60, "WONK" 1;
-    font-style:italic;
-    font-weight:300;
-    font-size:22px;
-    line-height:1.1;
-    letter-spacing:-0.01em;
-    margin-bottom:6px;
-  }
-  .hover-img .cap .su{
-    font-family:'JetBrains Mono', monospace;
-    font-size:9px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color: rgba(236,230,214,.75);
-  }
 
   @media (max-width: 980px){
     .top-bar{display:none}
@@ -443,11 +738,11 @@
 <div class="top-bar">
   <div class="left mono">
     <span><span class="dot"></span> Field Conditions · Current</span>
-    <span>Water 9.4°C · Wind SSW 8 kts · Visibility 14 km</span>
+    <span>Water 11.2°C · Tide rising · Visibility 18 km</span>
   </div>
   <div class="right mono">
     <span>Established MMXIX</span>
-    <span>Cumbria · England</span>
+    <span>West Vancouver · British Columbia</span>
   </div>
 </div>
 
@@ -490,17 +785,17 @@
   <div class="hero-content">
     <div class="hero-eyebrow mono">— The 03 / 14 Edition · Spring</div>
     <h1 class="hero-h1 display">
-      Where the <em>fells</em>
-      <span class="line2">meet the water.</span>
+      Where the <em>mountains</em>
+      <span class="line2">meet the tide.</span>
     </h1>
-    <p class="hero-sub">An ongoing record of England's longest natural lake — the eleven miles of shoreline that begin at Ambleside and run south through Cumbria's slate and bracken country.</p>
+    <p class="hero-sub">An ongoing record of Ambleside Beach — the quiet salt-water shore on Burrard Inlet, where the North Shore mountains lean down to meet the Pacific, beneath the Lions Gate Bridge.</p>
     <a class="hero-cta" href="#">
       <span>Begin the walk</span>
       <span class="arrow"></span>
     </a>
   </div>
 
-  <div class="hero-credit">Photo · Borrans Bay at first light · by E. Hartley</div>
+  <div class="hero-credit">Photo · Ambleside Park at first light · by E. Hartley</div>
 
   <div class="hero-pager">
     <span class="pager-dot"></span>
@@ -511,8 +806,8 @@
   </div>
 
   <div class="hero-coords">
-    <strong>54.4274°N · 2.9608°W</strong><br>
-    Lake Windermere · north basin
+    <strong>49.3267°N · 123.1567°W</strong><br>
+    Burrard Inlet · north shore
   </div>
 
   <div class="hero-side">
@@ -525,44 +820,149 @@
 <section class="missing">
   <div class="missing-mark">— What is Missing —</div>
   <canvas class="globe-canvas" id="globe"></canvas>
+  <div class="globe-image" id="globeImage" aria-hidden="true"></div>
+  <div class="globe-image-text" id="globeText"></div>
+
+  <!-- ORIGINS DEEP-DIVE OVERLAY -->
+  <div class="origins-overlay" id="originsOverlay" aria-hidden="true">
+    <button class="origins-back" id="originsBack" aria-label="Back to map">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M9 1L3 7L9 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="origins-crumb">— Ambleside · <b>Origins</b></div>
+
+    <div class="origins-map">
+      <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <!-- Water -->
+        <rect width="600" height="600" fill="#0a1820"/>
+        <!-- Water ripples -->
+        <g opacity="0.07" stroke="#5d8095" fill="none" stroke-width="0.6">
+          <path d="M 0 245 Q 100 240 200 245 T 400 245 T 600 245"/>
+          <path d="M 0 295 Q 100 290 200 295 T 400 295 T 600 295"/>
+          <path d="M 0 345 Q 100 340 200 345 T 400 345 T 600 345"/>
+          <path d="M 0 395 Q 100 390 200 395 T 400 395 T 600 395"/>
+        </g>
+        <!-- North Shore landmass -->
+        <path d="M 0 0 L 600 0 L 600 230 Q 520 218 440 226 Q 370 234 310 228 Q 240 218 170 222 Q 90 226 0 208 Z" fill="#152822"/>
+        <!-- North Shore forest hints -->
+        <g opacity="0.45" fill="#1d3329">
+          <circle cx="60" cy="80" r="34"/>
+          <circle cx="160" cy="50" r="40"/>
+          <circle cx="250" cy="100" r="30"/>
+          <circle cx="350" cy="55" r="36"/>
+          <circle cx="460" cy="85" r="42"/>
+          <circle cx="540" cy="58" r="30"/>
+        </g>
+        <!-- Capilano River -->
+        <path d="M 405 0 Q 410 60 400 120 Q 390 170 396 224" stroke="#2d4859" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <!-- Stanley Park peninsula -->
+        <path d="M 0 600 L 0 430 Q 80 405 180 420 Q 320 442 440 422 Q 530 412 600 396 L 600 600 Z" fill="#152822"/>
+        <!-- Stanley Park forest hints -->
+        <g opacity="0.45" fill="#1d3329">
+          <circle cx="80" cy="535" r="32"/>
+          <circle cx="190" cy="555" r="38"/>
+          <circle cx="300" cy="540" r="42"/>
+          <circle cx="400" cy="555" r="36"/>
+          <circle cx="500" cy="530" r="32"/>
+        </g>
+        <!-- Lions Gate Bridge -->
+        <g stroke="#c89456" fill="none">
+          <line x1="295" y1="230" x2="295" y2="425" stroke-width="1.5"/>
+          <line x1="325" y1="230" x2="325" y2="425" stroke-width="1.5"/>
+          <path d="M 295 230 Q 310 275 325 230" stroke-width="0.9" opacity="0.55"/>
+        </g>
+        <!-- Compass — inside the visible inscribed circle -->
+        <g transform="translate(485, 110)" fill="none">
+          <circle r="16" stroke="#888" stroke-width="0.5"/>
+          <line x1="0" y1="-14" x2="0" y2="14" stroke="#888" stroke-width="0.5"/>
+          <line x1="-14" y1="0" x2="14" y2="0" stroke="#888" stroke-width="0.5"/>
+          <polygon points="0,-14 -3,-5 3,-5" fill="#c89456"/>
+          <text x="0" y="-19" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#fff">N</text>
+        </g>
+        <!-- Labels — repositioned to stay inside the visible inscribed circle -->
+        <g font-family="JetBrains Mono, monospace" fill="#6a7a7c" letter-spacing="2.2">
+          <text x="160" y="170" font-size="8.5">— NORTH SHORE</text>
+          <text x="248" y="120" font-size="7">WEST VANCOUVER</text>
+          <text x="220" y="332" font-size="8.5">— BURRARD INLET</text>
+          <text x="160" y="445" font-size="8.5">— STANLEY PARK</text>
+          <text x="248" y="475" font-size="7">VANCOUVER</text>
+          <text x="370" y="160" font-size="7" fill="#4d6a78">Capilano River</text>
+          <text x="278" y="338" font-size="6.5" fill="#c89456">LIONS GATE</text>
+        </g>
+        <!-- Coordinates stamp -->
+        <text x="125" y="115" font-family="JetBrains Mono, monospace" font-size="8" fill="#5d8095" opacity="0.65" letter-spacing="1.4">49.3267°N · 123.1567°W</text>
+      </svg>
+
+      <canvas class="origins-reveal-mask" id="originsRevealMask"></canvas>
+
+      <button class="omarker omarker-1" data-site="welcome" type="button" aria-label="Welcome Figure">
+        <span class="omarker-thumb" style="background-image:url('https://images.spaicelabs.com/images/flus6j8v/production/ae21003438ff4dc31818957b4b2e5cfae7e395d5-1200x800.jpg?w=300&fm=jpg&q=80&fit=max')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Welcome Figure</span>
+      </button>
+      <button class="omarker omarker-2" data-site="capilano" type="button" aria-label="Xwemélch'stn">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Xwemélch'stn</span>
+      </button>
+      <button class="omarker omarker-3" data-site="siwash" type="button" aria-label="Slhx̱í7lsh">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Siwash_Rock.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Siwash Rock</span>
+      </button>
+      <button class="omarker omarker-4" data-site="xwayxway" type="button" aria-label="Xwáyxway">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Stanley_Park.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Xwáyxway</span>
+      </button>
+      <button class="omarker omarker-5" data-site="senakw" type="button" aria-label="Sen̓áḵw">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/False_Creek.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Sen̓áḵw</span>
+      </button>
+    </div>
+
+    <div class="origins-intro" id="originsIntro">
+      <div class="eyebrow">— Squamish Nation Heritage</div>
+      <h2 class="display">Origins</h2>
+      <div class="sub">Map of the long story</div>
+      <p>The Indigenous heritage of this saltwater shore. <em>Squamish villages</em>, sacred sites, and the people who have walked, fished and fed at the inlet for thousands of years before the seawall.</p>
+    </div>
+  </div>
+
   <nav class="globe-nav" aria-label="Missing section">
     <a class="gn gn-top"   href="#"
-       data-img="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&auto=format&fit=crop&q=80"
-       data-title="A shoreline still worth dreaming of"
-       data-sub="— Imagine · what could yet be">
+       data-img="https://commons.wikimedia.org/wiki/Special:FilePath/Lions_Gate_Bridge.jpg?width=900"
+       data-desc="Picture the inlet as it once was. Salmon thick at the <em>Capilano mouth</em>, herring runs, the cedar forest whole to the tideline.">
       <span class="gn-label">Imagine</span><span class="gn-circle"></span>
     </a>
     <a class="gn gn-right" href="#"
-       data-img="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900&auto=format&fit=crop&q=80"
-       data-title="The repair work already underway"
-       data-sub="— Restore · the solutions">
+       data-img="https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=900"
+       data-desc="The <em>repair work</em> already underway. Salmon habitat rebuilt at the Capilano, eelgrass replanted, wardens walking the seawall.">
       <span class="gn-label">Restore</span><span class="gn-circle"></span>
     </a>
     <a class="gn gn-left"  href="#"
-       data-img="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=900&auto=format&fit=crop&q=80"
-       data-title="Ten thousand years of one cold lake"
-       data-sub="— Origins · the long history">
+       data-img="https://images.spaicelabs.com/images/flus6j8v/production/ae21003438ff4dc31818957b4b2e5cfae7e395d5-1200x800.jpg?w=900&fm=jpg&q=80&fit=max"
+       data-desc="The long <em>history</em> of this saltwater shore. Squamish fishing grounds, the welcome figure at the park, the seawall, the bridge.">
       <span class="gn-label">Origins</span><span class="gn-circle"></span>
     </a>
     <a class="gn gn-bl"    href="#"
-       data-img="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900&auto=format&fit=crop&q=80"
-       data-title="The people who keep this shore"
-       data-sub="— Belonging · why this matters">
+       data-img="https://commons.wikimedia.org/wiki/Special:FilePath/The_beach_in_ambleside.jpg?width=900"
+       data-desc="The shore belongs to <em>whoever loves it</em>. Dog walkers, paddlers, gulls and ferry crews. We are the ones writing it down.">
       <span class="gn-label">Belonging</span><span class="gn-circle"></span>
     </a>
     <a class="gn gn-br"    href="#"
-       data-img="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&auto=format&fit=crop&q=80"
-       data-title="The shore we are quietly losing"
-       data-sub="— Vanishing · if we do nothing">
+       data-img="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_of_Burrard_Inlet_from_Lions_Gate_Bridge.jpg?width=900"
+       data-desc="The shore we are <em>quietly losing</em>. Warming water, plastic on the tideline, fewer salmon returning each autumn.">
       <span class="gn-label">Vanishing</span><span class="gn-circle"></span>
     </a>
   </nav>
-  <div class="hover-img" aria-hidden="true">
-    <div class="cap">
-      <div class="ti"></div>
-      <div class="su"></div>
-    </div>
-  </div>
 </section>
 
 <script>
@@ -587,7 +987,6 @@
     window.addEventListener('resize', resize);
     resize();
 
-    // fibonacci sphere distribution
     const N = 14000;
     const allPts = [];
     const phi = Math.PI * (3 - Math.sqrt(5));
@@ -597,17 +996,14 @@
       const t = phi * i;
       allPts.push({ x: Math.cos(t)*r, y, z: Math.sin(t)*r });
     }
+    let landPts = allPts;
 
-    let landPts = allPts; // start with all until mask loads
-
-    // load land mask from unpkg (CORS-enabled)
     const mapImg = new Image();
     mapImg.crossOrigin = 'anonymous';
     mapImg.onload = () => {
       try {
         const mc = document.createElement('canvas');
-        mc.width = mapImg.width;
-        mc.height = mapImg.height;
+        mc.width = mapImg.width; mc.height = mapImg.height;
         const mctx = mc.getContext('2d');
         mctx.drawImage(mapImg, 0, 0);
         const data = mctx.getImageData(0, 0, mc.width, mc.height).data;
@@ -620,45 +1016,63 @@
           const px = Math.floor(u * mc.width);
           const py = Math.floor(v * mc.height);
           const idx = (py * mc.width + px) * 4;
-          // earth-water.png: water=white, land=black
           if(data[idx] < 100) filtered.push(p);
         }
         if(filtered.length > 200) landPts = filtered;
-      } catch(e){ /* CORS error — keep all dots fallback */ }
+      } catch(e){}
     };
     mapImg.src = 'https://unpkg.com/three-globe/example/img/earth-water.png';
 
     let rot = 0;
     let last = performance.now();
+    let dissolve = 0;         // 0 = full globe, 1 = fully dissolved
+    let dissolveTarget = 0;
+    window.setGlobeScatter = (v) => { dissolveTarget = Math.max(0, Math.min(1, v)); };
+
     function frame(now){
       const dt = Math.min(50, now - last); last = now;
-      rot += dt * 0.00012; // gentle drift
+      rot += dt * 0.00012 * (1 - dissolve * 0.85);
+      dissolve += (dissolveTarget - dissolve) * 0.04;
       ctx.clearRect(0, 0, W, H);
-
       const cosR = Math.cos(rot), sinR = Math.sin(rot);
-      // slight tilt
       const tilt = -0.32;
       const cosT = Math.cos(tilt), sinT = Math.sin(tilt);
+      const d = dissolve;
 
       for(const p of landPts){
-        // rotate around Y
+        // per-dot constants — random delay so dots fade out one by one
+        if(p._d === undefined){
+          p._d = Math.random() * 0.65;     // delay (0 .. 0.65)
+          p._g = 0.8 + Math.random() * 0.9; // peak-grow factor
+        }
+
         let x = p.x*cosR - p.z*sinR;
         let z = p.x*sinR + p.z*cosR;
         let y = p.y;
-        // tilt around X
         const ny = y*cosT - z*sinT;
         const nz = y*sinT + z*cosT;
         y = ny; z = nz;
-
-        if(z < -0.05) continue; // backface cull
+        if(z < -0.05) continue;
 
         const sx = cx + x * R;
         const sy = cy - y * R;
-        const depth = (z + 1) * 0.5; // 0..1
-        const a = Math.max(0, Math.min(1, (z + 0.1) * 1.05));
-        const size = 0.7 + depth * 1.1;
+        const depth = (z + 1) * 0.5;
+        let a = Math.max(0, Math.min(1, (z + 0.1) * 1.05));
+        let size = 0.7 + depth * 1.1;
 
-        ctx.fillStyle = `rgba(220,220,220,${a * 0.55})`;
+        if(d > 0.005){
+          // per-dot progress through its dissolve window (delay .. delay+0.35)
+          const t = Math.max(0, Math.min(1, (d - p._d) / 0.35));
+          if(t > 0){
+            // grow-pop curve: peaks at t=0.5, then vanishes by t=1
+            const grow = t < 0.5 ? t * 2 : (1 - t) * 2;       // 0 → 1 → 0
+            size += grow * p._g * 2.2;                         // briefly larger
+            a *= (1 - t);                                       // linear fade out
+          }
+        }
+        if(a < 0.01) continue;
+
+        ctx.fillStyle = `rgba(232,228,216,${a * 0.55})`;
         ctx.beginPath();
         ctx.arc(sx, sy, size, 0, Math.PI*2);
         ctx.fill();
@@ -668,47 +1082,367 @@
     requestAnimationFrame(frame);
   })();
 
-  /* ========== HOVER-FOLLOW IMAGE ========== */
+  /* ========== HOVER IMAGE OVER GLOBE — WATER FILL ========== */
   (() => {
-    const stage = document.querySelector('.hover-img');
-    if(!stage) return;
-    const ti = stage.querySelector('.ti');
-    const su = stage.querySelector('.su');
-    let mx = window.innerWidth/2, my = window.innerHeight/2;
-    let tx = mx, ty = my;
+    const section = document.querySelector('.missing');
+    const container = document.getElementById('globeImage');
+    const globeCanvas = document.getElementById('globe');
+    if(!section || !container || !globeCanvas) return;
 
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
+    const canvas = document.createElement('canvas');
+    container.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+
+    let W = 0, H = 0, dpr = 1;
+    let currentSrc = null;
+    let currentImg = null;
+    let fillLevel = 0;       // 0 = empty, 1 = full
+    let target = 0;
+    let waveTime = 0;
+    let raf = null;
+    const images = new Map();
+
+    function syncSize(){
+      const w = globeCanvas.clientWidth;
+      const h = globeCanvas.clientHeight;
+      const d = Math.min(w, h) * 0.68;
+      container.style.width  = d + 'px';
+      container.style.height = d + 'px';
+      dpr = window.devicePixelRatio || 1;
+      W = d; H = d;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      render();
+    }
+    syncSize();
+    window.addEventListener('resize', syncSize);
+
+    // preload hover images
+    document.querySelectorAll('.gn').forEach(gn => {
+      const src = gn.dataset.img;
+      if(!src) return;
+      const im = new Image();
+      im.onload = () => {
+        images.set(src, im);
+        if(currentSrc === src){
+          currentImg = im;
+          ensureLoop();
+        }
+      };
+      im.src = src;
     });
+
+    function ensureLoop(){
+      if(raf) return;
+      raf = requestAnimationFrame(tick);
+    }
+
+    function tick(){
+      fillLevel += (target - fillLevel) * 0.075;
+      waveTime += 0.045;
+      render();
+
+      const settled = Math.abs(target - fillLevel) < 0.0015;
+      const idle = settled && fillLevel < 0.005;
+      if(idle){
+        fillLevel = 0;
+        raf = null;
+        // one last clear render
+        ctx.clearRect(0, 0, W, H);
+      } else {
+        if(settled) fillLevel = target;
+        raf = requestAnimationFrame(tick);
+      }
+    }
+
+    function waveYAt(x, surfaceY){
+      const a1 = 7, a2 = 3.2;
+      return surfaceY
+        + Math.sin((x / W) * Math.PI * 4 + waveTime * 1.6) * a1
+        + Math.sin((x / W) * Math.PI * 7.3 - waveTime * 2.1) * a2;
+    }
+
+    function render(){
+      ctx.clearRect(0, 0, W, H);
+      if(!currentImg || fillLevel < 0.001) return;
+
+      // water surface y (rises as fillLevel grows; allow slight overshoot above 0)
+      const surfaceY = H * (1 - fillLevel);
+
+      // clip path: bottom + wavy top
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(0, H + 4);
+      ctx.lineTo(0, surfaceY);
+      for(let x = 0; x <= W; x += 3){
+        ctx.lineTo(x, waveYAt(x, surfaceY));
+      }
+      ctx.lineTo(W, H + 4);
+      ctx.closePath();
+      ctx.clip();
+
+      // cover-fit image
+      const ir = currentImg.width / currentImg.height;
+      const cr = W / H;
+      let dx, dy, dw, dh;
+      if(ir > cr){ dh = H; dw = H * ir; dx = (W - dw)/2; dy = 0; }
+      else       { dw = W; dh = W / ir; dx = 0; dy = (H - dh)/2; }
+      ctx.drawImage(currentImg, dx, dy, dw, dh);
+
+      // subtle blue tint near the surface to evoke water
+      const grad = ctx.createLinearGradient(0, surfaceY - 30, 0, surfaceY + 60);
+      grad.addColorStop(0, 'rgba(60,130,160,0)');
+      grad.addColorStop(0.4, 'rgba(60,130,160,0.18)');
+      grad.addColorStop(1, 'rgba(60,130,160,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, surfaceY - 30, W, 90);
+      ctx.restore();
+
+      // shimmer line at the surface
+      if(fillLevel > 0.01 && fillLevel < 0.995){
+        ctx.beginPath();
+        for(let x = 0; x <= W; x += 3){
+          const y = waveYAt(x, surfaceY);
+          if(x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'rgba(236,230,214,0.55)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        // soft highlight just above the surface
+        ctx.beginPath();
+        for(let x = 0; x <= W; x += 3){
+          const y = waveYAt(x, surfaceY) - 3;
+          if(x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'rgba(236,230,214,0.18)';
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+
+    const textEl = document.getElementById('globeText');
 
     document.querySelectorAll('.gn').forEach(gn => {
+      const src = gn.dataset.img;
+      const desc = gn.dataset.desc || '';
+      if(!src) return;
       gn.addEventListener('mouseenter', () => {
-        const src = gn.dataset.img;
-        // preload then show
-        const im = new Image();
-        im.onload = () => {
-          stage.style.backgroundImage = `url('${src}')`;
-        };
-        im.src = src;
-        stage.style.backgroundImage = `url('${src}')`;
-        ti.textContent = gn.dataset.title || '';
-        su.textContent = gn.dataset.sub || '';
-        stage.classList.add('show');
+        if(section.classList.contains('origins-open')) return;
+        currentSrc = src;
+        currentImg = images.get(src) || null;
+        section.classList.add('hovering');
+        if(textEl){
+          textEl.innerHTML = desc;
+          textEl.classList.add('show');
+        }
+        target = 1;
+        ensureLoop();
       });
       gn.addEventListener('mouseleave', () => {
-        stage.classList.remove('show');
+        if(section.classList.contains('origins-open')) return;
+        section.classList.remove('hovering');
+        if(textEl) textEl.classList.remove('show');
+        target = 0;
+        ensureLoop();
       });
     });
-
-    function loop(){
-      tx += (mx - tx) * 0.14;
-      ty += (my - ty) * 0.14;
-      stage.style.left = tx + 'px';
-      stage.style.top  = ty + 'px';
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
   })();
+
+  /* ========== ORIGINS DEEP-DIVE ========== */
+  (() => {
+    const overlay = document.getElementById('originsOverlay');
+    const back = document.getElementById('originsBack');
+    const intro = document.getElementById('originsIntro');
+    const link = document.querySelector('.gn-left');
+    const section = document.querySelector('.missing');
+    if(!overlay || !back || !intro || !link || !section) return;
+
+    const introDefault = intro.innerHTML;
+
+    const sites = {
+      welcome: {
+        eyebrow: "— Welcome Figure · K'aya'chtn",
+        title: "K'aya'chtn",
+        sub: "Welcome Figure · Stan Joseph, 2001",
+        body: "Carved by Stan Joseph and Wes Nahanee (Squamish Nation) from <em>old-growth cedar</em> on Hollyburn Mountain. A 16-foot welcome to all who pass. K'aya'chtn means &lsquo;gathering of ocean canoes.&rsquo;",
+        article: "https://westvancouver.ca/arts-culture/public-art/squamish-nation-welcome-figure",
+        image: "https://images.spaicelabs.com/images/flus6j8v/production/ae21003438ff4dc31818957b4b2e5cfae7e395d5-1200x800.jpg?w=900&fm=jpg&q=80&fit=max"
+      },
+      siwash: {
+        eyebrow: "— Slhx̱í7lsh · Siwash Rock",
+        title: "Slhx̱í7lsh",
+        sub: "Sea stack · west of Stanley Park",
+        body: "A 32-metre sea stack across the inlet. In Squamish legend a young man was <em>transformed to stone</em> by the Transformer, to stand forever as a monument to his selflessness on the eve of his child's birth.",
+        article: "https://en.wikipedia.org/wiki/Siwash_Rock",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Siwash_Rock.jpg?width=900"
+      },
+      capilano: {
+        eyebrow: "— Xwemélch'stn · the Capilano",
+        title: "Xwemélch'stn",
+        sub: "Squamish village · mouth of the Capilano",
+        body: "The Squamish village at the river mouth east of Ambleside. <em>&lsquo;Fast moving water.&rsquo;</em> Still home to the Squamish Nation today, as Capilano Reserve No. 5.",
+        article: "https://en.wikipedia.org/wiki/Capilano_River",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=900"
+      },
+      xwayxway: {
+        eyebrow: "— Xwáyxway · Lumberman's Arch",
+        title: "Xwáyxway",
+        sub: "Largest village on the inlet · Stanley Park",
+        body: "Once the largest Squamish village on Burrard Inlet. <em>Longhouses</em>, middens and a thousand years of shoreline now buried beneath the grass of Lumberman's Arch.",
+        article: "https://en.wikipedia.org/wiki/Lumberman%27s_Arch",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/Stanley_Park.jpg?width=900"
+      },
+      senakw: {
+        eyebrow: "— Sen̓áḵw · south of the bridge",
+        title: "Sen̓áḵw",
+        sub: "Squamish village · forcibly removed 1913",
+        body: "A Squamish village burned and cleared in 1913 by the Canadian government. The Squamish Nation is <em>rebuilding it now</em>, returning the village to its ground at the south foot of the Burrard Bridge.",
+        article: "https://en.wikipedia.org/wiki/Senakw",
+        image: "https://commons.wikimedia.org/wiki/Special:FilePath/False_Creek.jpg?width=900"
+      }
+    };
+
+    /* ---- REVEAL MASK: pixel transition for opening / closing origins map ---- */
+    const maskCanvas = document.getElementById('originsRevealMask');
+    const maskCtx = maskCanvas ? maskCanvas.getContext('2d') : null;
+    const MASK_CELL = 14;
+    let mW = 0, mH = 0;
+    let maskCells = [];
+    let maskRaf = null;
+
+    function syncMaskSize(){
+      if(!maskCanvas) return;
+      const rect = maskCanvas.parentElement.getBoundingClientRect();
+      mW = rect.width; mH = rect.height;
+      if(mW < 10) return;
+      const dpr = window.devicePixelRatio || 1;
+      maskCanvas.width = mW * dpr;
+      maskCanvas.height = mH * dpr;
+      maskCanvas.style.width = mW + 'px';
+      maskCanvas.style.height = mH + 'px';
+      maskCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      buildMaskGrid();
+      renderMask();
+    }
+    function buildMaskGrid(){
+      maskCells = [];
+      const cols = Math.ceil(mW / MASK_CELL);
+      const rows = Math.ceil(mH / MASK_CELL);
+      const cx = mW/2, cy = mH/2, r = mW/2 + MASK_CELL;
+      for(let row = 0; row < rows; row++){
+        for(let col = 0; col < cols; col++){
+          const px = col * MASK_CELL, py = row * MASK_CELL;
+          const ccx = px + MASK_CELL/2, ccy = py + MASK_CELL/2;
+          // only include cells inside (or near) the circular map
+          const dx = ccx - cx, dy = ccy - cy;
+          if(dx*dx + dy*dy > r*r) continue;
+          // start fully covered so the map appears revealed via pixels
+          maskCells.push({ x: px, y: py, alpha: 1, target: 1, delay: 0 });
+        }
+      }
+    }
+    function startMask(cover){
+      // cover=true: cells animate to alpha=1 (cover the content)
+      // cover=false: cells animate to alpha=0 (reveal)
+      for(const cell of maskCells){
+        cell.target = cover ? 1 : 0;
+        cell.delay = Math.floor(Math.random() * 24);
+      }
+      if(!maskRaf) maskRaf = requestAnimationFrame(stepMask);
+    }
+    function stepMask(){
+      let busy = false;
+      for(const cell of maskCells){
+        if(cell.delay > 0){ cell.delay--; busy = true; continue; }
+        const diff = cell.target - cell.alpha;
+        if(Math.abs(diff) > 0.012){
+          cell.alpha += diff * 0.3;
+          busy = true;
+        } else { cell.alpha = cell.target; }
+      }
+      renderMask();
+      if(busy) maskRaf = requestAnimationFrame(stepMask);
+      else maskRaf = null;
+    }
+    function renderMask(){
+      if(!maskCtx) return;
+      maskCtx.clearRect(0, 0, mW, mH);
+      for(const cell of maskCells){
+        if(cell.alpha < 0.02) continue;
+        maskCtx.fillStyle = `rgba(7,19,26,${cell.alpha})`;
+        maskCtx.fillRect(cell.x, cell.y, MASK_CELL + 1, MASK_CELL + 1);
+      }
+    }
+    if(maskCanvas){
+      requestAnimationFrame(() => requestAnimationFrame(syncMaskSize));
+      window.addEventListener('resize', syncMaskSize);
+    }
+
+    function showSite(key){
+      const s = sites[key];
+      if(!s) return;
+      intro.innerHTML = `
+        <div class="eyebrow">${s.eyebrow}</div>
+        <h2 class="display">${s.title}</h2>
+        <div class="sub">${s.sub}</div>
+        <p>${s.body}</p>
+        <a href="${s.article}" target="_blank" rel="noopener" class="origins-cta">See article <span class="arrow">→</span></a>
+      `;
+    }
+
+    function resetIntro(){
+      intro.innerHTML = introDefault;
+    }
+
+    function open(){
+      section.classList.add('origins-open');
+      overlay.classList.add('show');
+      // Disperse the globe's dots outward as circle-pixels
+      if(window.setGlobeScatter) window.setGlobeScatter(1);
+      // Re-sync the mask canvas now that the overlay is visible
+      setTimeout(() => {
+        syncMaskSize();
+        for(const cell of maskCells){ cell.alpha = 1; cell.target = 1; }
+        renderMask();
+        startMask(false);
+      }, 30);
+    }
+    function close(){
+      // bring the dispersed globe pixels back home
+      if(window.setGlobeScatter) window.setGlobeScatter(0);
+      // pixel-cover the map first, then drop the overlay
+      startMask(true);
+      document.querySelectorAll('.omarker').forEach(m => m.classList.remove('active'));
+      setTimeout(() => {
+        section.classList.remove('origins-open');
+        overlay.classList.remove('show');
+        resetIntro();
+      }, 600);
+    }
+
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      if(section.classList.contains('origins-open')) close();
+      else open();
+    });
+    back.addEventListener('click', close);
+
+    document.querySelectorAll('.omarker').forEach(marker => {
+      marker.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('.omarker').forEach(x => x.classList.remove('active'));
+        marker.classList.add('active');
+        showSite(marker.dataset.site);
+      });
+    });
+  })();
+
 
   /* ========== HERO CAROUSEL ========== */
   const heroImgs = [
@@ -719,11 +1453,11 @@
     'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2400&auto=format&fit=crop&q=80'
   ];
   const heroCaptions = [
-    'Borrans Bay at first light · by E. Hartley',
-    'Wateredge Reach in low wind · by R. Pemberton',
-    'Stagshaw under summer canopy · by I. Calloway',
-    'The fell-line, looking east from Jenkin\'s Crag · by D. Sandys',
-    'Galava Strand after the rain · by M. Howe'
+    'Ambleside Park at first light · by E. Hartley',
+    'Capilano outflow at slack tide · by R. Pemberton',
+    'Across to Stanley Park, evening · by I. Calloway',
+    'Lions Gate from the seawall · by D. Sandys',
+    'Pink salmon returning to the creek · by M. Howe'
   ];
   const stage = document.querySelector('.hero-stage');
   const dots = document.querySelectorAll('.pager-dot');
