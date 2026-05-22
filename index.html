@@ -107,36 +107,46 @@
   nav.main ul{
     display:flex;
     list-style:none;
-    gap:36px;
+    gap:10px;
     align-items:center;
   }
   nav.main ul a{
-    font-size:14px;
+    font-size:13px;
     font-weight:500;
     color:var(--paper);
     position:relative;
-    padding:6px 0;
-    transition:color .3s;
+    padding:9px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 2px 10px rgba(0,0,0,0.18);
+    transition: background .3s, border-color .3s, color .3s, box-shadow .3s;
   }
-  nav.main ul a::after{
-    content:'';
-    position:absolute;
-    left:0;bottom:0;
-    width:0;height:1px;
-    background:var(--bracken);
-    transition: width .35s cubic-bezier(.2,.7,.3,1);
+  nav.main ul a:hover{
+    color:var(--gold);
+    background:rgba(255,255,255,0.12);
+    border-color:rgba(216,168,106,0.45);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 16px rgba(0,0,0,0.22);
   }
-  nav.main ul a:hover{color:var(--gold)}
-  nav.main ul a:hover::after{width:100%}
   .nav-search{
-    width:32px;height:32px;
-    border:1px solid var(--line-strong);
+    width:34px;height:34px;
+    border:1px solid rgba(255,255,255,0.18);
     border-radius:50%;
     display:grid;place-items:center;
     cursor:pointer;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 2px 10px rgba(0,0,0,0.18);
     transition: all .3s;
   }
-  .nav-search:hover{border-color:var(--gold);background:rgba(216,168,106,.08)}
+  .nav-search:hover{
+    border-color:rgba(216,168,106,0.55);
+    background:rgba(216,168,106,0.12);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 16px rgba(0,0,0,0.22);
+  }
 
   /* HERO */
   .hero{
@@ -394,7 +404,7 @@
     z-index: 6;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .7s ease;
+    transition: opacity .55s ease;
   }
   .origins-overlay.show{
     opacity: 1;
@@ -520,26 +530,25 @@
   }
   .origins-cta:hover .arrow{ transform: translateX(4px); }
 
-  /* Circular MAP that replaces the globe */
+  /* Circular MAP that replaces the globe — matches .globe-image size/position
+     so the cross-fade reads as a single circle morphing, not a resize. */
   .origins-map{
     position:absolute;
     top:50%; left:50%;
-    width: 56vmin;
-    height: 56vmin;
-    transform: translate(-50%, -50%) scale(.92);
+    width: 68vmin;
+    height: 68vmin;
+    transform: translate(-50%, -50%);
     border-radius:50%;
     overflow:hidden;
     z-index: 5;
     opacity: 0;
     pointer-events:none;
-    transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.3,1);
+    transition: opacity .55s ease;
     box-shadow: 0 30px 90px rgba(0,0,0,0.55);
   }
   .origins-overlay.show .origins-map{
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-    transition-delay: .15s;
   }
   .origins-map svg, .origins-map canvas{ display:block; width:100%; height:100%; position:absolute; inset:0; }
   .origins-image-canvas{
@@ -652,12 +661,39 @@
   .omarker.active .omarker-name{ color: #d8a86a; }
   .omarker.active .omarker-pulse{ animation-duration: 1.6s; }
 
-  /* Per-marker geographic positions (percent within the full-circle map) */
+  /* Per-marker geographic positions — Origins set */
   .omarker-1 { top: 37%; left: 42%; }  /* Welcome Figure — Ambleside Park */
   .omarker-2 { top: 36%; left: 66%; }  /* Xwemélch'stn — Capilano mouth */
   .omarker-3 { top: 73%; left: 18%; }  /* Slhx̱í7lsh — Siwash Rock */
   .omarker-4 { top: 78%; left: 48%; }  /* Xwáyxway — Lumberman's Arch */
   .omarker-5 { top: 84%; left: 72%; }  /* Sen̓áḵw */
+
+  /* Restore set — marker positions */
+  .omarker-r1 { top: 38%; left: 44%; }  /* Ambleside Pier sub-tidal reefs */
+  .omarker-r2 { top: 22%; left: 66%; }  /* Capilano Hatchery rebuild */
+  .omarker-r3 { top: 33%; left: 18%; }  /* West Van Streamkeepers */
+  .omarker-r4 { top: 46%; left: 82%; }  /* Tsleil-Waututh eelgrass */
+  .omarker-r5 { top: 52%; left: 90%; }  /* Maplewood Marine Restoration */
+
+  /* Mode-based marker visibility — hide the "other" set */
+  .missing[data-mode="origins"] .omarker[data-mode="restore"]{ display: none; }
+  .missing[data-mode="restore"] .omarker[data-mode="origins"]{ display: none; }
+
+  /* Restore-tinted marker accents */
+  .omarker[data-mode="restore"] .omarker-pulse{ background: rgba(120,170,110,0.4); }
+  .omarker[data-mode="restore"]:hover .omarker-thumb,
+  .omarker[data-mode="restore"].active .omarker-thumb{
+    border-color: #8eba74;
+    box-shadow: 0 0 0 4px rgba(142,186,116,0.18);
+  }
+  .omarker[data-mode="restore"]:hover .omarker-name,
+  .omarker[data-mode="restore"].active .omarker-name{ color: #b6da9f; }
+
+  /* eyebrow / cta colors per mode */
+  .missing[data-mode="restore"] .origins-intro .eyebrow{ color: #b6da9f; }
+  .missing[data-mode="restore"] .info-kicker{ color: #b6da9f; }
+  .missing[data-mode="restore"] .origins-cta:hover{ color: #b6da9f; border-color: #b6da9f; }
+  .missing[data-mode="restore"] .origins-back:hover{ color: #b6da9f; border-color: #b6da9f; background: rgba(142,186,116,0.1); }
 
   /* When origins is open: hide the globe + standard nav + hover machinery */
   .missing.origins-open .globe-nav{
@@ -665,12 +701,13 @@
     pointer-events: none;
     transition: opacity .35s ease;
   }
-  /* globe stays visible during origins; the JS scatter dissolves it into circle-pixels */
+  /* globe stays visible during origins; the JS scatter dissolves it into circle-pixels.
+     Fade matches .origins-map so the two circles cross-fade in lockstep. */
   .missing.origins-open .globe-image,
   .missing.origins-open .globe-image-text,
   .missing.origins-open .missing-mark{
     opacity: 0;
-    transition: opacity .35s ease;
+    transition: opacity .55s ease;
   }
   .globe-nav{
     position:absolute;
@@ -730,6 +767,118 @@
     .gn-bl{left:8%;bottom:10%}
     .gn-br{right:8%;bottom:6%}
   }
+
+  /* ============ iPHONE / SMALL PHONES ============ */
+  @media (max-width: 640px){
+    /* Stop horizontal scroll caused by absolute children */
+    body{ overflow-x: hidden; }
+
+    /* HERO */
+    .hero{ min-height: 100vh; height: 100vh; }
+    .hero-content{
+      left: 6%; right: 6%; bottom: 18%;
+      max-width: none;
+    }
+    .hero-eyebrow{ font-size: 9px; letter-spacing: 0.18em; margin-bottom: 16px; }
+    .hero-h1{
+      font-size: clamp(42px, 12.5vw, 64px);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    .hero-h1 .line2{ padding-left: 0.6em; }
+    .hero-sub{ font-size: 14px; line-height: 1.55; margin-bottom: 24px; max-width: 100%; }
+    .hero-cta{ font-size: 13px; }
+    .hero-credit{ bottom: 80px; left: 6%; font-size: 8px; letter-spacing: 0.08em; max-width: 75%; }
+    .hero-pager{ bottom: 36px; }
+    .pager-dot{ width: 24px; }
+    .pager-dot.active{ width: 50px; }
+
+    /* NAV */
+    nav.main{ padding: 14px 18px; }
+    .logo-mark{ width: 34px; height: 34px; }
+    .logo-text .a{ font-size: 18px; }
+    .logo-text .b{ font-size: 8px; letter-spacing: 0.18em; }
+
+    /* MISSING / globe section */
+    .missing{ min-height: 100vh; padding: 0; }
+    .missing-mark{ top: 70px; left: 18px; font-size: 11px; letter-spacing: 0.22em; }
+
+    /* Globe nav labels — distribute around a smaller globe */
+    .gn{ gap: 10px; }
+    .gn-label{ font-size: 15px; }
+    .gn-circle{ width: 14px; height: 14px; }
+    .gn-top{ top: 14%; left: 50%; transform: translateX(-50%); }
+    .gn-right{ right: 5%; top: 28%; }
+    .gn-left{ left: 5%; top: 36%; }
+    .gn-bl{ left: 6%; bottom: 18%; }
+    .gn-br{ right: 6%; bottom: 9%; }
+
+    /* Hover image + description */
+    .globe-image{ width: 78vmin; height: 78vmin; }
+    .globe-image-text{
+      width: clamp(220px, 64vmin, 340px);
+      padding: 16px 20px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ===== ORIGINS / RESTORE OVERLAY ON PHONE =====
+       Width matches .globe-image (78vmin) and stays at top:50% so the
+       circle doesn't jump position during the cross-fade. */
+    .origins-map{
+      width: 78vmin;
+      height: 78vmin;
+    }
+    .origins-back{
+      left: 16px;
+      top: 90px;          /* below the logo */
+      transform: none;
+      width: 40px; height: 40px;
+    }
+    .origins-overlay.show .origins-back{ transform: none; }
+    .origins-crumb{
+      top: 138px;
+      left: 24px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+    }
+    .origins-intro{
+      left: 5%; right: 5%;
+      bottom: 4%;
+      width: auto;
+      max-width: none;
+    }
+    .origins-intro .eyebrow{ font-size: 9px; margin-bottom: 10px; letter-spacing: 0.18em; }
+    .origins-intro h2{ font-size: clamp(34px, 10vw, 48px); margin-bottom: 8px; }
+    .origins-intro .sub{ font-size: 9px; margin-bottom: 14px; letter-spacing: 0.22em; }
+    .origins-intro p{ font-size: 13px; line-height: 1.55; max-width: 100%; }
+    .origins-cta{ font-size: 9px; margin-top: 16px; padding-bottom: 8px; }
+
+    /* Markers — small thumbs + visible labels */
+    .omarker-thumb{
+      width: 44px;
+      height: 44px;
+      border-width: 1px;
+    }
+    .omarker-name{
+      font-size: 9px;
+      letter-spacing: 0.1em;
+    }
+
+    /* Coordinate stamp and labels look better with smaller font on phone via SVG scaling — already handled */
+  }
+
+  /* ============ NARROW PHONES (iPhone SE / small) ============ */
+  @media (max-width: 380px){
+    .hero-h1{ font-size: 40px; }
+    .hero-sub{ font-size: 13px; }
+    .gn-label{ font-size: 13px; }
+    .omarker-thumb{ width: 38px; height: 38px; }
+    .omarker-name{ font-size: 8.5px; }
+    .origins-intro h2{ font-size: 30px; }
+    .origins-intro p{ font-size: 12px; }
+    .globe-image-text{ font-size: 12px; padding: 14px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -762,9 +911,8 @@
   </a>
   <ul>
     <li><a href="#">The Waters</a></li>
-    <li><a href="#">Shoreline</a></li>
-    <li><a href="#">Dispatches</a></li>
-    <li><a href="#">Field Notes</a></li>
+    <li><a href="places.html">Places</a></li>
+    <li><a href="whatif.html">What if</a></li>
     <li><a href="#">Support</a></li>
     <li>
       <a class="nav-search" href="#">
@@ -896,35 +1044,67 @@
 
       <canvas class="origins-reveal-mask" id="originsRevealMask"></canvas>
 
-      <button class="omarker omarker-1" data-site="welcome" type="button" aria-label="Welcome Figure">
+      <button class="omarker omarker-1" data-mode="origins" data-site="welcome" type="button" aria-label="Welcome Figure">
         <span class="omarker-thumb" style="background-image:url('https://images.spaicelabs.com/images/flus6j8v/production/ae21003438ff4dc31818957b4b2e5cfae7e395d5-1200x800.jpg?w=300&fm=jpg&q=80&fit=max')">
           <span class="omarker-pulse"></span>
         </span>
         <span class="omarker-name">Welcome Figure</span>
       </button>
-      <button class="omarker omarker-2" data-site="capilano" type="button" aria-label="Xwemélch'stn">
+      <button class="omarker omarker-2" data-mode="origins" data-site="capilano" type="button" aria-label="Xwemélch'stn">
         <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=400')">
           <span class="omarker-pulse"></span>
         </span>
         <span class="omarker-name">Xwemélch'stn</span>
       </button>
-      <button class="omarker omarker-3" data-site="siwash" type="button" aria-label="Slhx̱í7lsh">
+      <button class="omarker omarker-3" data-mode="origins" data-site="siwash" type="button" aria-label="Slhx̱í7lsh">
         <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Siwash_Rock.jpg?width=400')">
           <span class="omarker-pulse"></span>
         </span>
         <span class="omarker-name">Siwash Rock</span>
       </button>
-      <button class="omarker omarker-4" data-site="xwayxway" type="button" aria-label="Xwáyxway">
+      <button class="omarker omarker-4" data-mode="origins" data-site="xwayxway" type="button" aria-label="Xwáyxway">
         <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Stanley_Park.jpg?width=400')">
           <span class="omarker-pulse"></span>
         </span>
         <span class="omarker-name">Xwáyxway</span>
       </button>
-      <button class="omarker omarker-5" data-site="senakw" type="button" aria-label="Sen̓áḵw">
+      <button class="omarker omarker-5" data-mode="origins" data-site="senakw" type="button" aria-label="Sen̓áḵw">
         <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/False_Creek.jpg?width=400')">
           <span class="omarker-pulse"></span>
         </span>
         <span class="omarker-name">Sen̓áḵw</span>
+      </button>
+
+      <!-- RESTORE-MODE MARKERS -->
+      <button class="omarker omarker-r1" data-mode="restore" data-site="pier" type="button" aria-label="Ambleside Pier reefs">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/The_beach_in_ambleside.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Ambleside Reefs</span>
+      </button>
+      <button class="omarker omarker-r2" data-mode="restore" data-site="hatchery" type="button" aria-label="Capilano Hatchery">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">The Hatchery</span>
+      </button>
+      <button class="omarker omarker-r3" data-mode="restore" data-site="streamkeepers" type="button" aria-label="West Vancouver Streamkeepers">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Lighthouse_Park.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">The Creeks</span>
+      </button>
+      <button class="omarker omarker-r4" data-mode="restore" data-site="eelgrass" type="button" aria-label="Tsleil-Waututh eelgrass">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Cates_Park.jpg?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Eelgrass</span>
+      </button>
+      <button class="omarker omarker-r5" data-mode="restore" data-site="maplewood" type="button" aria-label="Maplewood Marine Restoration">
+        <span class="omarker-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Maplewood_flats_path.JPG?width=400')">
+          <span class="omarker-pulse"></span>
+        </span>
+        <span class="omarker-name">Maplewood</span>
       </button>
     </div>
 
@@ -1254,18 +1434,33 @@
     });
   })();
 
-  /* ========== ORIGINS DEEP-DIVE ========== */
+  /* ========== ORIGINS + RESTORE DEEP-DIVE ========== */
   (() => {
     const overlay = document.getElementById('originsOverlay');
     const back = document.getElementById('originsBack');
     const intro = document.getElementById('originsIntro');
-    const link = document.querySelector('.gn-left');
+    const crumb = document.querySelector('.origins-crumb');
+    const linkOrigins = document.querySelector('.gn-left');
+    const linkRestore = document.querySelector('.gn-right');
     const section = document.querySelector('.missing');
-    if(!overlay || !back || !intro || !link || !section) return;
+    if(!overlay || !back || !intro || !linkOrigins || !section) return;
 
-    const introDefault = intro.innerHTML;
+    const originsIntroDefault = `
+      <div class="eyebrow">— Squamish Nation Heritage</div>
+      <h2 class="display">Origins</h2>
+      <div class="sub">Map of the long story</div>
+      <p>The Indigenous heritage of this saltwater shore. <em>Squamish villages</em>, sacred sites, and the people who have walked, fished and fed at the inlet for thousands of years before the seawall.</p>
+    `;
+    const restoreIntroDefault = `
+      <div class="eyebrow">— Restoration in progress</div>
+      <h2 class="display">Restore</h2>
+      <div class="sub">The repair work, mapped</div>
+      <p>The <em>quiet work</em> already underway. Eelgrass beds replanted by the Tsleil-Waututh Nation, sub-tidal reefs built off Ambleside Pier, creeks rewilded by volunteers, and a $49M rebuild of the Capilano Hatchery breaking ground this autumn.</p>
+    `;
+    let currentMode = 'origins';
 
-    const sites = {
+    const sitesByMode = {
+      origins: {
       welcome: {
         eyebrow: "— Welcome Figure · K'aya'chtn",
         title: "K'aya'chtn",
@@ -1305,6 +1500,44 @@
         body: "A Squamish village burned and cleared in 1913 by the Canadian government. The Squamish Nation is <em>rebuilding it now</em>, returning the village to its ground at the south foot of the Burrard Bridge.",
         article: "https://en.wikipedia.org/wiki/Senakw",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/False_Creek.jpg?width=900"
+      }
+      },
+      restore: {
+        pier: {
+          eyebrow: "— Ambleside Pier · Sub-tidal Habitat",
+          title: "Ambleside Reefs",
+          sub: "Sub-tidal habitat · est. 2015",
+          body: "Boulders placed in the inter- and sub-tidal zones below Ambleside Pier created two new reefs. Refuge for <em>salmon, herring, surf smelt, rockfish</em>, sand lance, lingcod and the Dungeness crab.",
+          article: "https://westvancouver.ca/parks-recreation/major-projects/ambleside-pier-sub-tidal-habitat-project"
+        },
+        hatchery: {
+          eyebrow: "— Capilano River Hatchery",
+          title: "The Hatchery Rebuild",
+          sub: "$49M rebuild · breaking ground autumn 2026",
+          body: "A complete rebuild of the Capilano salmon hatchery, in partnership with the <em>Squamish, Musqueam and Tsleil-Waututh</em> Nations. Slope stabilization, invasive plant removal, accessibility upgrades, and a public-facing education centre.",
+          article: "https://www.nsnews.com/local-news/north-vancouvers-capilano-river-hatchery-to-get-49m-rebuild-11730619"
+        },
+        streamkeepers: {
+          eyebrow: "— West Vancouver Streamkeepers",
+          title: "The Creeks",
+          sub: "Volunteer-led · ongoing since the 1990s",
+          body: "Decades of work rewilding creekbanks, installing fish ladders, and building rearing ponds along Lawson, Brothers and McDonald Creeks. In 2025 the volunteers counted <em>279 returning coho and 72 chinook</em> — the second-highest tally on record.",
+          article: "https://www.nsnews.com/local-news/surveys-find-resilient-salmon-populations-in-west-vancouver-creeks-11997685"
+        },
+        eelgrass: {
+          eyebrow: "— Burrard Inlet · cə́ləm",
+          title: "Eelgrass",
+          sub: "Tsleil-Waututh Nation · with SeaChange",
+          body: "Four years of patient work by the Tsleil-Waututh Nation. <em>4,000 eelgrass shoots</em> replanted in front of the reserve and near Whey-ah-Wichen / Cates Park. Eelgrass quietly fights erosion, stores carbon, and is the nursery of salmon and herring.",
+          article: "https://www.nsnews.com/local-news/tsleil-waututh-nation-completes-four-year-burrard-inlet-restoration-project-6851699"
+        },
+        maplewood: {
+          eyebrow: "— Maplewood Marine Restoration",
+          title: "Maplewood",
+          sub: "Port of Vancouver · 125,000 shoots",
+          body: "The <em>largest eelgrass transplant</em> ever performed on Burrard Inlet — 125,000 shoots planted at Maplewood Flats. Salt marsh, intertidal habitat, and a damaged shoreline returned to working ecology.",
+          article: "https://www.portvancouver.com/projects/habitat-restoration/maplewood/"
+        }
       }
     };
 
@@ -1385,7 +1618,7 @@
     }
 
     function showSite(key){
-      const s = sites[key];
+      const s = (sitesByMode[currentMode] || {})[key];
       if(!s) return;
       intro.innerHTML = `
         <div class="eyebrow">${s.eyebrow}</div>
@@ -1397,15 +1630,25 @@
     }
 
     function resetIntro(){
-      intro.innerHTML = introDefault;
+      intro.innerHTML = currentMode === 'restore' ? restoreIntroDefault : originsIntroDefault;
     }
 
-    function open(){
+    function setMode(mode){
+      currentMode = mode;
+      section.setAttribute('data-mode', mode);
+      if(crumb){
+        crumb.innerHTML = mode === 'restore'
+          ? '— Ambleside · <b>Restore</b>'
+          : '— Ambleside · <b>Origins</b>';
+      }
+      resetIntro();
+    }
+
+    function open(mode){
+      setMode(mode || 'origins');
       section.classList.add('origins-open');
       overlay.classList.add('show');
-      // Disperse the globe's dots outward as circle-pixels
       if(window.setGlobeScatter) window.setGlobeScatter(1);
-      // Re-sync the mask canvas now that the overlay is visible
       setTimeout(() => {
         syncMaskSize();
         for(const cell of maskCells){ cell.alpha = 1; cell.target = 1; }
@@ -1414,23 +1657,30 @@
       }, 30);
     }
     function close(){
-      // bring the dispersed globe pixels back home
       if(window.setGlobeScatter) window.setGlobeScatter(0);
-      // pixel-cover the map first, then drop the overlay
       startMask(true);
       document.querySelectorAll('.omarker').forEach(m => m.classList.remove('active'));
       setTimeout(() => {
         section.classList.remove('origins-open');
         overlay.classList.remove('show');
+        section.removeAttribute('data-mode');
+        currentMode = 'origins';
         resetIntro();
       }, 600);
     }
 
-    link.addEventListener('click', (e) => {
+    linkOrigins.addEventListener('click', (e) => {
       e.preventDefault();
-      if(section.classList.contains('origins-open')) close();
-      else open();
+      if(section.classList.contains('origins-open') && currentMode === 'origins') close();
+      else open('origins');
     });
+    if(linkRestore){
+      linkRestore.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(section.classList.contains('origins-open') && currentMode === 'restore') close();
+        else open('restore');
+      });
+    }
     back.addEventListener('click', close);
 
     document.querySelectorAll('.omarker').forEach(marker => {
