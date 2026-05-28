@@ -1624,6 +1624,16 @@
     </div>
 
     <div class="yt-scroll" id="yt-scroll">
+      <a class="yt-card" href="https://www.youtube.com/shorts/JUHdoizbYJY" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <span class="yt-badge">Short</span>
+          <span class="yt-play" aria-hidden="true"></span>
+          <img loading="lazy" decoding="async" alt="Ambleside is cooked…"
+               src="https://i.ytimg.com/vi/JUHdoizbYJY/oardefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/JUHdoizbYJY/hqdefault.jpg'">
+        </div>
+        <div class="yt-meta"><div class="yt-title">Ambleside is cooked…</div></div>
+      </a>
       <a class="yt-card" href="https://www.youtube.com/shorts/XvHsLQ_6Lkc" target="_blank" rel="noopener">
         <div class="yt-thumb">
           <span class="yt-badge">Short</span>
@@ -2273,9 +2283,9 @@
     if (!row) return;
 
     const CHANNEL_ID = 'UCPE3EJ6hv4vCaNml8nzyGdQ';
-    const FEED = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+    const FEED = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID + '&_=' + Date.now();
     const MAX = 8;
-    const CACHE_KEY = 'sos-shorts-v2';
+    const CACHE_KEY = 'sos-shorts-v3';
     const CACHE_TTL = 6 * 60 * 60 * 1000;
 
     const proxies = [
