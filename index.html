@@ -1212,45 +1212,76 @@
   }
   .yt-channel-cta:hover{ gap: 16px; color: var(--bracken); border-bottom-color: var(--bracken); }
 
-  .yt-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+  /* horizontal scroll row of vertical Shorts covers */
+  .yt-scroll{
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(236,230,214,0.28) transparent;
   }
+  .yt-scroll::-webkit-scrollbar{ height: 6px; }
+  .yt-scroll::-webkit-scrollbar-thumb{ background: rgba(236,230,214,0.22); border-radius: 3px; }
+  .yt-scroll::-webkit-scrollbar-track{ background: rgba(236,230,214,0.06); border-radius: 3px; }
+
   .yt-card{
-    display: block;
+    flex: 0 0 auto;
+    width: clamp(190px, 23vw, 250px);
+    scroll-snap-align: start;
     color: var(--paper);
     border: 1px solid var(--line);
     background: rgba(236,230,214,0.02);
     transition: border-color .35s ease, transform .35s ease;
     overflow: hidden;
   }
-  .yt-card:hover{ border-color: var(--line-strong); transform: translateY(-3px); }
+  .yt-card:hover{ border-color: var(--line-strong); transform: translateY(-4px); }
   .yt-thumb{
-    aspect-ratio: 16/9;
-    background-size: cover;
-    background-position: center;
     position: relative;
-    filter: saturate(0.75) brightness(0.88);
-    transition: filter .4s ease;
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    background: #061018;
   }
-  .yt-card:hover .yt-thumb{ filter: saturate(0.95) brightness(1); }
+  .yt-thumb img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.8) brightness(0.9);
+    transition: filter .4s ease, transform .8s ease;
+  }
+  .yt-card:hover .yt-thumb img{ filter: saturate(1) brightness(1); transform: scale(1.05); }
+  .yt-thumb::after{
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(13,20,24,0) 55%, rgba(13,20,24,0.7) 100%);
+    pointer-events: none;
+  }
+  .yt-badge{
+    position: absolute; top: 10px; left: 10px; z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--paper);
+    background: rgba(13,20,24,0.55);
+    border: 1px solid rgba(236,230,214,0.4);
+    border-radius: 999px;
+    padding: 4px 9px;
+    backdrop-filter: blur(6px);
+  }
   .yt-play{
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 54px; height: 54px;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); z-index: 2;
+    width: 48px; height: 48px;
     border-radius: 50%;
-    background: rgba(13,20,24,0.7);
+    background: rgba(13,20,24,0.5);
     border: 1px solid rgba(236,230,214,0.6);
     backdrop-filter: blur(6px);
     display: grid; place-items: center;
     transition: background .3s, border-color .3s;
   }
-  .yt-card:hover .yt-play{
-    background: rgba(192,122,53,0.8);
-    border-color: var(--bracken);
-  }
+  .yt-card:hover .yt-play{ background: rgba(192,122,53,0.85); border-color: var(--bracken); }
   .yt-play::before{
     content: "";
     width: 0; height: 0;
@@ -1259,13 +1290,10 @@
     border-bottom: 8px solid transparent;
     margin-left: 3px;
   }
-  .yt-meta{
-    padding: 18px 20px 22px;
-    border-top: 1px solid var(--line);
-  }
+  .yt-meta{ padding: 14px 14px 18px; }
   .yt-title{
     font-family: 'Fraunces', serif;
-    font-size: 17px;
+    font-size: 15px;
     line-height: 1.3;
     font-weight: 400;
     color: var(--paper);
@@ -1274,30 +1302,13 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .yt-loading, .yt-fallback{
-    grid-column: 1 / -1;
-    padding: 60px 24px;
-    text-align: center;
-    border: 1px dashed var(--line-strong);
-    color: rgba(236,230,214,0.6);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .yt-fallback{ display: none; }
-  .yt-fallback a{
-    color: var(--bracken);
-    border-bottom: 1px solid var(--bracken);
-    margin-left: 8px;
-  }
 
   @media (max-width: 980px){
     .yt-block{ margin-top: 80px; }
-    .yt-grid{ grid-template-columns: 1fr 1fr; gap: 18px; }
   }
   @media (max-width: 640px){
-    .yt-grid{ grid-template-columns: 1fr; }
+    .yt-scroll{ gap: 14px; margin: 0 -6vw; padding-left: 6vw; padding-right: 6vw; }
+    .yt-card{ width: 58vw; max-width: 240px; }
   }
 </style>
 </head>
@@ -1612,13 +1623,57 @@
       <a class="yt-channel-cta" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">Visit the channel <span aria-hidden="true">↗</span></a>
     </div>
 
-    <div class="yt-grid" id="yt-grid">
-      <div class="yt-loading">Loading latest videos…</div>
-    </div>
-
-    <div class="yt-fallback" id="yt-fallback">
-      Videos couldn't load just now.
-      <a href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">Watch them on YouTube ↗</a>
+    <div class="yt-scroll" id="yt-scroll">
+      <a class="yt-card" href="https://www.youtube.com/shorts/XvHsLQ_6Lkc" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <span class="yt-badge">Short</span>
+          <span class="yt-play" aria-hidden="true"></span>
+          <img loading="lazy" decoding="async" alt="Climate change memes"
+               src="https://i.ytimg.com/vi/XvHsLQ_6Lkc/oardefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/XvHsLQ_6Lkc/hqdefault.jpg'">
+        </div>
+        <div class="yt-meta"><div class="yt-title">Climate change memes</div></div>
+      </a>
+      <a class="yt-card" href="https://www.youtube.com/shorts/6JQzOqYmJ-I" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <span class="yt-badge">Short</span>
+          <span class="yt-play" aria-hidden="true"></span>
+          <img loading="lazy" decoding="async" alt="Climate change then vs now"
+               src="https://i.ytimg.com/vi/6JQzOqYmJ-I/oardefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/6JQzOqYmJ-I/hqdefault.jpg'">
+        </div>
+        <div class="yt-meta"><div class="yt-title">Climate change then vs now</div></div>
+      </a>
+      <a class="yt-card" href="https://www.youtube.com/shorts/BQ-9D4_F53Y" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <span class="yt-badge">Short</span>
+          <span class="yt-play" aria-hidden="true"></span>
+          <img loading="lazy" decoding="async" alt="Just a kids movie…"
+               src="https://i.ytimg.com/vi/BQ-9D4_F53Y/oardefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/BQ-9D4_F53Y/hqdefault.jpg'">
+        </div>
+        <div class="yt-meta"><div class="yt-title">Just a kids movie…</div></div>
+      </a>
+      <a class="yt-card" href="https://www.youtube.com/shorts/QMNZ4NuLpUY" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <span class="yt-badge">Short</span>
+          <span class="yt-play" aria-hidden="true"></span>
+          <img loading="lazy" decoding="async" alt="Climate change meme"
+               src="https://i.ytimg.com/vi/QMNZ4NuLpUY/oardefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/QMNZ4NuLpUY/hqdefault.jpg'">
+        </div>
+        <div class="yt-meta"><div class="yt-title">Climate change meme</div></div>
+      </a>
+      <a class="yt-card" href="https://www.youtube.com/shorts/arHKNDlzOL8" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <span class="yt-badge">Short</span>
+          <span class="yt-play" aria-hidden="true"></span>
+          <img loading="lazy" decoding="async" alt="Climate change meme"
+               src="https://i.ytimg.com/vi/arHKNDlzOL8/oardefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/arHKNDlzOL8/hqdefault.jpg'">
+        </div>
+        <div class="yt-meta"><div class="yt-title">Climate change meme</div></div>
+      </a>
     </div>
   </div>
 </section>
@@ -2206,82 +2261,6 @@
   }
   dots.forEach((d,i)=> d.addEventListener('click', ()=> setHero(i)));
   setInterval(()=> setHero(idx+1), 7000);
-</script>
-
-<script>
-  /* ========== SAVE-OUR-SEAS YOUTUBE FEED ========== */
-  (async () => {
-    const grid = document.getElementById('yt-grid');
-    const fallback = document.getElementById('yt-fallback');
-    if (!grid) return;
-
-    const CHANNEL_URL = 'https://www.youtube.com/@Save-Our-Seas/videos';
-    const CACHE_KEY = 'sos-yt-cache-v1';
-    const CACHE_TTL = 1000 * 60 * 60 * 6;
-
-    function render(videos){
-      if (!videos.length){
-        if (fallback) fallback.style.display = 'block';
-        grid.innerHTML = '';
-        return;
-      }
-      grid.innerHTML = videos.slice(0, 6).map(v => `
-        <a class="yt-card" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
-          <div class="yt-thumb" style="background-image:url('https://i.ytimg.com/vi/${v.id}/hqdefault.jpg')">
-            <div class="yt-play" aria-hidden="true"></div>
-          </div>
-          <div class="yt-meta"><div class="yt-title">${v.title}</div></div>
-        </a>
-      `).join('');
-    }
-
-    function failFallback(){
-      grid.innerHTML = '';
-      if (fallback) fallback.style.display = 'block';
-    }
-
-    try {
-      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
-      if (cached && (Date.now() - cached.ts) < CACHE_TTL && Array.isArray(cached.videos) && cached.videos.length){
-        render(cached.videos);
-        return;
-      }
-    } catch(e) {}
-
-    const proxies = [
-      u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
-      u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
-      u => 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u),
-    ];
-
-    let html = '';
-    for (const wrap of proxies){
-      try {
-        const res = await fetch(wrap(CHANNEL_URL), { mode: 'cors' });
-        if (!res.ok) continue;
-        const txt = await res.text();
-        if (txt && txt.length > 5000){ html = txt; break; }
-      } catch(e) {}
-    }
-    if (!html){ failFallback(); return; }
-
-    const ids = [...new Set([...html.matchAll(/"videoId":"([A-Za-z0-9_-]{11})"/g)].map(m => m[1]))];
-    const videos = ids.slice(0, 12).map(id => {
-      const start = html.indexOf(`"videoId":"${id}"`);
-      const seg = start >= 0 ? html.slice(start, start + 2000) : '';
-      const t1 = seg.match(/"title":\{"runs":\[\{"text":"([^"]+)"/);
-      const t2 = !t1 ? seg.match(/"title":\{"simpleText":"([^"]+)"/) : null;
-      const t3 = !t1 && !t2 ? seg.match(/"accessibility":\{"accessibilityData":\{"label":"([^"]+)"/) : null;
-      let title = (t1 && t1[1]) || (t2 && t2[1]) || (t3 && t3[1]) || '';
-      title = title.replace(/\\u0026/g, '&').replace(/\\"/g, '"').replace(/\s+\d+\s+(seconds?|minutes?|hours?).*$/, '').trim();
-      return { id, title: title || 'Save Our Seas — video' };
-    }).filter(v => v.title.length > 2);
-
-    if (!videos.length){ failFallback(); return; }
-    render(videos);
-
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), videos })); } catch(e) {}
-  })();
 </script>
 
 </body>
