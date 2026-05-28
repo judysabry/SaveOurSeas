@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your Impact — See How You're Contributing | Ambleside Shore</title>
+<meta name="description" content="An honest mirror: a short self-check of everyday habits — travel, flights, food, plastic, clothes, seafood — and how they add to the pressure on the Burrard Inlet shoreline." />
+<meta name="keywords" content="carbon footprint, climate impact, ocean, Burrard Inlet, shoreline, individual action, sustainability, West Vancouver" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://judysabry.github.io/SaveOurSeas/impact.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Your Impact — See How You're Contributing" />
+<meta property="og:description" content="A short, honest self-check on how everyday habits add to the pressure on this coast." />
+<meta property="og:site_name" content="Ambleside Shore" />
+<meta property="og:url" content="https://judysabry.github.io/SaveOurSeas/impact.html" />
+<meta property="og:locale" content="en_CA" />
+
+<meta name="theme-color" content="#0d1418" />
+<link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0d1418;
+    --paper:#ece6d6;
+    --mist:#c5c0b1;
+    --bracken:#c07a35;
+    --gold:#d8a86a;
+    --teal:#5e9a92;
+    --line: rgba(236,230,214,.18);
+    --line-strong: rgba(236,230,214,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none}
+
+  .display{
+    font-family:'Fraunces', serif;
+    font-variation-settings:"opsz" 144, "SOFT" 30, "WONK" 0;
+    font-weight:300;
+    letter-spacing:-0.025em;
+    line-height:0.97;
+  }
+  .display em{
+    font-style:italic;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;
+    font-weight:300;
+    color: var(--gold);
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+  }
+
+  /* TOP BAR */
+  .top-bar{
+    border-bottom:1px solid var(--line);
+    color:var(--mist);
+    padding:10px 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(13,20,24,.55);
+    backdrop-filter:blur(8px);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+
+  /* NAV */
+  nav.main{
+    padding: 22px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--line);
+    gap: 18px;
+  }
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo-mark{width:42px;height:42px;flex-shrink:0}
+  .logo-text{line-height:1}
+  .logo-text .a{
+    font-family:'Fraunces',serif;
+    font-variation-settings:"opsz" 144, "SOFT" 80;
+    font-weight:300; font-style:italic; font-size:22px;
+    color:var(--paper); display:block; line-height:1;
+  }
+  .logo-text .b{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--mist); display:block; margin-top:4px;
+  }
+  .nav-links{
+    display:flex; gap:26px; align-items:center;
+    flex-wrap:wrap; justify-content:flex-end;
+  }
+  .nav-links a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--mist); transition: color .3s; white-space:nowrap;
+  }
+  .nav-links a:hover{ color:var(--gold); }
+  .nav-links a.active{ color:var(--paper); }
+
+  /* HEADER */
+  .head{
+    max-width: 1000px; margin: 0 auto; padding: 116px 6vw 64px;
+    position: relative;
+  }
+  .head::before{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 900px 480px at 72% 26%, rgba(192,122,53,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 420px at 16% 84%, rgba(94,154,146,0.10), transparent 60%);
+  }
+  .head > *{ position:relative; z-index:1; }
+  .head .eyebrow{ color: var(--gold); margin-bottom: 24px; }
+  .head h1{
+    font-size: clamp(44px, 7vw, 104px);
+    letter-spacing:-0.03em; line-height:0.95; max-width: 15ch; margin-bottom: 30px;
+  }
+  .head .deck{
+    font-family:'Fraunces', serif;
+    font-variation-settings:"opsz" 144, "SOFT" 30; font-weight:300;
+    font-size: clamp(17px, 1.4vw, 22px); line-height:1.55;
+    color: var(--mist); max-width: 60ch;
+  }
+  .head .deck em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--paper); }
+
+  /* SELF-CHECK */
+  .check{
+    max-width: 1000px; margin: 0 auto; padding: 10px 6vw 40px;
+    display: grid; grid-template-columns: 1.25fr 1fr; gap: 56px; align-items: start;
+  }
+  .questions{ display:flex; flex-direction:column; }
+  .q{ padding: 26px 0; border-top: 1px solid var(--line); }
+  .q:first-child{ border-top: none; padding-top: 0; }
+  .q-head{ display:flex; align-items:baseline; gap: 14px; margin-bottom: 16px; }
+  .q-num{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.1em; color: var(--bracken); flex-shrink:0;
+  }
+  .q-text{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40;
+    font-weight: 400; font-size: clamp(18px, 1.7vw, 23px); line-height: 1.2; color: var(--paper);
+  }
+  .opts{ display:flex; flex-wrap:wrap; gap: 9px; padding-left: 30px; }
+  .opt{
+    font-family:'JetBrains Mono', monospace; font-size: 10.5px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--mist);
+    background: rgba(236,230,214,0.03);
+    border: 1px solid var(--line);
+    border-radius: 999px; padding: 9px 16px; cursor: pointer;
+    transition: color .25s, border-color .25s, background .25s, transform .25s;
+  }
+  .opt:hover{ color: var(--paper); border-color: var(--line-strong); }
+  .opt.sel{
+    color: var(--ink); background: var(--gold); border-color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* TIDE PANEL */
+  .tide{
+    position: sticky; top: 28px;
+    border: 1px solid var(--line); border-radius: 4px;
+    background: linear-gradient(180deg, rgba(236,230,214,0.04), rgba(236,230,214,0.01));
+    padding: 30px 28px 32px;
+  }
+  .tide-label{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--mist);
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .tide-count{ color: var(--bracken); }
+  .tide-gauge{
+    margin: 18px 0 22px; height: 14px; border-radius: 999px;
+    background: rgba(236,230,214,0.08); overflow: hidden; position: relative;
+  }
+  .tide-fill{
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--teal), var(--gold) 60%, var(--bracken));
+    border-radius: 999px;
+    transition: width .55s cubic-bezier(.2,.7,.3,1);
+  }
+  .tide-band{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 50;
+    font-weight: 300; font-style: italic; font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.04; color: var(--paper); margin-bottom: 12px; letter-spacing:-0.01em;
+  }
+  .tide-msg{
+    font-family:'Manrope', sans-serif; font-size: 14px; line-height: 1.65; color: var(--mist);
+  }
+  .tide-pct{
+    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--paper); margin-top: 18px;
+  }
+  .tide-pct b{ color: var(--gold); font-weight: 500; }
+
+  /* CLOSER */
+  .closer{
+    max-width: 1000px; margin: 0 auto; padding: 60px 6vw 30px; border-top: 1px solid var(--line);
+  }
+  .closer .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+  }
+  .closer h2{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:300;
+    font-size: clamp(28px, 3.4vw, 50px); line-height:1.04; max-width: 20ch; margin-bottom: 28px;
+  }
+  .closer h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color: var(--gold); }
+  .pull-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 0 48px; }
+  .pull{
+    padding: 24px 0; border-top: 1px solid var(--line);
+    display:flex; flex-direction:column; gap: 10px;
+  }
+  .pull .t{
+    font-family:'Fraunces', serif; font-size: 21px; font-weight: 400; color: var(--paper);
+  }
+  .pull p{ font-size: 13.5px; line-height: 1.6; color: var(--mist); }
+  .pull a.lnk{
+    font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--paper);
+    border-bottom: 1px solid var(--paper); align-self: flex-start; padding-bottom: 3px;
+    transition: color .3s, border-color .3s, gap .3s; display:inline-flex; gap: 8px;
+  }
+  .pull a.lnk:hover{ color: var(--gold); border-bottom-color: var(--gold); gap: 13px; }
+
+  .disclaimer{
+    max-width: 1000px; margin: 0 auto; padding: 20px 6vw 90px;
+    font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(236,230,214,0.45); line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer{
+    border-top: 1px solid var(--line); padding: 50px 6vw 40px; text-align: center;
+    color: var(--mist); font-family:'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  footer .ack{
+    max-width: 70ch; margin: 0 auto 22px; font-family:'Fraunces', serif; font-style: italic;
+    font-size: 14px; line-height: 1.65; letter-spacing: 0; text-transform: none; color: var(--mist);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px){
+    nav.main{ padding: 16px 22px; }
+    .nav-links{ gap: 15px; }
+    .nav-links a{ font-size: 10px; letter-spacing: 0.12em; }
+    .head{ padding: 90px 7vw 50px; }
+    .check{ grid-template-columns: 1fr; gap: 36px; padding: 6px 7vw 30px; }
+    .tide{ position: static; }
+  }
+  @media (max-width: 600px){
+    .top-bar{ font-size: 9px; padding: 8px 16px; }
+    .top-bar div + div{ display: none; }
+    nav.main{ padding: 14px 16px; gap: 12px; }
+    .logo-mark{ width: 34px; height: 34px; }
+    .logo-text .a{ font-size: 18px; }
+    .logo-text .b{ font-size: 8px; letter-spacing: 0.16em; }
+    .nav-links{ gap: 12px; }
+    .nav-links a{ font-size: 9px; letter-spacing: 0.07em; }
+    .head h1{ font-size: clamp(34px, 11vw, 52px); }
+    .opts{ padding-left: 0; }
+    .q-text{ font-size: 18px; }
+    .closer, .head, .check, .disclaimer{ padding-left: 6vw; padding-right: 6vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div>· The mirror · Your part in it</div>
+  <div>Ambleside Shore · West Vancouver</div>
+</div>
+
+<!-- NAV -->
+<nav class="main">
+  <a class="logo" href="index.html">
+    <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" stroke="#ece6d6" stroke-width="1" fill="none"/>
+      <path d="M5 28 C 12 22, 18 32, 24 26 S 36 22, 43 28" stroke="#ece6d6" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path d="M7 33 C 14 29, 20 35, 24 31 S 34 29, 41 33" stroke="#c07a35" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.85"/>
+      <circle cx="24" cy="18" r="1.5" fill="#d8a86a"/>
+    </svg>
+    <span class="logo-text">
+      <span class="a">ambleside</span>
+      <span class="b">shoreline record</span>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="whatif.html">What if</a>
+    <a href="articles.html">Dispatches</a>
+    <a href="places.html">Places</a>
+    <a href="impact.html" class="active">Your impact</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="head">
+  <div class="eyebrow mono">The mirror · Your part in it</div>
+  <h1 class="display">See how you're <em>contributing</em> to this problem</h1>
+  <p class="deck">It is easy to read about a drowning coast as something happening <em>to</em> us. Most of it is happening <em>through</em> us — in the small, ordinary choices of a single week. Answer the six currents below for an honest, unscientific look at how your habits press on this shoreline.</p>
+</header>
+
+<!-- SELF-CHECK -->
+<section class="check">
+  <div class="questions" id="questions">
+
+    <div class="q" data-q>
+      <div class="q-head"><span class="q-num">01</span><span class="q-text">How do you usually get around?</span></div>
+      <div class="opts">
+        <button class="opt" data-w="0">Walk / bike</button>
+        <button class="opt" data-w="1">Transit</button>
+        <button class="opt" data-w="2">Car most days</button>
+        <button class="opt" data-w="3">Big car / truck</button>
+      </div>
+    </div>
+
+    <div class="q" data-q>
+      <div class="q-head"><span class="q-num">02</span><span class="q-text">Flights in the last year?</span></div>
+      <div class="opts">
+        <button class="opt" data-w="0">None</button>
+        <button class="opt" data-w="1">One or two</button>
+        <button class="opt" data-w="2">Three to five</button>
+        <button class="opt" data-w="3">Six or more</button>
+      </div>
+    </div>
+
+    <div class="q" data-q>
+      <div class="q-head"><span class="q-num">03</span><span class="q-text">How often do you eat red meat?</span></div>
+      <div class="opts">
+        <button class="opt" data-w="0">Rarely</button>
+        <button class="opt" data-w="1">Weekly</button>
+        <button class="opt" data-w="2">Most days</button>
+        <button class="opt" data-w="3">Every day</button>
+      </div>
+    </div>
+
+    <div class="q" data-q>
+      <div class="q-head"><span class="q-num">04</span><span class="q-text">Single-use plastic in your week?</span></div>
+      <div class="opts">
+        <button class="opt" data-w="0">I avoid it</button>
+        <button class="opt" data-w="2">Some</button>
+        <button class="opt" data-w="3">A lot</button>
+      </div>
+    </div>
+
+    <div class="q" data-q>
+      <div class="q-head"><span class="q-num">05</span><span class="q-text">New clothes &amp; fast fashion?</span></div>
+      <div class="opts">
+        <button class="opt" data-w="0">Mostly secondhand</button>
+        <button class="opt" data-w="2">Occasional</button>
+        <button class="opt" data-w="3">Often new</button>
+      </div>
+    </div>
+
+    <div class="q" data-q>
+      <div class="q-head"><span class="q-num">06</span><span class="q-text">Do you check where your seafood comes from?</span></div>
+      <div class="opts">
+        <button class="opt" data-w="0">Always / none</button>
+        <button class="opt" data-w="1">Sometimes</button>
+        <button class="opt" data-w="3">Never check</button>
+      </div>
+    </div>
+
+  </div>
+
+  <aside class="tide" id="tide">
+    <div class="tide-label"><span>The tide line</span><span class="tide-count" id="count">0 / 6</span></div>
+    <div class="tide-gauge"><div class="tide-fill" id="fill"></div></div>
+    <div class="tide-band" id="band">Read the water</div>
+    <div class="tide-msg" id="msg">Answer the currents to the left and the line will rise to meet you.</div>
+    <div class="tide-pct" id="pct"></div>
+  </aside>
+</section>
+
+<!-- CLOSER -->
+<section class="closer">
+  <div class="eyebrow">What pulls it back</div>
+  <h2>The same choices, made <em>lighter</em></h2>
+  <div class="pull-grid">
+    <div class="pull">
+      <div class="t">Read the futures</div>
+      <p>Six dispatches on what this inlet could still become — salmon, eelgrass, cedar, and the case for rest.</p>
+      <a class="lnk" href="articles.html">The dispatches <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="pull">
+      <div class="t">Ask the what-ifs</div>
+      <p>Climate, restoration and Indigenous-led recovery — the questions this coast keeps asking.</p>
+      <a class="lnk" href="whatif.html">Open the chapter <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="pull">
+      <div class="t">Watch the shore</div>
+      <p>Short films from the field, including <em>Ambleside is cooked…</em> — see what's already changing.</p>
+      <a class="lnk" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">The channel <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<p class="disclaimer">A rough mirror, not a carbon calculator · weighted for reflection, not precision · the point is the direction, not the decimal.</p>
+
+<!-- FOOTER -->
+<footer>
+  <p class="ack">
+    These pages are written on the unceded, ancestral and traditional lands of the Sḵwx̱wú7mesh Úxwumixw (Squamish Nation), səlilwətaɬ (Tsleil-Waututh Nation), and xʷməθkʷəyə̓ m (Musqueam Nation).
+  </p>
+  <p>Ambleside Shore · Shoreline Record · 2026</p>
+</footer>
+
+<script>
+  (() => {
+    const fill = document.getElementById('fill');
+    const band = document.getElementById('band');
+    const msg  = document.getElementById('msg');
+    const pct  = document.getElementById('pct');
+    const count = document.getElementById('count');
+    const qs = [...document.querySelectorAll('[data-q]')];
+
+    const bands = [
+      { upTo: 0,   name: 'Read the water', text: 'Answer the currents to the left and the line will rise to meet you.' },
+      { upTo: 33,  name: 'A light wake',   text: "You're treading gently. The inlet barely feels you pass — keep it that way and nudge the people around you." },
+      { upTo: 66,  name: 'A steady pull',  text: 'Your week leaves a real mark on this coast. None of it is dramatic on its own; together it adds up to a rising line. A few swaps would ease it.' },
+      { upTo: 101, name: 'Part of the swell', text: "You're adding meaningfully to the tide that's pressing on this shore. The honest news: that also means you have the most room to pull back." },
+    ];
+
+    function update(){
+      let sel = 0, mx = 0, answered = 0;
+      qs.forEach(q => {
+        const chosen = q.querySelector('.opt.sel');
+        const opts = [...q.querySelectorAll('.opt')];
+        const qmax = Math.max(...opts.map(o => +o.dataset.w));
+        if (chosen){ sel += +chosen.dataset.w; mx += qmax; answered++; }
+      });
+      const ratio = mx > 0 ? sel / mx : 0;
+      const percent = Math.round(ratio * 100);
+      fill.style.width = (answered ? percent : 0) + '%';
+      count.textContent = answered + ' / ' + qs.length;
+
+      let b = bands[0];
+      if (answered){ b = bands.find(x => percent <= x.upTo) || bands[bands.length - 1]; }
+      band.textContent = b.name;
+      msg.textContent = b.text;
+      pct.innerHTML = answered ? ('Pressure on the shore · <b>' + percent + '%</b>') : '';
+    }
+
+    qs.forEach(q => {
+      q.querySelectorAll('.opt').forEach(opt => {
+        opt.addEventListener('click', () => {
+          q.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+          opt.classList.add('sel');
+          update();
+        });
+      });
+    });
+    update();
+  })();
+</script>
+
+</body>
+</html>

@@ -102,6 +102,8 @@
     justify-content:space-between;
     align-items:center;
     border-bottom:1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 12px 18px;
   }
   .logo{display:flex;align-items:center;gap:14px}
   .logo-mark{width:42px;height:42px}
@@ -128,6 +130,8 @@
     display:flex;
     gap: 28px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .nav-links a{
     font-family:'JetBrains Mono', monospace;
@@ -410,7 +414,8 @@
     nav.main{ padding: 14px 16px; }
     .logo-mark{ width: 34px; height: 34px; }
     .logo-text .a{ font-size: 18px; }
-    .nav-links{ gap: 12px; }
+    .nav-links{ gap: 10px; }
+    .nav-links a{ font-size: 9px; letter-spacing: 0.08em; }
     .head h1{ font-size: 42px; }
     .marker-text h2{ font-size: 32px; }
     .marker-text .lead{ font-size: 16px; }
@@ -445,6 +450,7 @@
     <a href="whatif.html">What if</a>
     <a href="articles.html">Dispatches</a>
     <a href="places.html" class="active">Places</a>
+    <a href="impact.html">Your impact</a>
   </div>
 </nav>
 
