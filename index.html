@@ -2263,5 +2263,90 @@
   setInterval(()=> setHero(idx+1), 7000);
 </script>
 
+<script>
+  /* ========== SAVE-OUR-SEAS · AUTO-UPDATING SHORTS ROW ==========
+     The cards in the markup are a fallback that always renders. This pulls
+     the channel's RSS feed (stable XML) through a CORS proxy and, when it
+     succeeds, swaps in the latest videos. Cached 6h; silent on failure. */
+  (() => {
+    const row = document.getElementById('yt-scroll');
+    if (!row) return;
+
+    const CHANNEL_ID = 'UCPE3EJ6hv4vCaNml8nzyGdQ';
+    const FEED = 'https://www.youtube.com/feeds/videos.xml?channel_id=' + CHANNEL_ID;
+    const MAX = 8;
+    const CACHE_KEY = 'sos-shorts-v2';
+    const CACHE_TTL = 6 * 60 * 60 * 1000;
+
+    const proxies = [
+      u => 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u),
+      u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+      u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
+    ];
+
+    const escAttr = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    function decodeEntities(s){ const t = document.createElement('textarea'); t.innerHTML = s; return t.value; }
+    function cleanTitle(t){
+      return decodeEntities(t || '')
+        .replace(/#[^\s#]+/g, '')
+        .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}️]/gu, '')
+        .replace(/\s+/g, ' ')
+        .trim() || 'Save Our Seas';
+    }
+
+    function cardHTML(v){
+      const id = v.id, title = escAttr(cleanTitle(v.title));
+      return `<a class="yt-card" href="https://www.youtube.com/shorts/${id}" target="_blank" rel="noopener">
+        <div class="yt-thumb">
+          <span class="yt-badge">Short</span>
+          <span class="yt-play" aria-hidden="true"></span>
+          <img loading="lazy" decoding="async" alt="${title}"
+               src="https://i.ytimg.com/vi/${id}/oardefault.jpg"
+               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg'">
+        </div>
+        <div class="yt-meta"><div class="yt-title">${title}</div></div>
+      </a>`;
+    }
+
+    function render(videos){
+      if (!videos || !videos.length) return;
+      row.innerHTML = videos.slice(0, MAX).map(cardHTML).join('');
+    }
+
+    function parseFeed(xml){
+      return xml.split('<entry>').slice(1).map(seg => {
+        const id = (seg.match(/<yt:videoId>([^<]+)<\/yt:videoId>/) || [])[1];
+        const title = (seg.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
+        return id ? { id, title } : null;
+      }).filter(Boolean);
+    }
+
+    try {
+      const c = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+      if (c && Date.now() - c.ts < CACHE_TTL && Array.isArray(c.videos) && c.videos.length){
+        render(c.videos);
+        return;
+      }
+    } catch(e){}
+
+    (async () => {
+      let videos = null;
+      for (const wrap of proxies){
+        try {
+          const res = await fetch(wrap(FEED));
+          if (!res.ok) continue;
+          const xml = await res.text();
+          const parsed = parseFeed(xml);
+          if (parsed.length){ videos = parsed; break; }
+        } catch(e){}
+      }
+      if (videos){
+        render(videos);
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), videos })); } catch(e){}
+      }
+    })();
+  })();
+</script>
+
 </body>
 </html>
