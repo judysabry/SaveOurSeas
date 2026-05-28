@@ -187,6 +187,22 @@
     transition: color .3s, gap .3s;
   }
   .back-link:hover{ color:var(--gold); gap: 16px; }
+
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    align-items: center;
+  }
+  .nav-links a{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    transition: color .3s;
+  }
+  .nav-links a:hover{ color: var(--gold); }
+  .nav-links a.active{ color: var(--paper); }
   .back-link .arr{
     display:inline-block;
     width:18px;height:1px;
@@ -701,8 +717,11 @@
       <span class="b">shoreline record</span>
     </span>
   </a>
-  <div class="nav-right">
-    <a class="back-link" href="index.html"><span class="arr"></span> back to the shore</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="whatif.html" class="active">What if</a>
+    <a href="articles.html">Dispatches</a>
+    <a href="places.html">Places</a>
   </div>
 </nav>
 

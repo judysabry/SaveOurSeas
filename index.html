@@ -236,6 +236,22 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 16px rgba(0,0,0,0.22);
   }
 
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    align-items: center;
+  }
+  .nav-links a{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    transition: color .3s;
+  }
+  .nav-links a:hover{ color: var(--gold); }
+  .nav-links a.active{ color: var(--paper); }
+
   /* HERO */
   .hero{
     position:relative;
@@ -845,7 +861,8 @@
   @media (max-width: 980px){
     .top-bar{display:none}
     nav.main{top:0;padding:18px 24px;flex-wrap:wrap;gap:12px}
-    nav.main ul{display:none}
+    .nav-links{ gap: 14px; }
+    .nav-links a{ font-size: 10px; letter-spacing: 0.14em; }
     .hero-content{left:6%;bottom:18%}
     .hero-side, .hero-coords{display:none}
     .missing{min-height:600px}
@@ -886,6 +903,8 @@
     .logo-mark{ width: 34px; height: 34px; }
     .logo-text .a{ font-size: 18px; }
     .logo-text .b{ font-size: 8px; letter-spacing: 0.18em; }
+    .nav-links{ gap: 12px; }
+    .nav-links a{ font-size: 9.5px; letter-spacing: 0.12em; }
 
     /* MISSING / globe section */
     .missing{ min-height: 100vh; padding: 0; }
@@ -967,6 +986,319 @@
     .origins-intro p{ font-size: 12px; }
     .globe-image-text{ font-size: 12px; padding: 14px 16px; }
   }
+
+  /* ============ OUR CONTENT ============ */
+  .content-section{
+    position: relative;
+    padding: 180px 8% 160px;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .content-section::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 110px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 110' preserveAspectRatio='none'><path d='M0,0 L1200,0 L1200,52 C1050,28 900,76 750,52 C600,28 450,76 300,52 C200,36 100,72 0,52 Z' fill='%23000'/><path d='M0,52 C100,72 200,36 300,52 C450,76 600,28 750,52 C900,76 1050,28 1200,52' stroke='%23ece6d6' stroke-opacity='0.4' stroke-width='1.2' fill='none' stroke-linecap='round'/><path d='M0,62 C100,82 200,46 300,62 C450,86 600,38 750,62 C900,86 1050,38 1200,62' stroke='%23c07a35' stroke-opacity='0.65' stroke-width='1' fill='none' stroke-linecap='round'/></svg>");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .content-section::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 48' preserveAspectRatio='none'><path d='M0,26 C100,8 200,40 300,24 S500,8 600,24 S800,40 900,24 S1100,8 1200,24' stroke='%23ece6d6' stroke-opacity='0.32' stroke-width='1.2' fill='none' stroke-linecap='round'/><path d='M0,34 C100,18 200,46 300,32 S500,18 600,32 S800,46 900,32 S1100,18 1200,32' stroke='%23c07a35' stroke-opacity='0.55' stroke-width='1' fill='none' stroke-linecap='round'/></svg>");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .content-header{
+    max-width: 1180px;
+    margin: 0 auto 90px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .content-eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bracken);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .content-eyebrow::before{
+    content:"";
+    width: 28px;
+    height: 1px;
+    background: var(--bracken);
+    display: inline-block;
+  }
+  .content-title{
+    font-family: 'Fraunces', serif;
+    font-size: clamp(56px, 7vw, 96px);
+    line-height: 0.96;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+  }
+  .content-title em{
+    font-style: italic;
+    color: var(--bracken);
+    font-weight: 300;
+  }
+  .content-lede{
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: rgba(236,230,214,0.78);
+    max-width: 480px;
+    margin-left: auto;
+    font-weight: 300;
+  }
+  .content-lede em{ color: var(--bracken); font-style: italic; }
+
+  .content-grid{
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .content-card{
+    position: relative;
+    display: block;
+    color: var(--paper);
+    border: 1px solid var(--line);
+    background: rgba(236,230,214,0.02);
+    transition: border-color .35s ease, transform .35s ease, background .35s ease;
+    overflow: hidden;
+  }
+  .content-card:hover{
+    border-color: var(--line-strong);
+    transform: translateY(-4px);
+    background: rgba(236,230,214,0.04);
+  }
+  .content-card-img{
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: saturate(0.7) brightness(0.85);
+    transition: filter .5s ease, transform .8s ease;
+  }
+  .content-card:hover .content-card-img{
+    filter: saturate(0.95) brightness(1);
+    transform: scale(1.04);
+  }
+  .content-card-img::after{
+    content:"";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13,20,24,0) 40%, rgba(13,20,24,0.6) 100%);
+  }
+  .content-card-body{
+    padding: 32px 28px 36px;
+    border-top: 1px solid var(--line);
+  }
+  .content-card-meta{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(236,230,214,0.55);
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .content-card-meta .num{ color: var(--bracken); }
+  .content-card h3{
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    line-height: 1.08;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    color: var(--paper);
+  }
+  .content-card h3 em{ font-style: italic; color: var(--bracken); }
+  .content-card p{
+    font-family: 'Manrope', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(236,230,214,0.7);
+    margin-bottom: 22px;
+  }
+  .content-card-cta{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--paper);
+    transition: gap .3s ease, color .3s ease;
+  }
+  .content-card:hover .content-card-cta{
+    gap: 16px;
+    color: var(--bracken);
+    border-bottom-color: var(--bracken);
+  }
+
+  @media (max-width: 980px){
+    .content-section{ padding: 100px 6% 120px; }
+    .content-header{ grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+    .content-lede{ margin-left: 0; max-width: 100%; font-size: 17px; }
+    .content-grid{ grid-template-columns: 1fr; gap: 24px; }
+    .content-card h3{ font-size: 26px; }
+  }
+  @media (max-width: 640px){
+    .content-section{ padding: 80px 6% 96px; }
+    .content-title{ font-size: clamp(42px, 12vw, 64px); }
+    .content-card-body{ padding: 26px 22px 28px; }
+    .content-card h3{ font-size: 24px; }
+  }
+
+  /* ============ FROM THE CHANNEL ============ */
+  .yt-block{
+    max-width: 1180px;
+    margin: 110px auto 0;
+    position: relative;
+  }
+  .yt-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 36px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .yt-header-left .content-eyebrow{ margin-bottom: 12px; }
+  .yt-header h3{
+    font-family: 'Fraunces', serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    color: var(--paper);
+  }
+  .yt-header h3 em{ font-style: italic; color: var(--bracken); }
+  .yt-channel-cta{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--paper);
+    transition: gap .3s ease, color .3s ease, border-color .3s ease;
+  }
+  .yt-channel-cta:hover{ gap: 16px; color: var(--bracken); border-bottom-color: var(--bracken); }
+
+  .yt-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .yt-card{
+    display: block;
+    color: var(--paper);
+    border: 1px solid var(--line);
+    background: rgba(236,230,214,0.02);
+    transition: border-color .35s ease, transform .35s ease;
+    overflow: hidden;
+  }
+  .yt-card:hover{ border-color: var(--line-strong); transform: translateY(-3px); }
+  .yt-thumb{
+    aspect-ratio: 16/9;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: saturate(0.75) brightness(0.88);
+    transition: filter .4s ease;
+  }
+  .yt-card:hover .yt-thumb{ filter: saturate(0.95) brightness(1); }
+  .yt-play{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    background: rgba(13,20,24,0.7);
+    border: 1px solid rgba(236,230,214,0.6);
+    backdrop-filter: blur(6px);
+    display: grid; place-items: center;
+    transition: background .3s, border-color .3s;
+  }
+  .yt-card:hover .yt-play{
+    background: rgba(192,122,53,0.8);
+    border-color: var(--bracken);
+  }
+  .yt-play::before{
+    content: "";
+    width: 0; height: 0;
+    border-left: 12px solid var(--paper);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    margin-left: 3px;
+  }
+  .yt-meta{
+    padding: 18px 20px 22px;
+    border-top: 1px solid var(--line);
+  }
+  .yt-title{
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--paper);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .yt-loading, .yt-fallback{
+    grid-column: 1 / -1;
+    padding: 60px 24px;
+    text-align: center;
+    border: 1px dashed var(--line-strong);
+    color: rgba(236,230,214,0.6);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .yt-fallback{ display: none; }
+  .yt-fallback a{
+    color: var(--bracken);
+    border-bottom: 1px solid var(--bracken);
+    margin-left: 8px;
+  }
+
+  @media (max-width: 980px){
+    .yt-block{ margin-top: 80px; }
+    .yt-grid{ grid-template-columns: 1fr 1fr; gap: 18px; }
+  }
+  @media (max-width: 640px){
+    .yt-grid{ grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -985,7 +1317,7 @@
 
 <!-- NAV -->
 <nav class="main">
-  <a class="logo" href="#">
+  <a class="logo" href="index.html">
     <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="24" cy="24" r="22" stroke="#ece6d6" stroke-width="1" fill="none"/>
       <path d="M5 28 C 12 22, 18 32, 24 26 S 36 22, 43 28" stroke="#ece6d6" stroke-width="1.2" fill="none" stroke-linecap="round"/>
@@ -994,20 +1326,15 @@
     </svg>
     <span class="logo-text">
       <span class="a">ambleside</span>
-      <span class="b">— shoreline record —</span>
+      <span class="b">shoreline record</span>
     </span>
   </a>
-  <ul>
-    <li><a href="#">The Waters</a></li>
-    <li><a href="places.html">Places</a></li>
-    <li><a href="whatif.html">What if</a></li>
-    <li><a href="#">Support</a></li>
-    <li>
-      <a class="nav-search" href="#">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="#ece6d6" stroke-width="1"/><path d="M9.5 9.5L13 13" stroke="#ece6d6" stroke-width="1" stroke-linecap="round"/></svg>
-      </a>
-    </li>
-  </ul>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="whatif.html">What if</a>
+    <a href="articles.html">Dispatches</a>
+    <a href="places.html">Places</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1231,6 +1558,69 @@
       <span class="gn-label">Vanishing</span><span class="gn-circle"></span>
     </a>
   </nav>
+</section>
+
+<!-- OUR CONTENT -->
+<section class="content-section" id="content">
+  <div class="content-header">
+    <div>
+      <div class="content-eyebrow">Three windows on the shore</div>
+      <h2 class="content-title">Our <em>content</em></h2>
+    </div>
+    <p class="content-lede">Three ongoing collections — the <em>names</em> recorded before us, the <em>dispatches</em> from the field, and the <em>what-ifs</em> we cannot stop turning over.</p>
+  </div>
+
+  <div class="content-grid">
+    <a class="content-card" href="places.html">
+      <div class="content-card-img" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Siwash_Rock.jpg?width=1200')"></div>
+      <div class="content-card-body">
+        <div class="content-card-meta"><span class="num">01 / Atlas</span><span>5 markers</span></div>
+        <h3>The names that were <em>here</em></h3>
+        <p>Five Sḵwx̱wú7mesh place markers along Burrard Inlet — Ambleside, Sen̓áḵw, Slhx̱í7lsh, Xwáyxway, X̱wemelch'stn — and the stories attached to each.</p>
+        <span class="content-card-cta">Enter the atlas <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+
+    <a class="content-card" href="articles.html">
+      <div class="content-card-img" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/The_beach_in_ambleside.jpg?width=1200')"></div>
+      <div class="content-card-body">
+        <div class="content-card-meta"><span class="num">02 / Field dispatches</span><span>6 essays</span></div>
+        <h3>Six <em>futures</em> for one shoreline</h3>
+        <p>Long-form essays from the inlet — the lost Capilano chum, eelgrass meadows, the Sen̓áḵw return, eight-hundred-year cedar, and the case for letting the winter shore rest.</p>
+        <span class="content-card-cta">Read the dispatches <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+
+    <a class="content-card" href="whatif.html">
+      <div class="content-card-img" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=1200')"></div>
+      <div class="content-card-body">
+        <div class="content-card-meta"><span class="num">03 / What if</span><span>6 dispatches</span></div>
+        <h3>If a different <em>choice</em> were made</h3>
+        <p>Climate, restoration, and Indigenous-led recovery — six dispatches on what the inlet could yet become, written field-walked and lightly edited.</p>
+        <span class="content-card-cta">Open the chapter <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- FROM THE CHANNEL -->
+  <div class="yt-block" id="yt-block">
+    <div class="yt-header">
+      <div class="yt-header-left">
+        <div class="content-eyebrow">From the field, on video</div>
+        <h3>The shore, in <em>motion</em></h3>
+      </div>
+      <a class="yt-channel-cta" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">Visit the channel <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <div class="yt-grid" id="yt-grid">
+      <div class="yt-loading">Loading latest videos…</div>
+    </div>
+
+    <div class="yt-fallback" id="yt-fallback">
+      Videos couldn't load just now.
+      <a href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">Watch them on YouTube ↗</a>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -1816,6 +2206,82 @@
   }
   dots.forEach((d,i)=> d.addEventListener('click', ()=> setHero(i)));
   setInterval(()=> setHero(idx+1), 7000);
+</script>
+
+<script>
+  /* ========== SAVE-OUR-SEAS YOUTUBE FEED ========== */
+  (async () => {
+    const grid = document.getElementById('yt-grid');
+    const fallback = document.getElementById('yt-fallback');
+    if (!grid) return;
+
+    const CHANNEL_URL = 'https://www.youtube.com/@Save-Our-Seas/videos';
+    const CACHE_KEY = 'sos-yt-cache-v1';
+    const CACHE_TTL = 1000 * 60 * 60 * 6;
+
+    function render(videos){
+      if (!videos.length){
+        if (fallback) fallback.style.display = 'block';
+        grid.innerHTML = '';
+        return;
+      }
+      grid.innerHTML = videos.slice(0, 6).map(v => `
+        <a class="yt-card" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+          <div class="yt-thumb" style="background-image:url('https://i.ytimg.com/vi/${v.id}/hqdefault.jpg')">
+            <div class="yt-play" aria-hidden="true"></div>
+          </div>
+          <div class="yt-meta"><div class="yt-title">${v.title}</div></div>
+        </a>
+      `).join('');
+    }
+
+    function failFallback(){
+      grid.innerHTML = '';
+      if (fallback) fallback.style.display = 'block';
+    }
+
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+      if (cached && (Date.now() - cached.ts) < CACHE_TTL && Array.isArray(cached.videos) && cached.videos.length){
+        render(cached.videos);
+        return;
+      }
+    } catch(e) {}
+
+    const proxies = [
+      u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
+      u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+      u => 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u),
+    ];
+
+    let html = '';
+    for (const wrap of proxies){
+      try {
+        const res = await fetch(wrap(CHANNEL_URL), { mode: 'cors' });
+        if (!res.ok) continue;
+        const txt = await res.text();
+        if (txt && txt.length > 5000){ html = txt; break; }
+      } catch(e) {}
+    }
+    if (!html){ failFallback(); return; }
+
+    const ids = [...new Set([...html.matchAll(/"videoId":"([A-Za-z0-9_-]{11})"/g)].map(m => m[1]))];
+    const videos = ids.slice(0, 12).map(id => {
+      const start = html.indexOf(`"videoId":"${id}"`);
+      const seg = start >= 0 ? html.slice(start, start + 2000) : '';
+      const t1 = seg.match(/"title":\{"runs":\[\{"text":"([^"]+)"/);
+      const t2 = !t1 ? seg.match(/"title":\{"simpleText":"([^"]+)"/) : null;
+      const t3 = !t1 && !t2 ? seg.match(/"accessibility":\{"accessibilityData":\{"label":"([^"]+)"/) : null;
+      let title = (t1 && t1[1]) || (t2 && t2[1]) || (t3 && t3[1]) || '';
+      title = title.replace(/\\u0026/g, '&').replace(/\\"/g, '"').replace(/\s+\d+\s+(seconds?|minutes?|hours?).*$/, '').trim();
+      return { id, title: title || 'Save Our Seas — video' };
+    }).filter(v => v.title.length > 2);
+
+    if (!videos.length){ failFallback(); return; }
+    render(videos);
+
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), videos })); } catch(e) {}
+  })();
 </script>
 
 </body>
