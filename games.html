@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Games — Climate Escape Survivor | Ambleside Shore</title>
-<meta name="description" content="Play Climate Escape Survivor — a browser game about outrunning a changing coast. Part of the Ambleside Shore shoreline record." />
-<meta name="keywords" content="climate game, Climate Escape Survivor, browser game, ocean, shoreline, Ambleside, interactive" />
+<title>Games — Climate Escape Survivor & Flood Escape | Ambleside Shore</title>
+<meta name="description" content="Play Climate Escape Survivor and Flood Escape — browser games about a changing coast. Part of the Ambleside Shore shoreline record." />
+<meta name="keywords" content="climate game, Climate Escape Survivor, Flood Escape, browser game, ocean, shoreline, Ambleside, interactive" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://judysabry.github.io/SaveOurSeas/games.html" />
 
@@ -246,7 +246,7 @@
     </div>
   </div>
 
-  <div class="stage" id="stage">
+  <div class="stage" id="stage" data-game-url="https://climate-escape-survivor--adriand218.replit.app/" data-fs-btn="#fsBtn">
     <div class="cover" id="cover" role="button" tabindex="0" aria-label="Play Climate Escape Survivor">
       <div class="cover-inner">
         <div class="kicker">Browser game · Free to play</div>
@@ -265,10 +265,42 @@
   <span class="controls">If the game doesn't load in the frame, use “Open in new tab”.</span>
 </p>
 
+<!-- SECOND GAME -->
+<section class="arcade">
+  <div class="game-meta">
+    <div>
+      <div class="label">Also on the shelf · Now playing</div>
+      <h2>Flood Escape</h2>
+    </div>
+    <div class="game-actions">
+      <button class="btn" id="fsBtn2" type="button">⛶ Fullscreen</button>
+      <a class="btn primary" href="https://flood-escape-master--parhamy140.replit.app/" target="_blank" rel="noopener">Open in new tab ↗</a>
+    </div>
+  </div>
+
+  <div class="stage" id="stage2" data-game-url="https://flood-escape-master--parhamy140.replit.app/" data-fs-btn="#fsBtn2">
+    <div class="cover" id="cover2" role="button" tabindex="0" aria-label="Play Flood Escape">
+      <div class="cover-inner">
+        <div class="kicker">Browser game · Free to play</div>
+        <div class="title">Flood <em>Escape</em></div>
+        <div class="sub">Stay ahead of the rising water. Loads right here — no download.</div>
+        <span class="play-pill"><span class="tri" aria-hidden="true"></span> Press play</span>
+      </div>
+    </div>
+    <!-- iframe src is set on play so the game only loads when asked -->
+    <iframe title="Flood Escape" allow="fullscreen; autoplay; gamepad" loading="lazy"></iframe>
+  </div>
+</section>
+
+<p class="game-note">
+  <b>Flood Escape</b> is a browser game by <b>parhamy140</b>, hosted on Replit. It plays inside the frame above; for the smoothest experience use <b>Fullscreen</b> or open it in a new tab.
+  <span class="controls">If the game doesn't load in the frame, use “Open in new tab”.</span>
+</p>
+
 <!-- MORE -->
 <section class="more">
   <div class="eyebrow">More to come</div>
-  <h3>The shelf is just opening</h3>
+  <h3>The shelf keeps growing</h3>
   <p>More small games about this coast will land here. Have one to add? It belongs on the shore.</p>
 </section>
 
@@ -282,24 +314,25 @@
 
 <script>
   (() => {
-    const GAME_URL = 'https://climate-escape-survivor--adriand218.replit.app/';
-    const cover = document.getElementById('cover');
-    const frame = document.getElementById('gameFrame');
-    const stage = document.getElementById('stage');
-    const fsBtn = document.getElementById('fsBtn');
+    // Each .stage loads its game lazily, only when the player presses play.
+    document.querySelectorAll('.stage').forEach(stage => {
+      const url = stage.dataset.gameUrl;
+      const cover = stage.querySelector('.cover');
+      const frame = stage.querySelector('iframe');
+      const fsBtn = document.querySelector(stage.dataset.fsBtn);
 
-    function play(){
-      if (!frame.src) frame.src = GAME_URL;
-      cover.classList.add('hidden');
-    }
-    cover.addEventListener('click', play);
-    cover.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+      function play(){
+        if (!frame.src) frame.src = url;
+        cover.classList.add('hidden');
+      }
+      cover.addEventListener('click', play);
+      cover.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
 
-    fsBtn.addEventListener('click', () => {
-      play();
-      const el = stage;
-      if (el.requestFullscreen) el.requestFullscreen();
-      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      if (fsBtn) fsBtn.addEventListener('click', () => {
+        play();
+        if (stage.requestFullscreen) stage.requestFullscreen();
+        else if (stage.webkitRequestFullscreen) stage.webkitRequestFullscreen();
+      });
     });
   })();
 </script>
