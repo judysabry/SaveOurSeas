@@ -1346,13 +1346,14 @@
     <a href="impact.html">Your impact</a>
     <a href="games.html">Games</a>
     <a href="about.html">About</a>
+    <a href="save_our_seas.html">Math &amp; Data</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-stage">
-    <div class="hero-img active" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2400&auto=format&fit=crop&q=80')"></div>
+    <div class="hero-img active" style="background-image:url('https://lh3.googleusercontent.com/drive-storage/AJQWtBM7rYLi4kNlaupCAnZpZFvtHUpyYzCyprb0e9b3JIdS1z7u5rDVy87BOlJpuuYNceVcNag1Fp0wRkJ29Fiodt4SZ7B5T-9_RYrYYuW8qc8f3Gvh4g=w3484-h2004?auditContext=forDisplay')"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="grain"></div>
@@ -1370,13 +1371,10 @@
     </a>
   </div>
 
-  <div class="hero-credit">Photo · Ambleside Park at first light · by E. Hartley</div>
+  <div class="hero-credit">Photo · Ambleside shore · student photograph</div>
 
   <div class="hero-pager">
-    <span class="pager-dot"></span>
-    <span class="pager-dot"></span>
     <span class="pager-dot active"></span>
-    <span class="pager-dot"></span>
     <span class="pager-dot"></span>
   </div>
 
@@ -2240,23 +2238,17 @@
 
   /* ========== HERO CAROUSEL ========== */
   const heroImgs = [
-    'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2400&auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=2400&auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2400&auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2400&auto=format&fit=crop&q=80',
-    'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=2400&auto=format&fit=crop&q=80'
+    'https://lh3.googleusercontent.com/drive-storage/AJQWtBM7rYLi4kNlaupCAnZpZFvtHUpyYzCyprb0e9b3JIdS1z7u5rDVy87BOlJpuuYNceVcNag1Fp0wRkJ29Fiodt4SZ7B5T-9_RYrYYuW8qc8f3Gvh4g=w3484-h2004?auditContext=forDisplay',
+    'https://lh3.googleusercontent.com/drive-storage/AJQWtBMcWofRC8XzqRxgmatm2eJbM2fbKeVnjDiREWMLi-jv4VM6_dwfzvx-5QA1YDrnAsvKPnziGF4OyUB2E0zU-nyXRxARpweyfguTeDGwO59PPDA7tA=h360'
   ];
   const heroCaptions = [
-    'Ambleside Park at first light · by E. Hartley',
-    'Capilano outflow at slack tide · by R. Pemberton',
-    'Across to Stanley Park, evening · by I. Calloway',
-    'Lions Gate from the seawall · by D. Sandys',
-    'Pink salmon returning to the creek · by M. Howe'
+    'Ambleside shore · student photograph',
+    'Ambleside shore · student photograph'
   ];
   const stage = document.querySelector('.hero-stage');
   const dots = document.querySelectorAll('.pager-dot');
   const credit = document.querySelector('.hero-credit');
-  let idx = 2;
+  let idx = 0;
   function setHero(n){
     idx = (n + heroImgs.length) % heroImgs.length;
     dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
