@@ -811,7 +811,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-home" title="Back to Ambleside Shore home">← Ambleside Shore Home</a>
-  <div class="nav-logo">🌊 Save Our Seas</div>
+  <div class="nav-logo">Save Our Seas</div>
   <ul class="nav-tabs" id="navTabs">
     <li><button class="active" onclick="showTab('about', this)">About Ambleside</button></li>
     <li><button onclick="showTab('sealevel', this)">Sea Level</button></li>
@@ -931,7 +931,6 @@
         <p>Rising seas will push saltwater further into the Capilano estuary, stressing freshwater-dependent salmon habitat. Intertidal zones will migrate landward, but are blocked by the seawall, causing "coastal squeeze" — the progressive loss of beach and habitat area. This threatens nesting shorebirds and the invertebrates that support the food web.</p>
       </div>
       <div class="info-card reveal stagger-4">
-        <div class="icon">🌊</div>
         <h4>Storm Surge Interaction</h4>
         <p>Sea level rise does not act alone — it combines with storm surges, which can temporarily raise sea levels by 1–2 metres during major weather events. As baseline sea levels rise, the same storm surge reaches further inland. A 2050s storm that today would cause moderate flooding could inundate areas 400 metres from the current shoreline.</p>
       </div>
@@ -984,7 +983,6 @@
 
     <div class="info-grid">
       <div class="info-card reveal stagger-1 danger">
-        <div class="icon">🌊</div>
         <h4>Wave Action (35%)</h4>
         <p>Waves breaking on the beach are the dominant erosion force at Ambleside. Burrard Inlet fetch — the open water distance over which waves build — has increased slightly as ice diminishes. Storm waves during SE and SW wind events are particularly erosive, removing significant volumes of beach sediment in a single event.</p>
       </div>
@@ -1147,7 +1145,7 @@
 </div>
 
 <footer>
-  <p>🌊 <span>Save Our Seas</span> — Ambleside Beach, West Vancouver, BC &nbsp;|&nbsp; Educational resource on coastal climate change</p>
+  <p><span>Save Our Seas</span> — Ambleside Beach, West Vancouver, BC &nbsp;|&nbsp; Educational resource on coastal climate change</p>
 </footer>
 
 <script>
@@ -1313,7 +1311,7 @@ new Chart(flCtx, {
     <div class="bubble" style="left:88%;animation-delay:1.5s;"></div>
     <div style="position:relative;z-index:2;text-align:center;color:white;">
       <span style="font-size:0.78rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#48b4a0;display:block;margin-bottom:0.5rem;">Rideview Elementary School</span>
-      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;text-shadow:0 4px 20px rgba(0,0,0,0.6);">Our Class Experience 🌊</h2>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;text-shadow:0 4px 20px rgba(0,0,0,0.6);">Our Class Experience</h2>
       <p style="margin-top:0.6rem;font-size:1rem;opacity:0.85;">Math &amp; Data Group · Ambleside Beach Field Study</p>
     </div>
   </div>
@@ -1326,14 +1324,14 @@ new Chart(flCtx, {
       <p style="font-size:1.05rem;line-height:1.95;color:#a0c4d8;">Our class from <strong style="color:#7ed8c8;">Rideview Elementary School</strong> went to Ambleside Beach to study for our PBL project. Our project is about the projected <strong style="color:#e67e22;">1.4m sea level rise in 2100</strong>. We studied the sea, sea wall, and almost everything along the beach to find out what can get damaged and what can get highly affected by this disastrous event.</p>
       <p style="font-size:1.05rem;line-height:1.95;color:#a0c4d8;margin-top:1rem;">During the visits, we also had so much fun with our assigned groups. We had fun researching together, and so much more. This website is actually part of our project. It is created by our group <strong style="color:#7ed8c8;">(Math and Data)</strong>. We researched tide levels, length from sea to playground, and etc.</p>
       <p style="font-size:1.05rem;line-height:1.95;color:#a0c4d8;margin-top:1rem;">We also have other groups that have created their own projects that help aware people of the awful sea level rise that is happening. We have the <span style="color:#48b4a0;font-weight:500;">Ecosystem team</span>, the <span style="color:#48b4a0;font-weight:500;">Coastal Science team</span>, the <span style="color:#48b4a0;font-weight:500;">City Planning team</span>, the <span style="color:#48b4a0;font-weight:500;">Innovation team</span>, and the <span style="color:#48b4a0;font-weight:500;">Human Impact team</span>.</p>
-      <p style="font-size:1.05rem;line-height:1.95;color:#a0c4d8;margin-top:1rem;">Overall, we enjoyed this project a lot and hope to do it again. 🌊</p>
+      <p style="font-size:1.05rem;line-height:1.95;color:#a0c4d8;margin-top:1rem;">Overall, we enjoyed this project a lot and hope to do it again.</p>
     </div>
 
     <!-- Team badges -->
     <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;margin-bottom:3rem;" class="reveal">
       <span class="team-badge math">📊 Math &amp; Data</span>
       <span class="team-badge eco">🌿 Ecosystem</span>
-      <span class="team-badge coastal">🌊 Coastal Science</span>
+      <span class="team-badge coastal">Coastal Science</span>
       <span class="team-badge city">🏙️ City Planning</span>
       <span class="team-badge innov">💡 Innovation</span>
       <span class="team-badge human">👥 Human Impact</span>
@@ -1470,37 +1468,5 @@ new Chart(flCtx, {
 </div>
 
 
-<!-- Remove water emoji on devices that can't render it (shows as tofu box) -->
-<script>
-(function () {
-  function emojiSupported(ch) {
-    try {
-      var c = document.createElement('canvas');
-      if (!c.getContext) return true; // can't test; assume OK
-      var ctx = c.getContext('2d');
-      c.width = c.height = 24;
-      ctx.textBaseline = 'top';
-      ctx.font = '20px sans-serif';
-      ctx.fillText(ch, 0, 0);
-      var data = ctx.getImageData(0, 0, 24, 24).data;
-      for (var i = 0; i < data.length; i += 4) {
-        if (data[i + 3] !== 0) return true; // some pixel was painted
-      }
-      return false;
-    } catch (e) {
-      return true; // on any error, leave the emoji in place
-    }
-  }
-  if (emojiSupported('\uD83C\uDF0A')) return; // wave emoji renders fine
-  // Not available: strip the wave emoji (and a trailing/leading space) from text.
-  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
-  var n;
-  while ((n = walker.nextNode())) {
-    if (n.nodeValue.indexOf('\uD83C\uDF0A') !== -1) {
-      n.nodeValue = n.nodeValue.replace(/\s*\uD83C\uDF0A\s*/g, ' ').replace(/^ | $/g, '');
-    }
-  }
-})();
-</script>
 
 </body>
