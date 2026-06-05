@@ -1469,4 +1469,38 @@ new Chart(flCtx, {
   </div>
 </div>
 
+
+<!-- Remove water emoji on devices that can't render it (shows as tofu box) -->
+<script>
+(function () {
+  function emojiSupported(ch) {
+    try {
+      var c = document.createElement('canvas');
+      if (!c.getContext) return true; // can't test; assume OK
+      var ctx = c.getContext('2d');
+      c.width = c.height = 24;
+      ctx.textBaseline = 'top';
+      ctx.font = '20px sans-serif';
+      ctx.fillText(ch, 0, 0);
+      var data = ctx.getImageData(0, 0, 24, 24).data;
+      for (var i = 0; i < data.length; i += 4) {
+        if (data[i + 3] !== 0) return true; // some pixel was painted
+      }
+      return false;
+    } catch (e) {
+      return true; // on any error, leave the emoji in place
+    }
+  }
+  if (emojiSupported('\uD83C\uDF0A')) return; // wave emoji renders fine
+  // Not available: strip the wave emoji (and a trailing/leading space) from text.
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+  var n;
+  while ((n = walker.nextNode())) {
+    if (n.nodeValue.indexOf('\uD83C\uDF0A') !== -1) {
+      n.nodeValue = n.nodeValue.replace(/\s*\uD83C\uDF0A\s*/g, ' ').replace(/^ | $/g, '');
+    }
+  }
+})();
+</script>
+
 </body>
