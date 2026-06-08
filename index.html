@@ -2254,6 +2254,14 @@
     'Ambleside shore · student photograph',
     'Ambleside shore · student photograph'
   ];
+  // Per-image crop focus (background-position); defaults to center.
+  const heroPos = [
+    'center',
+    'center',
+    'center',
+    'center',
+    '40% 30%'   // welcome figure sits upper-centre of a tall portrait
+  ];
   const stage = document.querySelector('.hero-stage');
   const dots = document.querySelectorAll('.pager-dot');
   const credit = document.querySelector('.hero-credit');
@@ -2264,6 +2272,7 @@
     const newImg = document.createElement('div');
     newImg.className='hero-img';
     newImg.style.backgroundImage = `url('${heroImgs[idx]}')`;
+    newImg.style.backgroundPosition = heroPos[idx] || 'center';
     stage.appendChild(newImg);
     requestAnimationFrame(()=> newImg.classList.add('active'));
     setTimeout(()=>{
