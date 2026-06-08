@@ -143,7 +143,8 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    position:relative;
+    position:fixed;
+    top:0;left:0;right:0;
     z-index:20;
     background:rgba(13,20,24,.45);
     backdrop-filter:blur(8px);
@@ -163,13 +164,16 @@
 
   /* NAV */
   nav.main{
-    position:absolute;
+    position:fixed;
     top:42px;left:0;right:0;
     z-index:15;
     padding: 22px 40px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    background:rgba(13,20,24,.55);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
   }
   .logo{display:flex;align-items:center;gap:14px}
   .logo-mark{width:46px;height:46px}
