@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About the Project — Why Ambleside Shore Exists | Ambleside Shore</title>
-<meta name="description" content="The story behind Ambleside Shore: a small, independent record of a changing coast on Burrard Inlet — its place names, its films, its games, and the people it's made for." />
-<meta name="keywords" content="Save Our Seas, Ambleside Shore, Burrard Inlet, ocean conservation, Squamish Nation, place names, West Vancouver, climate" />
+<title>The Ecosystem — Life of the Inlet | Ambleside Shore</title>
+<meta name="description" content="The Ecosystem Team's record of life along Burrard Inlet — the food web, the habitats, and the pressures reshaping a living coast, told in one infographic." />
+<meta name="keywords" content="Save Our Seas, Ambleside Shore, Burrard Inlet, ecosystem, food web, marine habitat, kelp, salmon, ocean conservation" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<link rel="canonical" href="https://judysabry.github.io/SaveOurSeas/about.html" />
+<link rel="canonical" href="https://judysabry.github.io/SaveOurSeas/ecosystem.html" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="About the Project — Why Ambleside Shore Exists" />
-<meta property="og:description" content="The story behind a small, independent record of a changing coast on Burrard Inlet." />
+<meta property="og:title" content="The Ecosystem — Life of the Inlet" />
+<meta property="og:description" content="The Ecosystem Team's record of life along Burrard Inlet, told in one infographic." />
 <meta property="og:site_name" content="Ambleside Shore" />
-<meta property="og:url" content="https://judysabry.github.io/SaveOurSeas/about.html" />
+<meta property="og:url" content="https://judysabry.github.io/SaveOurSeas/ecosystem.html" />
+<meta property="og:image" content="https://judysabry.github.io/SaveOurSeas/ecosystem-infographic.jpg" />
 <meta property="og:locale" content="en_CA" />
 
 <meta name="theme-color" content="#0d1418" />
@@ -145,6 +146,7 @@
     transition: color .25s, background .25s;
   }
   .nav-dd-menu a:hover{ color:var(--gold); background:rgba(236,230,214,.05); }
+  .nav-dd-menu a.active{ color:var(--paper); background:rgba(236,230,214,.06); }
   @media (max-width: 600px){
     .nav-dd-menu{ right:auto; left:0; min-width:210px; }
     .nav-dd-menu a{ white-space:normal; }
@@ -152,14 +154,14 @@
 
   /* HEADER */
   .head{
-    max-width: 1000px; margin: 0 auto; padding: 116px 6vw 56px;
+    max-width: 1000px; margin: 0 auto; padding: 116px 6vw 48px;
     position: relative;
   }
   .head::before{
     content:''; position:absolute; inset:0; pointer-events:none;
     background:
-      radial-gradient(ellipse 900px 480px at 72% 26%, rgba(192,122,53,0.10), transparent 60%),
-      radial-gradient(ellipse 700px 420px at 16% 84%, rgba(94,154,146,0.10), transparent 60%);
+      radial-gradient(ellipse 900px 480px at 72% 26%, rgba(94,154,146,0.12), transparent 60%),
+      radial-gradient(ellipse 700px 420px at 16% 84%, rgba(192,122,53,0.10), transparent 60%);
   }
   .head > *{ position:relative; z-index:1; }
   .head .eyebrow{ color: var(--gold); margin-bottom: 24px; }
@@ -175,9 +177,31 @@
   }
   .head .deck em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--paper); }
 
+  /* INFOGRAPHIC */
+  .graphic{
+    max-width: 1000px; margin: 0 auto; padding: 16px 6vw 64px;
+  }
+  .graphic .frame{
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: rgba(236,230,214,.03);
+    padding: 14px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+  }
+  .graphic img{
+    display:block; width:100%; height:auto; border-radius: 6px;
+  }
+  .graphic .cap{
+    font-family:'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--mist); text-align:center;
+    margin-top: 18px;
+  }
+  .graphic .cap a{ color: var(--paper); border-bottom:1px solid var(--line-strong); padding-bottom:2px; transition: color .3s, border-color .3s; }
+  .graphic .cap a:hover{ color: var(--gold); border-bottom-color: var(--gold); }
+
   /* STORY */
   .story{
-    max-width: 1000px; margin: 0 auto; padding: 10px 6vw 50px;
+    max-width: 1000px; margin: 0 auto; padding: 56px 6vw 50px; border-top: 1px solid var(--line);
     display:grid; grid-template-columns: 1fr 1fr; gap: 48px 56px;
   }
   .story .block h2{
@@ -189,29 +213,6 @@
   .story .block p{ color: var(--mist); font-size: 15px; line-height: 1.7; margin-bottom: 14px; }
   .story .block p:last-child{ margin-bottom: 0; }
   .story .block p em{ color: var(--paper); font-style: italic; }
-
-  /* PILLARS */
-  .pillars{
-    max-width: 1000px; margin: 0 auto; padding: 56px 6vw 30px; border-top: 1px solid var(--line);
-  }
-  .pillars .eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 30px;
-  }
-  .pill-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 0 48px; }
-  .pill{
-    padding: 24px 0; border-top: 1px solid var(--line);
-    display:flex; flex-direction:column; gap: 10px;
-  }
-  .pill .t{ font-family:'Fraunces', serif; font-size: 21px; font-weight: 400; color: var(--paper); }
-  .pill p{ font-size: 13.5px; line-height: 1.6; color: var(--mist); }
-  .pill a.lnk{
-    font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--paper);
-    border-bottom: 1px solid var(--paper); align-self: flex-start; padding-bottom: 3px;
-    transition: color .3s, border-color .3s, gap .3s; display:inline-flex; gap: 8px;
-  }
-  .pill a.lnk:hover{ color: var(--gold); border-bottom-color: var(--gold); gap: 13px; }
 
   /* CLOSER */
   .closer{
@@ -251,8 +252,8 @@
     nav.main{ padding: 16px 22px; }
     .nav-links{ gap: 15px; }
     .nav-links a{ font-size: 10px; letter-spacing: 0.12em; }
-    .head{ padding: 90px 7vw 44px; }
-    .story{ grid-template-columns: 1fr; gap: 32px; padding: 6px 7vw 40px; }
+    .head{ padding: 90px 7vw 36px; }
+    .story{ grid-template-columns: 1fr; gap: 32px; padding: 44px 7vw 40px; }
   }
   @media (max-width: 600px){
     .top-bar{ font-size: 9px; padding: 8px 16px; }
@@ -264,7 +265,9 @@
     .nav-links{ gap: 12px; }
     .nav-links a{ font-size: 9px; letter-spacing: 0.07em; }
     .head h1{ font-size: clamp(34px, 11vw, 52px); }
-    .closer, .head, .story, .pillars{ padding-left: 6vw; padding-right: 6vw; }
+    .graphic{ padding: 10px 5vw 48px; }
+    .graphic .frame{ padding: 8px; }
+    .closer, .head, .story{ padding-left: 6vw; padding-right: 6vw; }
   }
 </style>
 </head>
@@ -272,7 +275,7 @@
 
 <!-- TOP BAR -->
 <div class="top-bar">
-  <div>· The story · Why this exists</div>
+  <div>· The ecosystem · Life of the inlet</div>
   <div>Ambleside Shore · West Vancouver</div>
 </div>
 
@@ -295,7 +298,7 @@
     <a href="places.html">Places</a>
     <a href="impact.html">Your impact</a>
     <a href="games.html">Games</a>
-    <a href="about.html" class="active">About</a>
+    <a href="about.html">About</a>
     <div class="nav-dd">
       <button class="nav-dd-toggle" type="button" aria-haspopup="true" aria-expanded="false">Teams <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
       <div class="nav-dd-menu" role="menu">
@@ -303,7 +306,7 @@
         <a href="#" role="menuitem">Coastal Science + Human Impact Team</a>
         <a href="#" role="menuitem">City Planners Team</a>
         <a href="#" role="menuitem">Innovation Team</a>
-        <a href="ecosystem.html" role="menuitem">Ecosystem Team</a>
+        <a href="ecosystem.html" class="active" role="menuitem">Ecosystem Team</a>
       </div>
     </div>
   </div>
@@ -311,58 +314,39 @@
 
 <!-- HEADER -->
 <header class="head">
-  <div class="eyebrow mono">The story · Why this exists</div>
-  <h1 class="display">A small record of a <em>changing</em> coast</h1>
-  <p class="deck">Ambleside Shore is an independent project about one stretch of the Burrard Inlet shoreline — the water, the names carried here long before us, and the slow pressure that is reshaping it. It is not a campaign or an institution. It is a <em>record</em>, made so a familiar coast is harder to ignore.</p>
+  <div class="eyebrow mono">The ecosystem · Life of the inlet</div>
+  <h1 class="display">The living <em>web</em> of the inlet</h1>
+  <p class="deck">The Ecosystem Team maps what is alive along this stretch of Burrard Inlet — who eats whom, what shelters in the kelp, and how a single warming summer ripples up the food web. The infographic below gathers it into <em>one picture</em>.</p>
 </header>
+
+<!-- INFOGRAPHIC -->
+<section class="graphic">
+  <div class="frame">
+    <img src="ecosystem-infographic.jpg" alt="Infographic mapping the Ambleside Shore ecosystem — the species, habitats, and food web of Burrard Inlet and the pressures reshaping them." loading="lazy" />
+  </div>
+  <p class="cap">Ecosystem Team · Field infographic · <a href="ecosystem-infographic.jpg" target="_blank" rel="noopener">Open full size ↗</a></p>
+</section>
 
 <!-- STORY -->
 <section class="story">
   <div class="block">
-    <h2>Where it <em>began</em></h2>
-    <p>It started with a camera on a wet morning and a question that wouldn't settle: how do you show a place changing slowly enough that nobody notices? The films came first — short, unhurried looks at Ambleside under rain, tide, and a warming sky.</p>
-    <p>The website grew around them, gathering what a single video can't hold: the place names, the everyday habits behind the change, and a few games that let you feel the pressure instead of just reading about it.</p>
+    <h2>Reading the <em>web</em></h2>
+    <p>Nothing on this shore stands alone. The kelp feeds the grazers, the grazers feed the fish, the fish feed the birds and seals — and every link is only as strong as the water it lives in. The infographic traces those connections so the whole system can be seen at once.</p>
+    <p>Pull one thread and the rest move. A warmer summer thins the kelp; the grazers thin with it; the chain carries the loss <em>upward</em> long after the heat has passed.</p>
   </div>
   <div class="block">
-    <h2>What it's <em>for</em></h2>
-    <p>The coast doesn't need another lecture. It needs to be <em>looked at</em> — closely, repeatedly, by the people who walk it. This project tries to make that easy and a little beautiful.</p>
-    <p>Everything here points the same direction: pay attention to this shoreline, learn the names it already carries, and notice how ordinary choices ripple out to meet the water.</p>
-  </div>
-</section>
-
-<!-- PILLARS -->
-<section class="pillars">
-  <div class="eyebrow">What lives here</div>
-  <div class="pill-grid">
-    <div class="pill">
-      <div class="t">The place names</div>
-      <p>Sḵwx̱wú7mesh markers along Burrard Inlet — the names recorded on this shore before us, mapped to where they belong.</p>
-      <a class="lnk" href="places.html">The atlas <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="pill">
-      <div class="t">Your impact</div>
-      <p>An honest, unscientific mirror of everyday habits and how they add to the pressure on the inlet.</p>
-      <a class="lnk" href="impact.html">The mirror <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="pill">
-      <div class="t">The games</div>
-      <p>A small arcade of browser games about a coast that won't stop changing — feel the pressure, no download.</p>
-      <a class="lnk" href="games.html">The arcade <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="pill">
-      <div class="t">The films</div>
-      <p>Short pieces from the field, including <em>Ambleside is cooked…</em> — see what's already shifting.</p>
-      <a class="lnk" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">The channel <span aria-hidden="true">↗</span></a>
-    </div>
+    <h2>Why it <em>matters</em> here</h2>
+    <p>Burrard Inlet is a working harbour and a living habitat at the same time. The pressures the team tracks — warming water, runoff, lost eelgrass — don't announce themselves. They show up as <em>absences</em>: fewer fish, quieter tide pools, emptier shallows.</p>
+    <p>Mapping the ecosystem is how those absences become visible before they become permanent.</p>
   </div>
 </section>
 
 <!-- CLOSER -->
 <section class="closer">
-  <div class="eyebrow">Get involved</div>
-  <h2>The shore is <em>watched</em> by the people who walk it</h2>
-  <p>This is a living record, and it grows when people who know this coast lend their eyes to it. Watch the films, share a memory of the inlet, or simply pass these pages on. Attention is the whole point.</p>
-  <a class="cta" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">Visit the channel <span aria-hidden="true">↗</span></a>
+  <div class="eyebrow">See the rest of the record</div>
+  <h2>One coast, told from <em>every</em> angle</h2>
+  <p>The Ecosystem Team is one of several looking at this shoreline. Walk the place names, measure your own impact, or see what the other teams have gathered — it's all the same inlet, read differently.</p>
+  <a class="cta" href="places.html">Explore the atlas <span aria-hidden="true">→</span></a>
 </section>
 
 <!-- FOOTER -->
