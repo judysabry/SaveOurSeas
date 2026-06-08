@@ -67,6 +67,37 @@
   .nav-links a:hover{ color:var(--gold); }
   .nav-links a.active{ color:var(--paper); }
 
+  /* TEAMS DROPDOWN */
+  .nav-dd{ position:relative; display:inline-flex; align-items:center; }
+  .nav-dd-toggle{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--mist); background:none; border:0; cursor:pointer; padding:0;
+    display:inline-flex; align-items:center; gap:6px; transition: color .3s; white-space:nowrap;
+  }
+  .nav-dd-toggle:hover, .nav-dd.open .nav-dd-toggle{ color:var(--gold); }
+  .nav-dd-caret{ font-size:9px; transition: transform .3s; }
+  .nav-dd.open .nav-dd-caret{ transform: rotate(180deg); }
+  .nav-dd-menu{
+    position:absolute; top:calc(100% + 16px); right:0; min-width:250px;
+    background:rgba(13,20,24,.97); backdrop-filter:blur(10px);
+    border:1px solid var(--line-strong); border-radius:8px; padding:8px;
+    display:flex; flex-direction:column; gap:2px;
+    opacity:0; visibility:hidden; transform:translateY(-6px);
+    transition: opacity .25s ease, transform .25s ease, visibility .25s;
+    z-index:60; box-shadow:0 24px 60px rgba(0,0,0,.5);
+  }
+  .nav-dd.open .nav-dd-menu{ opacity:1; visibility:visible; transform:translateY(0); }
+  .nav-dd-menu a{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--mist); padding:11px 13px; border-radius:6px; white-space:nowrap;
+    transition: color .25s, background .25s;
+  }
+  .nav-dd-menu a:hover{ color:var(--gold); background:rgba(236,230,214,.05); }
+  @media (max-width: 600px){
+    .nav-dd-menu{ right:auto; left:0; min-width:210px; }
+    .nav-dd-menu a{ white-space:normal; }
+  }
+
   /* HEADER */
   .head{ max-width: 1040px; margin: 0 auto; padding: 110px 6vw 50px; position: relative; }
   .head::before{
@@ -224,7 +255,16 @@
     <a href="impact.html">Your impact</a>
     <a href="games.html" class="active">Games</a>
     <a href="about.html">About</a>
-    <a href="save_our_seas.html">Math &amp; Data</a>
+    <div class="nav-dd">
+      <button class="nav-dd-toggle" type="button" aria-haspopup="true" aria-expanded="false">Teams <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
+      <div class="nav-dd-menu" role="menu">
+        <a href="save_our_seas.html" role="menuitem">Math &amp; Data</a>
+        <a href="#" role="menuitem">Coastal Science + Human Impact Team</a>
+        <a href="#" role="menuitem">City Planners Team</a>
+        <a href="#" role="menuitem">Innovation Team</a>
+        <a href="#" role="menuitem">Ecosystem Team</a>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -464,6 +504,29 @@
         else if (stage.webkitRequestFullscreen) stage.webkitRequestFullscreen();
       });
     });
+  })();
+</script>
+
+<script>
+  /* Teams dropdown toggle */
+  (() => {
+    const dds = document.querySelectorAll('.nav-dd');
+    const closeAll = () => dds.forEach(dd => {
+      dd.classList.remove('open');
+      const b = dd.querySelector('.nav-dd-toggle');
+      if (b) b.setAttribute('aria-expanded','false');
+    });
+    dds.forEach(dd => {
+      const btn = dd.querySelector('.nav-dd-toggle');
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const willOpen = !dd.classList.contains('open');
+        closeAll();
+        if (willOpen){ dd.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+      });
+    });
+    document.addEventListener('click', closeAll);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
   })();
 </script>
 
