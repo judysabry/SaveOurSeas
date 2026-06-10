@@ -1386,7 +1386,7 @@
       <div class="nav-dd-menu" role="menu">
         <a href="save_our_seas.html" role="menuitem">Math &amp; Data</a>
         <a href="https://sdhgfgdbzfgeht.my.canva.site/save-our-seas" target="_blank" rel="noopener" role="menuitem">Coastal Science + Human Impact Team</a>
-        <a href="#" role="menuitem">City Planners Team</a>
+        <a href="cityplanners.html" role="menuitem">City Planners Team</a>
         <a href="https://canva.link/t8zn0p2wcr2ns7n" target="_blank" rel="noopener" role="menuitem">Innovation Team</a>
         <a href="ecosystem.html" role="menuitem">Ecosystem Team</a>
       </div>
@@ -1438,7 +1438,7 @@
 
 <!-- MISSING / GLOBE SECTION -->
 <section class="missing">
-  <div class="missing-mark">— What is Missing —</div>
+  <div class="missing-mark">— Meet the Teams —</div>
   <canvas class="globe-canvas" id="globe"></canvas>
   <div class="globe-image" id="globeImage" aria-hidden="true"></div>
   <div class="globe-image-text" id="globeText"></div>
@@ -1588,31 +1588,31 @@
     </div>
   </div>
 
-  <nav class="globe-nav" aria-label="Missing section">
-    <a class="gn gn-top"   href="#"
+  <nav class="globe-nav" aria-label="The teams">
+    <a class="gn gn-top"   href="save_our_seas.html"
        data-img="https://commons.wikimedia.org/wiki/Special:FilePath/Lions_Gate_Bridge.jpg?width=900"
-       data-desc="Picture the inlet as it once was. Salmon thick at the <em>Capilano mouth</em>, herring runs, the cedar forest whole to the tideline.">
-      <span class="gn-label">Imagine</span><span class="gn-circle"></span>
+       data-desc="<em>Math &amp; Data Team</em> — counting the shore. Tide measurements, water-quality numbers and the charts that turn a coastline into evidence.">
+      <span class="gn-label">Math &amp; Data</span><span class="gn-circle"></span>
     </a>
-    <a class="gn gn-right" href="#"
+    <a class="gn gn-right" href="https://sdhgfgdbzfgeht.my.canva.site/save-our-seas" target="_blank" rel="noopener"
        data-img="https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=900"
-       data-desc="The <em>repair work</em> already underway along Ambleside. Eelgrass meadows replanted off the pier, creeks rewilded by volunteers, the seawall walked and watched.">
-      <span class="gn-label">Restore</span><span class="gn-circle"></span>
+       data-desc="<em>Coastal Science + Human Impact Team</em> — how the science of the inlet meets the people who live, work and play along it.">
+      <span class="gn-label">Coastal Science</span><span class="gn-circle"></span>
     </a>
-    <a class="gn gn-left"  href="#"
+    <a class="gn gn-left"  href="cityplanners.html"
        data-img="https://images.spaicelabs.com/images/flus6j8v/production/ae21003438ff4dc31818957b4b2e5cfae7e395d5-1200x800.jpg?w=900&fm=jpg&q=80&fit=max"
-       data-desc="The long <em>history</em> of this saltwater shore. Squamish fishing grounds, the welcome figure at the park, the seawall, the bridge.">
-      <span class="gn-label">Origins</span><span class="gn-circle"></span>
+       data-desc="<em>City Planners Team</em> — defending Ambleside from rising seas. Seawalls, natural barriers and a plan for the waterfront's future.">
+      <span class="gn-label">City Planners</span><span class="gn-circle"></span>
     </a>
-    <a class="gn gn-bl"    href="#"
+    <a class="gn gn-bl"    href="https://canva.link/t8zn0p2wcr2ns7n" target="_blank" rel="noopener"
        data-img="https://commons.wikimedia.org/wiki/Special:FilePath/The_beach_in_ambleside.jpg?width=900"
-       data-desc="The shore belongs to <em>whoever loves it</em>. Dog walkers, paddlers, gulls and ferry crews. We are the ones writing it down.">
-      <span class="gn-label">Belonging</span><span class="gn-circle"></span>
+       data-desc="<em>Innovation Team</em> — new ideas for an old problem. Designs, inventions and bold experiments for a healthier shore.">
+      <span class="gn-label">Innovation</span><span class="gn-circle"></span>
     </a>
-    <a class="gn gn-br"    href="#"
+    <a class="gn gn-br"    href="ecosystem.html"
        data-img="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_of_Burrard_Inlet_from_Lions_Gate_Bridge.jpg?width=900"
-       data-desc="The shore we are <em>quietly losing</em>. Warming water, plastic on the tideline, fewer salmon returning each autumn.">
-      <span class="gn-label">Vanishing</span><span class="gn-circle"></span>
+       data-desc="<em>Ecosystem Team</em> — the living web of the inlet. Who eats whom, what shelters in the kelp, and the pressures reshaping it all.">
+      <span class="gn-label">Ecosystem</span><span class="gn-circle"></span>
     </a>
   </nav>
 </section>
@@ -2029,8 +2029,10 @@
     const back = document.getElementById('originsBack');
     const intro = document.getElementById('originsIntro');
     const crumb = document.querySelector('.origins-crumb');
-    const linkOrigins = document.querySelector('.gn-left');
-    const linkRestore = document.querySelector('.gn-right');
+    /* Globe repurposed as the Teams navigator — nodes now link straight to each
+       team's page, so the Origins/Restore deep-dive overlay is disabled. */
+    const linkOrigins = document.querySelector('.gn-origins-disabled');
+    const linkRestore = document.querySelector('.gn-restore-disabled');
     const section = document.querySelector('.missing');
     if(!overlay || !back || !intro || !linkOrigins || !section) return;
 
@@ -2422,10 +2424,34 @@
       const b = dd.querySelector('.nav-dd-toggle');
       if (b) b.setAttribute('aria-expanded','false');
     });
+    /* Long-press the Teams button to reveal the globe (the teams navigator). */
+    const globeSection = document.querySelector('.missing');
     dds.forEach(dd => {
       const btn = dd.querySelector('.nav-dd-toggle');
+
+      let pressTimer = null;
+      let longFired = false;
+      const LONG_MS = 550;
+
+      const startPress = () => {
+        longFired = false;
+        if (!globeSection) return;
+        pressTimer = setTimeout(() => {
+          longFired = true;
+          closeAll();
+          globeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, LONG_MS);
+      };
+      const cancelPress = () => { if (pressTimer){ clearTimeout(pressTimer); pressTimer = null; } };
+
+      btn.addEventListener('pointerdown', startPress);
+      btn.addEventListener('pointerup', cancelPress);
+      btn.addEventListener('pointerleave', cancelPress);
+      btn.addEventListener('pointercancel', cancelPress);
+
       btn.addEventListener('click', e => {
         e.stopPropagation();
+        if (longFired){ longFired = false; return; }   // long-press already handled it
         const willOpen = !dd.classList.contains('open');
         closeAll();
         if (willOpen){ dd.classList.add('open'); btn.setAttribute('aria-expanded','true'); }

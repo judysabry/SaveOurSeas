@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About the Project — Why Ambleside Shore Exists | Ambleside Shore</title>
-<meta name="description" content="The story behind Ambleside Shore: a small, independent record of a changing coast on Burrard Inlet — its place names, its films, its games, and the people it's made for." />
-<meta name="keywords" content="Save Our Seas, Ambleside Shore, Burrard Inlet, ocean conservation, Squamish Nation, place names, West Vancouver, climate" />
+<title>City Planners — Protecting Ambleside from Sea Level Rise | Ambleside Shore</title>
+<meta name="description" content="The City Planners Team's proposal to protect Ambleside from sea level rise — strengthening the waterfront, restoring natural barriers, adapting parks, upgrading infrastructure, and rallying the community before the water arrives." />
+<meta name="keywords" content="Save Our Seas, Ambleside Shore, sea level rise, city planning, seawall, coastal resilience, Marine Drive, flooding, Burrard Inlet" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<link rel="canonical" href="https://judysabry.github.io/SaveOurSeas/about.html" />
+<link rel="canonical" href="https://judysabry.github.io/SaveOurSeas/cityplanners.html" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="About the Project — Why Ambleside Shore Exists" />
-<meta property="og:description" content="The story behind a small, independent record of a changing coast on Burrard Inlet." />
+<meta property="og:title" content="City Planners — Protecting Ambleside from Sea Level Rise" />
+<meta property="og:description" content="A proposal to defend a waterfront community against a rising sea — six solutions, one shoreline." />
 <meta property="og:site_name" content="Ambleside Shore" />
-<meta property="og:url" content="https://judysabry.github.io/SaveOurSeas/about.html" />
+<meta property="og:url" content="https://judysabry.github.io/SaveOurSeas/cityplanners.html" />
 <meta property="og:locale" content="en_CA" />
 
 <meta name="theme-color" content="#0d1418" />
@@ -145,6 +145,7 @@
     transition: color .25s, background .25s;
   }
   .nav-dd-menu a:hover{ color:var(--gold); background:rgba(236,230,214,.05); }
+  .nav-dd-menu a.active{ color:var(--paper); background:rgba(236,230,214,.06); }
   @media (max-width: 600px){
     .nav-dd-menu{ right:auto; left:0; min-width:210px; }
     .nav-dd-menu a{ white-space:normal; }
@@ -152,70 +153,112 @@
 
   /* HEADER */
   .head{
-    max-width: 1000px; margin: 0 auto; padding: 116px 6vw 56px;
+    max-width: 1100px; margin: 0 auto; padding: 116px 6vw 30px;
     position: relative;
   }
   .head::before{
     content:''; position:absolute; inset:0; pointer-events:none;
     background:
-      radial-gradient(ellipse 900px 480px at 72% 26%, rgba(192,122,53,0.10), transparent 60%),
-      radial-gradient(ellipse 700px 420px at 16% 84%, rgba(94,154,146,0.10), transparent 60%);
+      radial-gradient(ellipse 900px 480px at 72% 26%, rgba(94,154,146,0.14), transparent 60%),
+      radial-gradient(ellipse 700px 420px at 16% 84%, rgba(192,122,53,0.10), transparent 60%);
   }
   .head > *{ position:relative; z-index:1; }
   .head .eyebrow{ color: var(--gold); margin-bottom: 24px; }
   .head h1{
-    font-size: clamp(44px, 7vw, 104px);
-    letter-spacing:-0.03em; line-height:0.95; max-width: 15ch; margin-bottom: 30px;
+    font-size: clamp(44px, 7vw, 100px);
+    letter-spacing:-0.03em; line-height:0.95; max-width: 16ch; margin-bottom: 30px;
   }
   .head .deck{
     font-family:'Fraunces', serif;
     font-variation-settings:"opsz" 144, "SOFT" 30; font-weight:300;
     font-size: clamp(17px, 1.4vw, 22px); line-height:1.55;
-    color: var(--mist); max-width: 60ch;
+    color: var(--mist); max-width: 62ch;
   }
   .head .deck em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--paper); }
 
-  /* STORY */
-  .story{
-    max-width: 1000px; margin: 0 auto; padding: 10px 6vw 50px;
-    display:grid; grid-template-columns: 1fr 1fr; gap: 48px 56px;
+  /* RISING-WATER STAT BANNER */
+  .stat-band{
+    max-width: 1100px; margin: 22px auto 0; padding: 0 6vw;
   }
-  .story .block h2{
-    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40;
-    font-weight: 400; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.1;
-    color: var(--paper); margin-bottom: 16px;
+  .stat-band .inner{
+    position:relative; overflow:hidden; border-radius:14px;
+    border:1px solid var(--line-strong);
+    background:
+      linear-gradient(0deg, rgba(94,154,146,.22), rgba(94,154,146,.05) 62%, transparent),
+      rgba(236,230,214,.03);
+    padding: 40px 36px 38px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
   }
-  .story .block h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color: var(--gold); }
-  .story .block p{ color: var(--mist); font-size: 15px; line-height: 1.7; margin-bottom: 14px; }
-  .story .block p:last-child{ margin-bottom: 0; }
-  .story .block p em{ color: var(--paper); font-style: italic; }
+  .stat-band .inner::after{
+    content:''; position:absolute; left:0; right:0; bottom:0; height:46%;
+    background:linear-gradient(0deg, rgba(94,154,146,.30), transparent);
+    pointer-events:none;
+  }
+  .stat-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+  }
+  .stat .n{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0;
+    font-weight:300; font-size: clamp(40px, 5.4vw, 68px); line-height:1; color:var(--paper);
+    letter-spacing:-0.02em;
+  }
+  .stat .n em{ font-style:normal; color:var(--gold); }
+  .stat .l{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--mist); margin-top:12px; line-height:1.5;
+  }
 
-  /* PILLARS */
-  .pillars{
-    max-width: 1000px; margin: 0 auto; padding: 56px 6vw 30px; border-top: 1px solid var(--line);
+  /* SECTION INTRO */
+  .section-intro{
+    max-width: 1100px; margin: 0 auto; padding: 70px 6vw 6px;
   }
-  .pillars .eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 30px;
+  .section-intro .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.22em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:16px;
   }
-  .pill-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 0 48px; }
-  .pill{
-    padding: 24px 0; border-top: 1px solid var(--line);
-    display:flex; flex-direction:column; gap: 10px;
+  .section-intro h2{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:300;
+    font-size: clamp(28px, 3.6vw, 50px); line-height:1.04; max-width: 20ch; margin-bottom:18px;
   }
-  .pill .t{ font-family:'Fraunces', serif; font-size: 21px; font-weight: 400; color: var(--paper); }
-  .pill p{ font-size: 13.5px; line-height: 1.6; color: var(--mist); }
-  .pill a.lnk{
-    font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--paper);
-    border-bottom: 1px solid var(--paper); align-self: flex-start; padding-bottom: 3px;
-    transition: color .3s, border-color .3s, gap .3s; display:inline-flex; gap: 8px;
+  .section-intro h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--gold); }
+  .section-intro p{ color:var(--mist); font-size:15px; line-height:1.7; max-width:62ch; }
+
+  /* SOLUTIONS GRID */
+  .solutions{
+    max-width: 1100px; margin: 0 auto; padding: 34px 6vw 30px;
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
   }
-  .pill a.lnk:hover{ color: var(--gold); border-bottom-color: var(--gold); gap: 13px; }
+  .sol{
+    position:relative; border:1px solid var(--line-strong); border-radius:14px;
+    background: rgba(236,230,214,.03);
+    padding: 30px 30px 32px;
+    overflow:hidden;
+    transition: transform .35s ease, border-color .35s ease, background .35s ease;
+  }
+  .sol::before{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background:linear-gradient(180deg, var(--gold), var(--teal));
+    opacity:.7; transition:opacity .35s;
+  }
+  .sol:hover{ transform: translateY(-4px); border-color: var(--line-strong); background: rgba(236,230,214,.055); }
+  .sol:hover::before{ opacity:1; }
+  .sol .num{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.2em;
+    color:var(--teal); margin-bottom:18px; display:flex; align-items:center; gap:12px;
+  }
+  .sol .num .ico{ font-size:22px; line-height:1; filter:grayscale(.15); }
+  .sol h3{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:400;
+    font-size: clamp(20px, 2.1vw, 26px); line-height:1.12; color:var(--paper); margin-bottom:14px;
+  }
+  .sol h3 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--gold); }
+  .sol p{ color:var(--mist); font-size:14.5px; line-height:1.68; }
+  .sol p em{ color:var(--paper); font-style:italic; }
 
   /* CLOSER */
   .closer{
-    max-width: 1000px; margin: 0 auto; padding: 56px 6vw 90px; border-top: 1px solid var(--line);
+    max-width: 1100px; margin: 0 auto; padding: 60px 6vw 90px; border-top: 1px solid var(--line);
   }
   .closer .eyebrow{
     font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
@@ -223,10 +266,10 @@
   }
   .closer h2{
     font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:300;
-    font-size: clamp(28px, 3.4vw, 50px); line-height:1.04; max-width: 22ch; margin-bottom: 24px;
+    font-size: clamp(28px, 3.4vw, 50px); line-height:1.04; max-width: 24ch; margin-bottom: 24px;
   }
   .closer h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color: var(--gold); }
-  .closer p{ color: var(--mist); font-size: 15px; line-height: 1.7; max-width: 60ch; margin-bottom: 28px; }
+  .closer p{ color: var(--mist); font-size: 15px; line-height: 1.7; max-width: 62ch; margin-bottom: 28px; }
   .closer a.cta{
     font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em;
     text-transform: uppercase; color: var(--paper);
@@ -251,8 +294,9 @@
     nav.main{ padding: 16px 22px; }
     .nav-links{ gap: 15px; }
     .nav-links a{ font-size: 10px; letter-spacing: 0.12em; }
-    .head{ padding: 90px 7vw 44px; }
-    .story{ grid-template-columns: 1fr; gap: 32px; padding: 6px 7vw 40px; }
+    .head{ padding: 90px 7vw 26px; }
+    .stat-grid{ gap: 20px; }
+    .solutions{ grid-template-columns: 1fr; gap: 18px; padding: 30px 7vw 26px; }
   }
   @media (max-width: 600px){
     .top-bar{ font-size: 9px; padding: 8px 16px; }
@@ -264,7 +308,10 @@
     .nav-links{ gap: 12px; }
     .nav-links a{ font-size: 9px; letter-spacing: 0.07em; }
     .head h1{ font-size: clamp(34px, 11vw, 52px); }
-    .closer, .head, .story, .pillars{ padding-left: 6vw; padding-right: 6vw; }
+    .stat-band .inner{ padding: 28px 22px 26px; }
+    .stat-grid{ grid-template-columns: 1fr; gap: 26px; text-align:center; }
+    .sol{ padding: 26px 22px 28px; }
+    .closer, .head, .section-intro{ padding-left: 6vw; padding-right: 6vw; }
   }
 </style>
 </head>
@@ -272,7 +319,7 @@
 
 <!-- TOP BAR -->
 <div class="top-bar">
-  <div>· The story · Why this exists</div>
+  <div>· City planners · Defending the waterfront</div>
   <div>Ambleside Shore · West Vancouver</div>
 </div>
 
@@ -295,13 +342,13 @@
     <a href="places.html">Places</a>
     <a href="impact.html">Your impact</a>
     <a href="games.html">Games</a>
-    <a href="about.html" class="active">About</a>
+    <a href="about.html">About</a>
     <div class="nav-dd">
       <button class="nav-dd-toggle" type="button" aria-haspopup="true" aria-expanded="false">Teams <span class="nav-dd-caret" aria-hidden="true">▾</span></button>
       <div class="nav-dd-menu" role="menu">
         <a href="save_our_seas.html" role="menuitem">Math &amp; Data</a>
         <a href="https://sdhgfgdbzfgeht.my.canva.site/save-our-seas" target="_blank" rel="noopener" role="menuitem">Coastal Science + Human Impact Team</a>
-        <a href="cityplanners.html" role="menuitem">City Planners Team</a>
+        <a href="cityplanners.html" class="active" role="menuitem">City Planners Team</a>
         <a href="https://canva.link/t8zn0p2wcr2ns7n" target="_blank" rel="noopener" role="menuitem">Innovation Team</a>
         <a href="ecosystem.html" role="menuitem">Ecosystem Team</a>
       </div>
@@ -311,58 +358,83 @@
 
 <!-- HEADER -->
 <header class="head">
-  <div class="eyebrow mono">The story · Why this exists</div>
-  <h1 class="display">A small record of a <em>changing</em> coast</h1>
-  <p class="deck">Ambleside Shore is an independent project about one stretch of the Burrard Inlet shoreline — the water, the names carried here long before us, and the slow pressure that is reshaping it. It is not a campaign or an institution. It is a <em>record</em>, made so a familiar coast is harder to ignore.</p>
+  <div class="eyebrow mono">City planners · A proposal</div>
+  <h1 class="display">Protecting Ambleside from the <em>rising sea</em></h1>
+  <p class="deck">Sea level rise is no longer a distant forecast — it is a planning problem with a deadline. As a waterfront community on Burrard Inlet, Ambleside faces flooding, shoreline erosion, and the slow loss of the public spaces that make it home. This is the City Planners Team's proposal: <em>six ways to act while there is still time.</em></p>
 </header>
 
-<!-- STORY -->
-<section class="story">
-  <div class="block">
-    <h2>Where it <em>began</em></h2>
-    <p>It started with a camera on a wet morning and a question that wouldn't settle: how do you show a place changing slowly enough that nobody notices? The films came first — short, unhurried looks at Ambleside under rain, tide, and a warming sky.</p>
-    <p>The website grew around them, gathering what a single video can't hold: the place names, the everyday habits behind the change, and a few games that let you feel the pressure instead of just reading about it.</p>
-  </div>
-  <div class="block">
-    <h2>What it's <em>for</em></h2>
-    <p>The coast doesn't need another lecture. It needs to be <em>looked at</em> — closely, repeatedly, by the people who walk it. This project tries to make that easy and a little beautiful.</p>
-    <p>Everything here points the same direction: pay attention to this shoreline, learn the names it already carries, and notice how ordinary choices ripple out to meet the water.</p>
+<!-- RISING-WATER STAT BAND -->
+<section class="stat-band">
+  <div class="inner">
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="n">up to <em>1.4 m</em></div>
+        <div class="l">Possible sea level rise by 2100</div>
+      </div>
+      <div class="stat">
+        <div class="n"><em>6</em> moves</div>
+        <div class="l">Solutions to defend the shoreline</div>
+      </div>
+      <div class="stat">
+        <div class="n"><em>now</em></div>
+        <div class="l">The cheapest time to begin is today</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- PILLARS -->
-<section class="pillars">
-  <div class="eyebrow">What lives here</div>
-  <div class="pill-grid">
-    <div class="pill">
-      <div class="t">The place names</div>
-      <p>Sḵwx̱wú7mesh markers along Burrard Inlet — the names recorded on this shore before us, mapped to where they belong.</p>
-      <a class="lnk" href="places.html">The atlas <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="pill">
-      <div class="t">Your impact</div>
-      <p>An honest, unscientific mirror of everyday habits and how they add to the pressure on the inlet.</p>
-      <a class="lnk" href="impact.html">The mirror <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="pill">
-      <div class="t">The games</div>
-      <p>A small arcade of browser games about a coast that won't stop changing — feel the pressure, no download.</p>
-      <a class="lnk" href="games.html">The arcade <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="pill">
-      <div class="t">The films</div>
-      <p>Short pieces from the field, including <em>Ambleside is cooked…</em> — see what's already shifting.</p>
-      <a class="lnk" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">The channel <span aria-hidden="true">↗</span></a>
-    </div>
-  </div>
+<!-- SECTION INTRO -->
+<section class="section-intro">
+  <div class="eyebrow">The proposed solutions</div>
+  <h2>One shoreline, defended <em>six ways</em></h2>
+  <p>No single wall holds back a rising ocean. A resilient Ambleside layers its defences — hardening what must be hard, softening where nature can do the work, and preparing the spaces and routes the community depends on every day.</p>
+</section>
+
+<!-- SOLUTIONS GRID -->
+<section class="solutions">
+  <article class="sol">
+    <div class="num"><span class="ico">🌊</span> Solution 01</div>
+    <h3>Strengthen <em>waterfront</em> protection</h3>
+    <p>The seawall and other shoreline protections should be strengthened and raised in the areas most vulnerable to flooding. Acting now reduces future damage and protects the community spaces that line the waterfront.</p>
+  </article>
+
+  <article class="sol">
+    <div class="num"><span class="ico">🌿</span> Solution 02</div>
+    <h3>Restore <em>natural</em> barriers</h3>
+    <p>Wetlands, coastal plants, and green spaces absorb excess water and slow erosion. Expanding and protecting these areas is a <em>sustainable</em> way to defend the shore — one that benefits local wildlife at the same time.</p>
+  </article>
+
+  <article class="sol">
+    <div class="num"><span class="ico">🏞️</span> Solution 03</div>
+    <h3>Adapt <em>parks</em> &amp; recreation</h3>
+    <p>Fields and parks near the ocean should be readied for future flooding. Better drainage, elevated surfaces, and flood-resistant design can keep these places safe and usable during extreme weather.</p>
+  </article>
+
+  <article class="sol">
+    <div class="num"><span class="ico">🏗️</span> Solution 04</div>
+    <h3>Upgrade <em>infrastructure</em></h3>
+    <p>Roads, storm drains, utilities, and public buildings should be upgraded to withstand higher water and stronger storms. Future development should be designed with climate resilience built in from the start.</p>
+  </article>
+
+  <article class="sol">
+    <div class="num"><span class="ico">🛣️</span> Solution 05</div>
+    <h3>Protect <em>transportation</em> routes</h3>
+    <p>Marine Drive and the surrounding roads are essential connections. Protecting them from flooding must be a priority — both for everyday transportation and for <em>emergency access</em> when storms hit.</p>
+  </article>
+
+  <article class="sol">
+    <div class="num"><span class="ico">🤝</span> Solution 06</div>
+    <h3>Involve the <em>community</em></h3>
+    <p>Sea level rise asks for cooperation from residents, businesses, schools, organizations, and government. Public education and community planning help ensure <em>everyone</em> plays a role in preparing for what's ahead.</p>
+  </article>
 </section>
 
 <!-- CLOSER -->
 <section class="closer">
-  <div class="eyebrow">Get involved</div>
-  <h2>The shore is <em>watched</em> by the people who walk it</h2>
-  <p>This is a living record, and it grows when people who know this coast lend their eyes to it. Watch the films, share a memory of the inlet, or simply pass these pages on. Attention is the whole point.</p>
-  <a class="cta" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">Visit the channel <span aria-hidden="true">↗</span></a>
+  <div class="eyebrow">Conclusion</div>
+  <h2>There is still <em>time</em> to prepare</h2>
+  <p>Sea level rise is a significant challenge for Ambleside — but it is not an inevitability we have to accept unprepared. By strengthening shoreline protection, restoring natural barriers, adapting public spaces, upgrading infrastructure, and involving the community, Ambleside can reduce future risk and protect the waterfront for generations to come. Acting now is how we build a safer, more resilient shore in the years ahead.</p>
+  <a class="cta" href="places.html">Walk the places we're protecting <span aria-hidden="true">→</span></a>
 </section>
 
 <!-- FOOTER -->
