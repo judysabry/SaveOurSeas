@@ -162,6 +162,20 @@
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.92 0 0 0 0 0.85 0 0 0 0.12 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
   }
   .cover.hidden{ opacity: 0; pointer-events: none; }
+  /* Mini screen capture behind the cover; dark gradient kept on top for legibility */
+  .cover.has-shot{
+    background:
+      radial-gradient(ellipse 120% 90% at 50% 30%, rgba(94,154,146,0.16), transparent 60%),
+      linear-gradient(180deg, rgba(13,20,24,0.42) 0%, rgba(13,20,24,0.55) 45%, rgba(13,20,24,0.85) 100%),
+      var(--shot, none) center / cover no-repeat,
+      #07131b;
+  }
+  .shot-tag{
+    position:absolute; top:12px; right:12px; z-index:2;
+    font-family:'JetBrains Mono', monospace; font-size:8.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--mist); background:rgba(13,20,24,0.55); border:1px solid rgba(236,230,214,0.3);
+    border-radius:999px; padding:4px 9px; backdrop-filter:blur(6px);
+  }
   .cover-inner{ position: relative; z-index: 1; max-width: 520px; }
   .cover .kicker{
     font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.28em;
@@ -289,7 +303,8 @@
   </div>
 
   <div class="stage" id="stage" data-game-url="https://climate-escape-survivor--adriand218.replit.app/" data-fs-btn="#fsBtn">
-    <div class="cover" id="cover" role="button" tabindex="0" aria-label="Play Climate Escape Survivor">
+    <div class="cover has-shot" id="cover" role="button" tabindex="0" aria-label="Play Climate Escape Survivor" style="--shot:url('https://s.wordpress.com/mshots/v1/https%3A%2F%2Fclimate-escape-survivor--adriand218.replit.app%2F?w=1200&h=675')">
+      <span class="shot-tag">Preview</span>
       <div class="cover-inner">
         <div class="kicker">Browser game · Free to play</div>
         <div class="title">Climate <em>Escape</em> Survivor</div>
@@ -321,7 +336,8 @@
   </div>
 
   <div class="stage" id="stage2" data-game-url="https://flood-escape-master--parhamy140.replit.app/" data-fs-btn="#fsBtn2">
-    <div class="cover" id="cover2" role="button" tabindex="0" aria-label="Play Escape the Flood">
+    <div class="cover has-shot" id="cover2" role="button" tabindex="0" aria-label="Play Escape the Flood" style="--shot:url('https://s.wordpress.com/mshots/v1/https%3A%2F%2Fflood-escape-master--parhamy140.replit.app%2F?w=1200&h=675')">
+      <span class="shot-tag">Preview</span>
       <div class="cover-inner">
         <div class="kicker">Browser game · Free to play</div>
         <div class="title">Escape the <em>Flood</em></div>
@@ -353,7 +369,8 @@
   </div>
 
   <div class="stage" id="stage3" data-game-url="https://grieving-jade-9e3qjd9m.edgeone.app/" data-fs-btn="#fsBtn3">
-    <div class="cover" id="cover3" role="button" tabindex="0" aria-label="Play Climate Champions Quiz">
+    <div class="cover has-shot" id="cover3" role="button" tabindex="0" aria-label="Play Climate Champions Quiz" style="--shot:url('https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgrieving-jade-9e3qjd9m.edgeone.app%2F?w=1200&h=675')">
+      <span class="shot-tag">Preview</span>
       <div class="cover-inner">
         <div class="kicker">Browser game · Free to play</div>
         <div class="title">Climate Champions <em>Quiz</em></div>
@@ -385,7 +402,8 @@
   </div>
 
   <div class="stage" id="stage4" data-game-url="https://nuclear-gray-bayubzwb.edgeone.app/" data-fs-btn="#fsBtn4">
-    <div class="cover" id="cover4" role="button" tabindex="0" aria-label="Play Climate Quest">
+    <div class="cover has-shot" id="cover4" role="button" tabindex="0" aria-label="Play Climate Quest" style="--shot:url('https://s.wordpress.com/mshots/v1/https%3A%2F%2Fnuclear-gray-bayubzwb.edgeone.app%2F?w=1200&h=675')">
+      <span class="shot-tag">Preview</span>
       <div class="cover-inner">
         <div class="kicker">Browser game · Free to play</div>
         <div class="title">Climate <em>Quest</em></div>
@@ -417,7 +435,8 @@
   </div>
 
   <div class="stage" id="stage5" data-game-url="https://gardenhelpambelside.my.canva.site/" data-fs-btn="#fsBtn5">
-    <div class="cover" id="cover5" role="button" tabindex="0" aria-label="Play Garden Helper">
+    <div class="cover has-shot" id="cover5" role="button" tabindex="0" aria-label="Play Garden Helper" style="--shot:url('https://s.wordpress.com/mshots/v1/https%3A%2F%2Fgardenhelpambelside.my.canva.site%2F?w=1200&h=675')">
+      <span class="shot-tag">Preview</span>
       <div class="cover-inner">
         <div class="kicker">Browser game · Free to play</div>
         <div class="title">Garden <em>Helper</em></div>
@@ -449,7 +468,8 @@
   </div>
 
   <div class="stage" id="stage6" data-game-url="https://climate-defense--liamy586.replit.app/" data-fs-btn="#fsBtn6">
-    <div class="cover" id="cover6" role="button" tabindex="0" aria-label="Play Climate Defence">
+    <div class="cover has-shot" id="cover6" role="button" tabindex="0" aria-label="Play Climate Defence" style="--shot:url('https://s.wordpress.com/mshots/v1/https%3A%2F%2Fclimate-defense--liamy586.replit.app%2F?w=1200&h=675')">
+      <span class="shot-tag">Preview</span>
       <div class="cover-inner">
         <div class="kicker">Browser game · Free to play</div>
         <div class="title">Climate <em>Defence</em></div>
