@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>City Planners — Protecting Ambleside from Sea Level Rise | Ambleside Shore</title>
-<meta name="description" content="The City Planners Team's proposal to protect Ambleside from sea level rise — strengthening the waterfront, restoring natural barriers, adapting parks, upgrading infrastructure, and rallying the community before the water arrives." />
+<title>City Planners — Proposal to Protect Ambleside from Sea Level Rise | Ambleside Shore</title>
+<meta name="description" content="The City Planners Team's proposal to protect Ambleside from sea level rise — strengthening the waterfront, restoring natural barriers, adapting parks, upgrading infrastructure, protecting transportation routes, and encouraging community involvement." />
 <meta name="keywords" content="Save Our Seas, Ambleside Shore, sea level rise, city planning, seawall, coastal resilience, Marine Drive, flooding, Burrard Inlet" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://judysabry.github.io/SaveOurSeas/cityplanners.html" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="City Planners — Protecting Ambleside from Sea Level Rise" />
-<meta property="og:description" content="A proposal to defend a waterfront community against a rising sea — six solutions, one shoreline." />
+<meta property="og:title" content="Proposal to Protect Ambleside from Sea Level Rise" />
+<meta property="og:description" content="The City Planners Team's proposal to defend a waterfront community against a rising sea." />
 <meta property="og:site_name" content="Ambleside Shore" />
 <meta property="og:url" content="https://judysabry.github.io/SaveOurSeas/cityplanners.html" />
 <meta property="og:locale" content="en_CA" />
@@ -153,7 +153,7 @@
 
   /* HEADER */
   .head{
-    max-width: 1100px; margin: 0 auto; padding: 116px 6vw 30px;
+    max-width: 920px; margin: 0 auto; padding: 116px 6vw 36px;
     position: relative;
   }
   .head::before{
@@ -165,124 +165,64 @@
   .head > *{ position:relative; z-index:1; }
   .head .eyebrow{ color: var(--gold); margin-bottom: 24px; }
   .head h1{
-    font-size: clamp(44px, 7vw, 100px);
-    letter-spacing:-0.03em; line-height:0.95; max-width: 16ch; margin-bottom: 30px;
-  }
-  .head .deck{
-    font-family:'Fraunces', serif;
-    font-variation-settings:"opsz" 144, "SOFT" 30; font-weight:300;
-    font-size: clamp(17px, 1.4vw, 22px); line-height:1.55;
-    color: var(--mist); max-width: 62ch;
-  }
-  .head .deck em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--paper); }
-
-  /* RISING-WATER STAT BANNER */
-  .stat-band{
-    max-width: 1100px; margin: 22px auto 0; padding: 0 6vw;
-  }
-  .stat-band .inner{
-    position:relative; overflow:hidden; border-radius:14px;
-    border:1px solid var(--line-strong);
-    background:
-      linear-gradient(0deg, rgba(94,154,146,.22), rgba(94,154,146,.05) 62%, transparent),
-      rgba(236,230,214,.03);
-    padding: 40px 36px 38px;
-    box-shadow: 0 30px 80px rgba(0,0,0,.45);
-  }
-  .stat-band .inner::after{
-    content:''; position:absolute; left:0; right:0; bottom:0; height:46%;
-    background:linear-gradient(0deg, rgba(94,154,146,.30), transparent);
-    pointer-events:none;
-  }
-  .stat-grid{
-    position:relative; z-index:1;
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-  }
-  .stat .n{
-    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0;
-    font-weight:300; font-size: clamp(40px, 5.4vw, 68px); line-height:1; color:var(--paper);
-    letter-spacing:-0.02em;
-  }
-  .stat .n em{ font-style:normal; color:var(--gold); }
-  .stat .l{
-    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.16em;
-    text-transform:uppercase; color:var(--mist); margin-top:12px; line-height:1.5;
+    font-size: clamp(40px, 6.4vw, 88px);
+    letter-spacing:-0.03em; line-height:0.97; max-width: 17ch; margin-bottom: 0;
   }
 
-  /* SECTION INTRO */
-  .section-intro{
-    max-width: 1100px; margin: 0 auto; padding: 70px 6vw 6px;
+  /* LEAD IMAGE */
+  .lead-img{
+    max-width: 1080px; margin: 0 auto; padding: 10px 6vw 8px;
   }
-  .section-intro .eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.22em;
-    text-transform:uppercase; color:var(--gold); margin-bottom:16px;
+  .lead-img figure{
+    border:1px solid var(--line-strong); border-radius:14px; overflow:hidden;
+    background:rgba(236,230,214,.03); box-shadow:0 30px 80px rgba(0,0,0,.45);
   }
-  .section-intro h2{
+  .lead-img img{ display:block; width:100%; height:clamp(240px, 42vw, 460px); object-fit:cover; }
+
+  /* PROPOSAL PROSE */
+  .proposal{
+    max-width: 760px; margin: 0 auto; padding: 40px 6vw 30px;
+  }
+  .proposal h2{
     font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:300;
-    font-size: clamp(28px, 3.6vw, 50px); line-height:1.04; max-width: 20ch; margin-bottom:18px;
+    font-size: clamp(26px, 3.4vw, 42px); line-height:1.06; color:var(--paper);
+    margin: 56px 0 20px; letter-spacing:-0.02em;
   }
-  .section-intro h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--gold); }
-  .section-intro p{ color:var(--mist); font-size:15px; line-height:1.7; max-width:62ch; }
-
-  /* SOLUTIONS GRID */
-  .solutions{
-    max-width: 1100px; margin: 0 auto; padding: 34px 6vw 30px;
-    display:grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
-  }
-  .sol{
-    position:relative; border:1px solid var(--line-strong); border-radius:14px;
-    background: rgba(236,230,214,.03);
-    padding: 30px 30px 32px;
-    overflow:hidden;
-    transition: transform .35s ease, border-color .35s ease, background .35s ease;
-  }
-  .sol::before{
-    content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
-    background:linear-gradient(180deg, var(--gold), var(--teal));
-    opacity:.7; transition:opacity .35s;
-  }
-  .sol:hover{ transform: translateY(-4px); border-color: var(--line-strong); background: rgba(236,230,214,.055); }
-  .sol:hover::before{ opacity:1; }
-  .sol .num{
-    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.2em;
-    color:var(--teal); margin-bottom:18px; display:flex; align-items:center; gap:12px;
-  }
-  .sol .num .ico{ font-size:22px; line-height:1; filter:grayscale(.15); }
-  .sol h3{
+  .proposal h2:first-child{ margin-top: 0; }
+  .proposal h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--gold); }
+  .proposal h3{
     font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:400;
-    font-size: clamp(20px, 2.1vw, 26px); line-height:1.12; color:var(--paper); margin-bottom:14px;
+    font-size: clamp(19px, 2vw, 25px); line-height:1.15; color:var(--gold);
+    margin: 40px 0 12px;
+    display:flex; align-items:baseline; gap:12px;
   }
-  .sol h3 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--gold); }
-  .sol p{ color:var(--mist); font-size:14.5px; line-height:1.68; }
-  .sol p em{ color:var(--paper); font-style:italic; }
+  .proposal h3 .ix{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.12em;
+    color:var(--teal); flex-shrink:0;
+  }
+  .proposal p{ color:var(--mist); font-size:16px; line-height:1.78; margin-bottom: 18px; }
+  .proposal p.lead{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 30; font-weight:300;
+    font-size: clamp(18px, 1.6vw, 22px); line-height:1.6; color:var(--paper);
+  }
 
-  /* CLOSER */
-  .closer{
-    max-width: 1100px; margin: 0 auto; padding: 60px 6vw 90px; border-top: 1px solid var(--line);
+  /* SUPPORTING FIGURES */
+  figure.support{
+    margin: 26px 0 8px;
+    border:1px solid var(--line-strong); border-radius:12px; overflow:hidden;
+    background:rgba(236,230,214,.03); box-shadow:0 24px 60px rgba(0,0,0,.4);
   }
-  .closer .eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+  figure.support img{ display:block; width:100%; height:clamp(200px, 34vw, 320px); object-fit:cover; }
+  figure.support figcaption{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--mist); padding:12px 16px; border-top:1px solid var(--line);
   }
-  .closer h2{
-    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:300;
-    font-size: clamp(28px, 3.4vw, 50px); line-height:1.04; max-width: 24ch; margin-bottom: 24px;
-  }
-  .closer h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color: var(--gold); }
-  .closer p{ color: var(--mist); font-size: 15px; line-height: 1.7; max-width: 62ch; margin-bottom: 28px; }
-  .closer a.cta{
-    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--paper);
-    border-bottom: 1px solid var(--paper); padding-bottom: 4px;
-    transition: color .3s, border-color .3s, gap .3s; display:inline-flex; gap: 8px;
-  }
-  .closer a.cta:hover{ color: var(--gold); border-bottom-color: var(--gold); gap: 13px; }
 
   /* FOOTER */
   footer{
     border-top: 1px solid var(--line); padding: 50px 6vw 40px; text-align: center;
     color: var(--mist); font-family:'JetBrains Mono', monospace; font-size: 10px;
-    letter-spacing: 0.22em; text-transform: uppercase;
+    letter-spacing: 0.22em; text-transform: uppercase; margin-top: 30px;
   }
   footer .ack{
     max-width: 70ch; margin: 0 auto 22px; font-family:'Fraunces', serif; font-style: italic;
@@ -294,9 +234,7 @@
     nav.main{ padding: 16px 22px; }
     .nav-links{ gap: 15px; }
     .nav-links a{ font-size: 10px; letter-spacing: 0.12em; }
-    .head{ padding: 90px 7vw 26px; }
-    .stat-grid{ gap: 20px; }
-    .solutions{ grid-template-columns: 1fr; gap: 18px; padding: 30px 7vw 26px; }
+    .head{ padding: 90px 7vw 28px; }
   }
   @media (max-width: 600px){
     .top-bar{ font-size: 9px; padding: 8px 16px; }
@@ -307,11 +245,9 @@
     .logo-text .b{ font-size: 8px; letter-spacing: 0.16em; }
     .nav-links{ gap: 12px; }
     .nav-links a{ font-size: 9px; letter-spacing: 0.07em; }
-    .head h1{ font-size: clamp(34px, 11vw, 52px); }
-    .stat-band .inner{ padding: 28px 22px 26px; }
-    .stat-grid{ grid-template-columns: 1fr; gap: 26px; text-align:center; }
-    .sol{ padding: 26px 22px 28px; }
-    .closer, .head, .section-intro{ padding-left: 6vw; padding-right: 6vw; }
+    .head h1{ font-size: clamp(32px, 10vw, 50px); }
+    .proposal{ padding: 30px 6vw 20px; }
+    .proposal h3{ flex-direction:column; gap:4px; }
   }
 </style>
 </head>
@@ -359,83 +295,77 @@
 <!-- HEADER -->
 <header class="head">
   <div class="eyebrow mono">City planners · A proposal</div>
-  <h1 class="display">Protecting Ambleside from the <em>rising sea</em></h1>
-  <p class="deck">Sea level rise is no longer a distant forecast — it is a planning problem with a deadline. As a waterfront community on Burrard Inlet, Ambleside faces flooding, shoreline erosion, and the slow loss of the public spaces that make it home. This is the City Planners Team's proposal: <em>six ways to act while there is still time.</em></p>
+  <h1 class="display">Proposal to Protect Ambleside from <em>Sea Level Rise</em></h1>
 </header>
 
-<!-- RISING-WATER STAT BAND -->
-<section class="stat-band">
-  <div class="inner">
-    <div class="stat-grid">
-      <div class="stat">
-        <div class="n">up to <em>1.4 m</em></div>
-        <div class="l">Possible sea level rise by 2100</div>
-      </div>
-      <div class="stat">
-        <div class="n"><em>6</em> moves</div>
-        <div class="l">Solutions to defend the shoreline</div>
-      </div>
-      <div class="stat">
-        <div class="n"><em>now</em></div>
-        <div class="l">The cheapest time to begin is today</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- LEAD IMAGE -->
+<div class="lead-img">
+  <figure>
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_of_Burrard_Inlet_from_Lions_Gate_Bridge.jpg?width=1400"
+         alt="Panorama of Burrard Inlet and the Ambleside waterfront seen from the Lions Gate Bridge." loading="eager" />
+  </figure>
+</div>
 
-<!-- SECTION INTRO -->
-<section class="section-intro">
-  <div class="eyebrow">The proposed solutions</div>
-  <h2>One shoreline, defended <em>six ways</em></h2>
-  <p>No single wall holds back a rising ocean. A resilient Ambleside layers its defences — hardening what must be hard, softening where nature can do the work, and preparing the spaces and routes the community depends on every day.</p>
-</section>
+<!-- PROPOSAL -->
+<article class="proposal">
 
-<!-- SOLUTIONS GRID -->
-<section class="solutions">
-  <article class="sol">
-    <div class="num"><span class="ico">🌊</span> Solution 01</div>
-    <h3>Strengthen <em>waterfront</em> protection</h3>
-    <p>The seawall and other shoreline protections should be strengthened and raised in the areas most vulnerable to flooding. Acting now reduces future damage and protects the community spaces that line the waterfront.</p>
-  </article>
+  <h2>Introduction</h2>
+  <p class="lead">Sea level rise is becoming an increasingly serious issue for coastal communities around the world. Scientists predict that sea levels could rise by as much as 1.4 metres by 2100. As a waterfront community, Ambleside may face flooding, shoreline erosion, damage to infrastructure, and loss of public spaces if action is not taken. This proposal outlines several solutions that could help protect Ambleside from the impacts of rising sea levels.</p>
 
-  <article class="sol">
-    <div class="num"><span class="ico">🌿</span> Solution 02</div>
-    <h3>Restore <em>natural</em> barriers</h3>
-    <p>Wetlands, coastal plants, and green spaces absorb excess water and slow erosion. Expanding and protecting these areas is a <em>sustainable</em> way to defend the shore — one that benefits local wildlife at the same time.</p>
-  </article>
+  <h2>Proposed <em>Solutions</em></h2>
 
-  <article class="sol">
-    <div class="num"><span class="ico">🏞️</span> Solution 03</div>
-    <h3>Adapt <em>parks</em> &amp; recreation</h3>
-    <p>Fields and parks near the ocean should be readied for future flooding. Better drainage, elevated surfaces, and flood-resistant design can keep these places safe and usable during extreme weather.</p>
-  </article>
+  <h3><span class="ix">01</span> Strengthen Waterfront Protection</h3>
+  <p>The seawall and other shoreline protections should be strengthened and raised in areas that are most vulnerable to flooding. Taking action now can help reduce future damage and protect important community spaces along the waterfront.</p>
+  <figure class="support">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_beach_in_ambleside.jpg?width=1200"
+         alt="The shoreline and beach at Ambleside, where seawall and waterfront protections meet the water." loading="lazy" />
+    <figcaption>Ambleside waterfront · the shoreline to be strengthened</figcaption>
+  </figure>
 
-  <article class="sol">
-    <div class="num"><span class="ico">🏗️</span> Solution 04</div>
-    <h3>Upgrade <em>infrastructure</em></h3>
-    <p>Roads, storm drains, utilities, and public buildings should be upgraded to withstand higher water and stronger storms. Future development should be designed with climate resilience built in from the start.</p>
-  </article>
+  <h3><span class="ix">02</span> Restore Natural Barriers</h3>
+  <p>Natural barriers such as wetlands, coastal plants, and green spaces can help absorb excess water and reduce erosion. Expanding and protecting these areas would provide a sustainable way to defend the shoreline while also benefiting local wildlife.</p>
+  <figure class="support">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Capilano_River.jpg?width=1200"
+         alt="Green riverbanks and coastal vegetation along the Capilano River — the kind of natural barrier that absorbs water and slows erosion." loading="lazy" />
+    <figcaption>Capilano River · natural barriers that absorb water</figcaption>
+  </figure>
 
-  <article class="sol">
-    <div class="num"><span class="ico">🛣️</span> Solution 05</div>
-    <h3>Protect <em>transportation</em> routes</h3>
-    <p>Marine Drive and the surrounding roads are essential connections. Protecting them from flooding must be a priority — both for everyday transportation and for <em>emergency access</em> when storms hit.</p>
-  </article>
+  <h3><span class="ix">03</span> Adapt Parks and Recreation Areas</h3>
+  <p>Fields and parks located near the ocean should be prepared for future flooding. Improvements such as better drainage systems, elevated surfaces, and flood-resistant designs could help these areas remain safe and usable during extreme weather events.</p>
+  <figure class="support">
+    <img src="bgImages3.jpeg"
+         alt="Open shoreline park and recreation space at Ambleside near the water's edge." loading="lazy" />
+    <figcaption>Ambleside parks · public space to adapt for flooding</figcaption>
+  </figure>
 
-  <article class="sol">
-    <div class="num"><span class="ico">🤝</span> Solution 06</div>
-    <h3>Involve the <em>community</em></h3>
-    <p>Sea level rise asks for cooperation from residents, businesses, schools, organizations, and government. Public education and community planning help ensure <em>everyone</em> plays a role in preparing for what's ahead.</p>
-  </article>
-</section>
+  <h3><span class="ix">04</span> Upgrade Infrastructure</h3>
+  <p>Roads, storm drains, utilities, and public buildings should be upgraded to withstand higher water levels and stronger storms. Future developments should also be designed with climate resilience in mind.</p>
+  <figure class="support">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lions_Gate_Bridge.jpg?width=1200"
+         alt="The Lions Gate Bridge and surrounding infrastructure linking the North Shore across Burrard Inlet." loading="lazy" />
+    <figcaption>Lions Gate Bridge · infrastructure built for higher water</figcaption>
+  </figure>
 
-<!-- CLOSER -->
-<section class="closer">
-  <div class="eyebrow">Conclusion</div>
-  <h2>There is still <em>time</em> to prepare</h2>
-  <p>Sea level rise is a significant challenge for Ambleside — but it is not an inevitability we have to accept unprepared. By strengthening shoreline protection, restoring natural barriers, adapting public spaces, upgrading infrastructure, and involving the community, Ambleside can reduce future risk and protect the waterfront for generations to come. Acting now is how we build a safer, more resilient shore in the years ahead.</p>
-  <a class="cta" href="places.html">Walk the places we're protecting <span aria-hidden="true">→</span></a>
-</section>
+  <h3><span class="ix">05</span> Protect Transportation Routes</h3>
+  <p>Marine Drive and surrounding roads are essential connections within the community. Protecting these routes from flooding should be a priority to ensure safe transportation and emergency access.</p>
+  <figure class="support">
+    <img src="bgImages5.jpeg"
+         alt="Coastal road and waterfront route along the Ambleside shore, vital for transportation and emergency access." loading="lazy" />
+    <figcaption>Marine Drive corridor · keeping routes open and safe</figcaption>
+  </figure>
+
+  <h3><span class="ix">06</span> Encourage Community Involvement</h3>
+  <p>Addressing sea level rise requires cooperation from residents, businesses, schools, local organizations, and government leaders. Public education programs and community planning initiatives can help ensure that everyone plays a role in preparing for future challenges.</p>
+  <figure class="support">
+    <img src="bgImages2.jpeg"
+         alt="People enjoying the Ambleside shore — the community that has a role to play in preparing for sea level rise." loading="lazy" />
+    <figcaption>The Ambleside community · everyone has a role</figcaption>
+  </figure>
+
+  <h2>Conclusion</h2>
+  <p>Sea level rise presents a significant challenge for Ambleside, but there is still time to prepare. By strengthening shoreline protection, restoring natural barriers, adapting public spaces, upgrading infrastructure, and involving the community, Ambleside can reduce future risks and protect the waterfront for future generations. Taking action now will help create a safer and more resilient community in the years ahead.</p>
+
+</article>
 
 <!-- FOOTER -->
 <footer>
