@@ -206,6 +206,40 @@
     font-size: clamp(18px, 1.6vw, 22px); line-height:1.6; color:var(--paper);
   }
 
+  /* PULL QUOTE */
+  .pullquote{
+    max-width: 1000px; margin: 18px auto; padding: 0 6vw;
+  }
+  .pullquote blockquote{
+    position: relative;
+    border: 1px solid var(--line-strong); border-radius: 16px;
+    background:
+      linear-gradient(0deg, rgba(94,154,146,.16), rgba(94,154,146,.03) 60%, transparent),
+      rgba(236,230,214,.03);
+    padding: clamp(34px, 5vw, 60px) clamp(28px, 5vw, 64px);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    overflow: hidden;
+  }
+  .pullquote blockquote::after{
+    content:''; position:absolute; left:0; right:0; bottom:0; height:42%;
+    background:linear-gradient(0deg, rgba(94,154,146,.24), transparent); pointer-events:none;
+  }
+  .pullquote .mark{
+    position:relative; z-index:1;
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--bracken); margin-bottom:18px;
+  }
+  .pullquote p{
+    position:relative; z-index:1;
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 30,"WONK" 0;
+    font-weight:300; letter-spacing:-0.02em;
+    font-size: clamp(26px, 4.4vw, 50px); line-height:1.1; color:var(--paper);
+    max-width: 20ch;
+  }
+  .pullquote p em{
+    font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color:var(--gold);
+  }
+
   /* SUPPORTING FIGURES */
   figure.support{
     margin: 26px 0 8px;
@@ -311,6 +345,17 @@
 
   <h2>Introduction</h2>
   <p class="lead">Sea level rise is becoming an increasingly serious issue for coastal communities around the world. Scientists predict that sea levels could rise by as much as 1.4 metres by 2100. As a waterfront community, Ambleside may face flooding, shoreline erosion, damage to infrastructure, and loss of public spaces if action is not taken. This proposal outlines several solutions that could help protect Ambleside from the impacts of rising sea levels.</p>
+</article>
+
+<!-- PULL QUOTE -->
+<div class="pullquote">
+  <blockquote>
+    <div class="mark">— The question</div>
+    <p>It isn't about whether the sea will <em>rise</em>. It's about whether we will <em>rise to meet it</em>.</p>
+  </blockquote>
+</div>
+
+<article class="proposal">
 
   <h2>Proposed <em>Solutions</em></h2>
 
