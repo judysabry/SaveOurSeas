@@ -213,6 +213,45 @@
   }
   .pill a.lnk:hover{ color: var(--gold); border-bottom-color: var(--gold); gap: 13px; }
 
+  /* CREATORS */
+  .creators{
+    max-width: 1000px; margin: 0 auto; padding: 56px 6vw 30px; border-top: 1px solid var(--line);
+  }
+  .creators .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+  .creators h2{
+    font-family:'Fraunces', serif; font-variation-settings:"opsz" 144,"SOFT" 40; font-weight:300;
+    font-size: clamp(26px, 3vw, 42px); line-height:1.06; max-width: 20ch; margin-bottom: 14px;
+  }
+  .creators h2 em{ font-style:italic; font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1; color: var(--gold); }
+  .creators .deck{ color: var(--mist); font-size: 14.5px; line-height: 1.7; max-width: 56ch; margin-bottom: 8px; }
+
+  .cr-lead{
+    margin-top: 30px; padding: 24px 26px; border: 1px solid var(--line-strong); border-radius: 12px;
+    background: rgba(236,230,214,.03);
+    display:flex; flex-direction:column; gap: 8px;
+  }
+  .cr-lead .role{
+    font-family:'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--teal);
+  }
+  .cr-lead .name{ font-family:'Fraunces', serif; font-size: 27px; font-weight: 400; color: var(--paper); }
+  .cr-lead p{ font-size: 13.5px; line-height: 1.6; color: var(--mist); }
+
+  .cr-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 0 48px; }
+  .cr-group{ padding: 24px 0; border-top: 1px solid var(--line); display:flex; flex-direction:column; gap: 10px; }
+  .cr-role{
+    font-family:'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--teal);
+  }
+  .cr-names{ font-family:'Fraunces', serif; font-size: 19px; line-height: 1.5; color: var(--paper); }
+  .cr-names span{ color: var(--mist); }
+  .cr-people{ display:flex; flex-direction:column; gap: 12px; }
+  .cr-person .pn{ font-family:'Fraunces', serif; font-size: 18px; color: var(--paper); }
+  .cr-person .pr{ font-size: 13px; line-height: 1.5; color: var(--mist); }
+
   /* CLOSER */
   .closer{
     max-width: 1000px; margin: 0 auto; padding: 56px 6vw 90px; border-top: 1px solid var(--line);
@@ -354,6 +393,58 @@
       <p>Short pieces from the field, including <em>Ambleside is cooked…</em> — see what's already shifting.</p>
       <a class="lnk" href="https://www.youtube.com/@Save-Our-Seas" target="_blank" rel="noopener">The channel <span aria-hidden="true">↗</span></a>
     </div>
+  </div>
+</section>
+
+<!-- CREATORS -->
+<section class="creators">
+  <div class="eyebrow">The makers</div>
+  <h2>The people who <em>built</em> this</h2>
+  <p class="deck">Ambleside Shore was made by a class of grade 6/7 students, working in teams — each one bringing a different piece of the coast into the record.</p>
+
+  <div class="cr-lead">
+    <div class="role">Creator of the main website · Integrator</div>
+    <div class="name">Judy Abuelenien</div>
+    <p>Built and brought together the full website — weaving every team's work into one record.</p>
+    <a class="lnk" href="#" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+  </div>
+
+  <div class="cr-grid">
+    <div class="cr-group">
+      <div class="cr-role">Math &amp; Data Managers</div>
+      <div class="cr-names">Raybod · Suren · Yehor · Parham</div>
+    </div>
+    <div class="cr-group">
+      <div class="cr-role">Innovators</div>
+      <div class="cr-names">Eva · Jessie</div>
+    </div>
+    <div class="cr-group">
+      <div class="cr-role">Coastal Science Creators</div>
+      <div class="cr-names">Nickan · David · James · Nathaniel</div>
+    </div>
+    <div class="cr-group">
+      <div class="cr-role">Human Impact Team</div>
+      <div class="cr-names">Shantia Bamerinia · Shantia Borghei</div>
+    </div>
+  </div>
+
+  <div class="cr-grid">
+    <div class="cr-group" style="grid-column: 1 / -1;">
+      <div class="cr-role">Story &amp; Media</div>
+      <div class="cr-people">
+        <div class="cr-person"><div class="pn">Adrian</div><div class="pr">Creator of the Climate Escape game</div></div>
+        <div class="cr-person"><div class="pn">Liam</div><div class="pr">Content Manager · created Climate Defence</div></div>
+        <div class="cr-person"><div class="pn">Leo</div><div class="pr">Photographer · created the Garden Helper game · built the visuals with Anny</div></div>
+        <div class="cr-person"><div class="pn">Tristan</div><div class="pr">Giving the Indigenous perspective</div></div>
+        <div class="cr-person"><div class="pn">Ryan &amp; Nathan</div><div class="pr">Video creators</div></div>
+        <div class="cr-person"><div class="pn">Anny</div><div class="pr">Lead video script writer · created the visuals with Leo</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cr-group" style="border-top:1px solid var(--line); margin-top:0;">
+    <div class="cr-role">With thanks to</div>
+    <div class="cr-names">Chris Monogan</div>
   </div>
 </section>
 
